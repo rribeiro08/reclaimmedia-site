@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dakota Rose | Heart Wide Open - Debut Album</title>
-    <meta name="description" content="Dakota Rose - AI-powered country music artist. Debut album 'Heart Wide Open' featuring 12 original tracks. An experiment in AI-generated songwriting, vocals, and visuals.">
+    <meta name="description" content="Dakota Rose - Country music artist. Debut album 'Heart Wide Open' featuring 12 original tracks of heartfelt storytelling and powerful vocals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
@@ -37,12 +37,12 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 3rem 0;
+            padding: 3rem 0 2rem;
         }
 
         .profile-image {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--dusty-rose);
@@ -61,54 +61,36 @@
         .tagline {
             font-size: 1.1rem;
             color: var(--denim);
-            margin-bottom: 0.5rem;
-        }
-
-        .ai-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--denim) 0%, #4A6278 100%);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 1.5rem;
         }
 
         /* Social Links */
         .social-links {
             display: flex;
-            gap: 0.75rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
-        .social-link {
-            display: flex;
+        .social-links a {
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
             background: white;
-            border-radius: 50px;
-            text-decoration: none;
+            border: 1px solid #ddd;
+            border-radius: 25px;
             color: var(--warm-gray);
-            font-weight: 500;
+            text-decoration: none;
             font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
 
-        .social-link:hover {
+        .social-links a:hover {
+            border-color: var(--dusty-rose);
+            color: var(--dusty-rose);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 165, 165, 0.25);
-        }
-
-        .social-link svg {
-            width: 18px;
-            height: 18px;
         }
 
         /* Album Section */
@@ -116,36 +98,30 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
         .album-header {
             display: flex;
             gap: 2rem;
+            align-items: flex-start;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .album-cover {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             border-radius: 12px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
             object-fit: cover;
-        }
-
-        .album-info {
-            flex: 1;
-            min-width: 250px;
-            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            flex-shrink: 0;
         }
 
         .album-info h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--dark-brown);
+            color: var(--warm-gray);
             margin-bottom: 0.5rem;
         }
 
@@ -155,29 +131,35 @@
         }
 
         .album-description {
-            color: var(--warm-gray);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            color: #666;
         }
 
-        .stream-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            background: linear-gradient(135deg, var(--gold) 0%, #B8962E 100%);
+        .streaming-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .streaming-links a {
+            padding: 0.6rem 1.2rem;
+            background: var(--denim);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
         }
 
-        .stream-button:hover {
+        .streaming-links a:hover {
+            background: var(--dusty-rose);
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .streaming-links a.youtube {
+            background: #FF0000;
         }
 
         /* Track List */
@@ -188,38 +170,31 @@
         .track-list h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
-            color: var(--dark-brown);
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--dusty-rose);
+            color: var(--warm-gray);
         }
 
         .track {
             display: flex;
             align-items: center;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
             transition: background 0.2s;
         }
 
         .track:hover {
-            background: #fafafa;
-            margin: 0 -1rem;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
+            background: var(--cream);
         }
 
         .track-number {
             width: 30px;
             color: var(--dusty-rose);
             font-weight: 600;
-            font-size: 0.9rem;
         }
 
         .track-title {
             flex: 1;
             font-weight: 500;
-            color: var(--warm-gray);
         }
 
         .track-duration {
@@ -227,60 +202,15 @@
             font-size: 0.9rem;
         }
 
-        /* Subscribe Section */
-        .subscribe-section {
-            background: linear-gradient(135deg, var(--dusty-rose) 0%, #C49494 100%);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: white;
+        .track a {
+            margin-left: 1rem;
+            color: var(--denim);
+            text-decoration: none;
+            font-size: 0.85rem;
         }
 
-        .subscribe-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subscribe-section p {
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-        }
-
-        .subscribe-form {
-            display: flex;
-            gap: 0.5rem;
-            max-width: 400px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .subscribe-form input[type="email"] {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.9rem 1.2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .subscribe-form button {
-            padding: 0.9rem 1.5rem;
-            background: var(--dark-brown);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .subscribe-form button:hover {
-            background: #2D1E0F;
-            transform: translateY(-2px);
+        .track a:hover {
+            color: var(--dusty-rose);
         }
 
         /* About Section */
@@ -288,52 +218,88 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
+            margin-bottom: 2rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            text-align: center;
         }
 
-        .about-section h3 {
+        .about-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--dark-brown);
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+            color: var(--warm-gray);
         }
 
         .about-section p {
-            color: var(--warm-gray);
             line-height: 1.8;
-            max-width: 600px;
-            margin: 0 auto 1rem;
+            color: #666;
+            margin-bottom: 1rem;
         }
 
-        .about-section .highlight {
-            background: var(--cream);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--gold);
-            text-align: left;
-            margin-top: 1.5rem;
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--dusty-rose) 0%, #C49393 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 25px;
             font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.5rem;
+            background: var(--dark-brown);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 0;
+            padding: 2rem;
             color: #999;
             font-size: 0.85rem;
-        }
-
-        footer a {
-            color: var(--dusty-rose);
         }
 
         /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 2.2rem; }
             .album-header { flex-direction: column; align-items: center; text-align: center; }
-            .album-info { text-align: center; }
-            .album-cover { width: 200px; height: 200px; }
+            .album-cover { width: 160px; height: 160px; }
+            .newsletter-form { flex-direction: column; }
         }
     </style>
 </head>
@@ -341,149 +307,148 @@
     <div class="container">
         <!-- Hero -->
         <section class="hero">
-            <img src="images/dakota-rose-avatar.jpg" alt="Dakota Rose" class="profile-image">
+            <img src="https://raw.githubusercontent.com/rudi-jr/dakota-rose-assets/main/profile.jpg" alt="Dakota Rose" class="profile-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23D4A5A5%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>DR</text></svg>'">
             <h1>Dakota Rose</h1>
-            <p class="tagline">Country Music from the Heart</p>
-            <span class="ai-badge">✨ AI Artist</span>
+            <p class="tagline">Country Music from Nashville 🎤🌹</p>
             
             <div class="social-links">
-                <a href="https://open.spotify.com/artist/dakota-rose" class="social-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                    Spotify
-                </a>
-                <a href="https://music.apple.com/artist/dakota-rose" class="social-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.802.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03c.525 0 1.048-.034 1.57-.1.823-.106 1.597-.35 2.296-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.042-1.703-.364-2.13-1.218-.2-.405-.243-.84-.183-1.29.114-.853.681-1.472 1.49-1.67.456-.114.924-.167 1.392-.238.244-.036.483-.088.716-.168.215-.073.345-.207.37-.442.014-.117.018-.236.018-.354V8.373c0-.09-.008-.18-.022-.27a.36.36 0 00-.276-.3c-.095-.028-.194-.04-.293-.05-.303-.028-.608-.042-.908-.078-.55-.064-1.095-.16-1.618-.344-.94-.332-1.703-.9-2.283-1.69-.282-.385-.48-.81-.612-1.267-.036-.126-.06-.256-.09-.385l.013-.012c.073.027.138.063.21.082.196.053.394.1.59.15 1.017.26 2.058.378 3.114.378.784 0 1.564-.062 2.335-.2.263-.046.523-.11.778-.188.132-.04.26-.097.39-.146.02.04.034.063.042.088.082.266.138.538.166.815.04.39.05.783.05 1.175v5.607z"/></svg>
-                    Apple Music
-                </a>
-                <a href="https://youtube.com/@dakotarosemusic" class="social-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    YouTube
-                </a>
-                <a href="https://instagram.com/thedakotarosemusic" class="social-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    Instagram
-                </a>
+                <a href="https://youtube.com/@dakotarosemusic" target="_blank">▶️ YouTube</a>
+                <a href="https://instagram.com/thedakotarosemusic" target="_blank">📷 Instagram</a>
+                <a href="https://facebook.com/958936573973535" target="_blank">👍 Facebook</a>
+                <a href="https://tiktok.com/@thedakotarosemusic" target="_blank">🎵 TikTok</a>
             </div>
         </section>
 
         <!-- Album Section -->
         <section class="album-section">
             <div class="album-header">
-                <img src="images/heart-wide-open-cover.jpg" alt="Heart Wide Open Album Cover" class="album-cover">
+                <img src="https://raw.githubusercontent.com/rudi-jr/dakota-rose-assets/main/album-cover.jpg" alt="Heart Wide Open Album Cover" class="album-cover" onerror="this.style.background='linear-gradient(135deg, #D4A5A5, #5C7A99)'; this.alt='';">
                 <div class="album-info">
                     <h2>Heart Wide Open</h2>
-                    <p class="album-meta">Debut Album • 2026 • 12 Songs</p>
+                    <p class="album-meta">Debut Album • 12 Tracks • 40 min • February 2026</p>
                     <p class="album-description">
-                        Twelve stories of love, heartbreak, and small-town dreams. From neon-lit bar nights to quiet kitchen table conversations, this album captures the moments that make us who we are.
+                        From late-night ballads to sun-soaked anthems, "Heart Wide Open" is a journey through love, loss, small-town memories, and finding strength in the broken places. Every song is written to make you feel something real.
                     </p>
-                    <a href="https://open.spotify.com/album/dakota-rose-heart-wide-open" class="stream-button">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        Stream Now
-                    </a>
+                    <div class="streaming-links">
+                        <a href="https://youtube.com/@dakotarosemusic" class="youtube" target="_blank">▶️ YouTube</a>
+                        <a href="#" target="_blank">🎵 Spotify (Coming Soon)</a>
+                        <a href="#" target="_blank">🍎 Apple Music (Coming Soon)</a>
+                    </div>
                 </div>
             </div>
 
             <div class="track-list">
                 <h3>Track List</h3>
+                
                 <div class="track">
-                    <span class="track-number">01</span>
-                    <span class="track-title">Neon Hearts</span>
-                    <span class="track-duration">3:19</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">02</span>
-                    <span class="track-title">Passenger Seat</span>
-                    <span class="track-duration">3:24</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">03</span>
-                    <span class="track-title">Wildfire Love</span>
-                    <span class="track-duration">2:54</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">04</span>
-                    <span class="track-title">Kitchen Table Promises</span>
-                    <span class="track-duration">3:34</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">05</span>
-                    <span class="track-title">Goodbye Don't Come Easy</span>
-                    <span class="track-duration">3:32</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">06</span>
-                    <span class="track-title">Lipstick on a Lie</span>
-                    <span class="track-duration">3:23</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">07</span>
-                    <span class="track-title">Small Town Saturday Night</span>
-                    <span class="track-duration">3:05</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">08</span>
-                    <span class="track-title">Stronger in the Broken</span>
-                    <span class="track-duration">3:39</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">09</span>
-                    <span class="track-title">One More Chance</span>
-                    <span class="track-duration">3:42</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">10</span>
-                    <span class="track-title">Heart Wide Open</span>
-                    <span class="track-duration">3:39</span>
-                </div>
-                <div class="track">
-                    <span class="track-number">11</span>
+                    <span class="track-number">1</span>
                     <span class="track-title">3 AM</span>
                     <span class="track-duration">2:49</span>
+                    <a href="https://youtube.com/watch?v=Ig7TXr3pZ1o" target="_blank">▶️</a>
                 </div>
+                
                 <div class="track">
-                    <span class="track-number">12</span>
+                    <span class="track-number">2</span>
+                    <span class="track-title">Hearts Wide Open</span>
+                    <span class="track-duration">3:39</span>
+                    <a href="https://youtube.com/watch?v=BIwxAzOEIH8" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">3</span>
+                    <span class="track-title">Wildfire Love</span>
+                    <span class="track-duration">2:54</span>
+                    <a href="https://youtube.com/watch?v=m43sf-9lyqY" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">4</span>
+                    <span class="track-title">Small Town Saturday Night</span>
+                    <span class="track-duration">3:05</span>
+                    <a href="https://youtube.com/watch?v=_d5wUNbhDmw" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">5</span>
+                    <span class="track-title">Neon Hearts</span>
+                    <span class="track-duration">3:19</span>
+                    <a href="https://youtube.com/watch?v=Gdk-D5h9YZM" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">6</span>
+                    <span class="track-title">Lipstick on a Lie</span>
+                    <span class="track-duration">3:23</span>
+                    <a href="https://youtube.com/watch?v=hQDZkE-r2zg" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">7</span>
                     <span class="track-title">Red Dirt Roads</span>
                     <span class="track-duration">3:22</span>
+                    <a href="https://youtube.com/watch?v=ek-1B25meI8" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">8</span>
+                    <span class="track-title">Goodbye Don't Come Easy</span>
+                    <span class="track-duration">3:32</span>
+                    <a href="https://youtube.com/watch?v=-SIVWyF-s08" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">9</span>
+                    <span class="track-title">Kitchen Table Promises</span>
+                    <span class="track-duration">3:34</span>
+                    <a href="https://youtube.com/watch?v=ClIL_T8Ybl8" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">10</span>
+                    <span class="track-title">Passenger Seat</span>
+                    <span class="track-duration">3:24</span>
+                    <a href="https://youtube.com/watch?v=9P7lApqBxx0" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">11</span>
+                    <span class="track-title">One More Chance</span>
+                    <span class="track-duration">3:42</span>
+                    <a href="https://youtube.com/watch?v=iTwC3zGu204" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">12</span>
+                    <span class="track-title">Stronger in the Broken</span>
+                    <span class="track-duration">3:39</span>
+                    <a href="https://youtube.com/watch?v=eeCt8w7sQaw" target="_blank">▶️</a>
                 </div>
             </div>
-        </section>
-
-        <!-- Subscribe Section -->
-        <section class="subscribe-section">
-            <h3>Stay in the Loop</h3>
-            <p>Get notified about new releases, behind-the-scenes content, and exclusive updates.</p>
-            <form class="subscribe-form" action="#" method="POST">
-                <input type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
         </section>
 
         <!-- About Section -->
         <section class="about-section">
-            <h3>About Dakota Rose</h3>
+            <h2>About Dakota Rose</h2>
             <p>
-                Dakota Rose brings the warmth of Nashville songwriting to modern country pop. 
-                With lyrics that paint pictures of back road drives, small-town love, and 
-                the courage it takes to keep your heart wide open, her music feels like 
-                coming home.
+                Dakota Rose is a country music project blending heartfelt storytelling with powerful vocals. From the quiet ache of "3 AM" to the fiery passion of "Wildfire Love," every song captures the real moments that make up life in a small town.
             </p>
             <p>
-                "Heart Wide Open" is her debut album: twelve songs written for late nights 
-                and long drives, capturing the full spectrum of love, loss, and everything 
-                in between.
+                Based in Nashville, Tennessee, Dakota Rose brings together classic country roots with a modern sound. Whether you're driving down a red dirt road or dancing under string lights on a Saturday night, there's a song here for you.
             </p>
-            <div class="highlight">
-                <strong>🤖 About the Artist:</strong> Dakota Rose is an AI-generated artist, 
-                an experiment in what happens when artificial intelligence meets authentic 
-                country storytelling. Every song, vocal, and visual is created using AI tools, 
-                pushing the boundaries of music creation. The emotions are synthetic. 
-                The stories are real.
-            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h2>Join the Rose Garden 🌹</h2>
+            <p>Get exclusive updates, early releases, and behind-the-scenes content.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for joining! 🌹');">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Join</button>
+            </form>
         </section>
 
         <footer>
             <p>© 2026 Dakota Rose Music. All rights reserved.</p>
-            <p><a href="mailto:dakotarosewildflower1@gmail.com">dakotarosewildflower1@gmail.com</a></p>
         </footer>
     </div>
 </body>
