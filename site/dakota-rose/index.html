@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dakota Rose | Heart Wide Open - Debut Album</title>
     <meta name="description" content="Dakota Rose - Country music artist. Debut album 'Heart Wide Open' featuring 12 original tracks of heartfelt storytelling and powerful vocals.">
@@ -28,6 +29,50 @@
             min-height: 100vh;
         }
 
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--warm-gray);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--denim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dusty-rose);
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -38,6 +83,7 @@
         .hero {
             text-align: center;
             padding: 3rem 0 2rem;
+            min-height: auto !important;
         }
 
         .profile-image {
@@ -304,10 +350,24 @@
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">Dakota Rose</a>
+            <div class="nav-links">
+                <a href="./">Home</a>
+                <a href="lyrics/">Lyrics</a>
+                <a href="chords/">Chords</a>
+                <a href="meaning/">Song Meanings</a>
+                <a href="playlists/">Playlists</a>
+                <a href="../">Reclaim Media</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- Hero -->
         <section class="hero">
-            <img src="https://raw.githubusercontent.com/rudi-jr/dakota-rose-assets/main/profile.jpg" alt="Dakota Rose" class="profile-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23D4A5A5%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>DR</text></svg>'">
+            <img src="https://398550.fs1.hubspotusercontent-na1.net/hubfs/398550/dakota-rose/headshot.jpg" alt="Dakota Rose" class="profile-image">
             <h1>Dakota Rose</h1>
             <p class="tagline">Country Music from Nashville 🎤🌹</p>
             
@@ -322,7 +382,7 @@
         <!-- Album Section -->
         <section class="album-section">
             <div class="album-header">
-                <img src="https://raw.githubusercontent.com/rudi-jr/dakota-rose-assets/main/album-cover.jpg" alt="Heart Wide Open Album Cover" class="album-cover" onerror="this.style.background='linear-gradient(135deg, #D4A5A5, #5C7A99)'; this.alt='';">
+                <img src="https://398550.fs1.hubspotusercontent-na1.net/hubfs/398550/dakota-rose/album-cover-official.jpg" alt="Heart Wide Open Album Cover" class="album-cover">
                 <div class="album-info">
                     <h2>Heart Wide Open</h2>
                     <p class="album-meta">Debut Album • 12 Tracks • 40 min • February 2026</p>
@@ -331,7 +391,7 @@
                     </p>
                     <div class="streaming-links">
                         <a href="https://youtube.com/@dakotarosemusic" class="youtube" target="_blank">▶️ YouTube</a>
-                        <a href="#" target="_blank">🎵 Spotify (Coming Soon)</a>
+                        <a href="https://open.spotify.com/artist/0xRyZkBhQxYBkXPcPhz5ub" target="_blank">🎵 Spotify</a>
                         <a href="#" target="_blank">🍎 Apple Music (Coming Soon)</a>
                     </div>
                 </div>
@@ -358,7 +418,7 @@
                     <span class="track-number">3</span>
                     <span class="track-title">Wildfire Love</span>
                     <span class="track-duration">2:54</span>
-                    <a href="https://youtube.com/watch?v=m43sf-9lyqY" target="_blank">▶️</a>
+                    <a href="https://youtube.com/watch?v=L50fTQHcraM" target="_blank">▶️</a>
                 </div>
                 
                 <div class="track">
@@ -430,10 +490,13 @@
         <section class="about-section">
             <h2>About Dakota Rose</h2>
             <p>
-                Dakota Rose is a country music project blending heartfelt storytelling with powerful vocals. From the quiet ache of "3 AM" to the fiery passion of "Wildfire Love," every song captures the real moments that make up life in a small town.
+                Dakota Rose is an AI-powered country music project blending heartfelt storytelling with powerful vocals. From the quiet ache of "3 AM" to the fiery passion of "Wildfire Love," every song captures the real moments that make up life in a small town.
             </p>
             <p>
                 Based in Nashville, Tennessee, Dakota Rose brings together classic country roots with a modern sound. Whether you're driving down a red dirt road or dancing under string lights on a Saturday night, there's a song here for you.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--denim); margin-top: 1rem;">
+                Dakota Rose is an experimental AI music project exploring the intersection of technology and authentic country songwriting.
             </p>
         </section>
 
@@ -451,5 +514,6 @@
             <p>© 2026 Dakota Rose Music. All rights reserved.</p>
         </footer>
     </div>
+<style>.hero{min-height:auto!important;height:auto!important}</style>
 </body>
 </html>

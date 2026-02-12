@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login | The Personal Agent Revolution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a27;
+            --bg-card-hover: #22223a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a82;
+            --accent: #6c5ce7;
+            --accent-light: #a29bfe;
+            --accent-glow: rgba(108, 92, 231, 0.3);
+            --orange: #e17055;
+            --orange-bright: #ff7675;
+            --green: #00b894;
+            --border: #2a2a3d;
+            --gradient-1: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            --gradient-2: linear-gradient(135deg, #e17055 0%, #ff7675 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent-light);
+        }
+
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .login-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .login-card p {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-1);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .message.error {
+            display: block;
+            background: rgba(225, 112, 85, 0.1);
+            border: 1px solid var(--orange);
+            color: var(--orange-bright);
+        }
+
+        .message.success {
+            display: block;
+            background: rgba(0, 184, 148, 0.1);
+            border: 1px solid var(--green);
+            color: var(--green);
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 24px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-text a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .info-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1>The Personal Agent <span>Revolution</span></h1>
+        </div>
+        
+        <div class="login-card">
+            <h2>Welcome Back</h2>
+            <p>Access your book and course materials</p>
+            
+            <div id="message" class="message"></div>
+            
+            <form id="login-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your purchase email" required autocomplete="email">
+                </div>
+                <button type="button" class="btn-primary" onclick="handleLogin()">
+                    <span class="btn-text">Access My Content →</span>
+                </button>
+            </form>
+            
+            <p class="info-text">Enter the email you used to purchase the book.</p>
+            
+            <p class="footer-text">
+                Don't have access? <a href="/books/agent-revolution/buy.html">Get the book</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Supabase config
+        const SUPABASE_URL = 'https://tpkmgikvkslwkdehgqjp.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwa21naWt2a3Nsd2tkZWhncWpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NTQxODksImV4cCI6MjA4NjMzMDE4OX0.dEQkiBEg4iBmUEUGxY1Em4LHWTbtXyBq5L_gv8_PZtg';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // Check if already logged in
+        const storedEmail = localStorage.getItem('member_email');
+        if (storedEmail) {
+            window.location.href = '/books/agent-revolution/member/dashboard.html';
+        }
+        
+        // Show message
+        function showMessage(text, type) {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type}`;
+        }
+        
+        // Login Form
+        async function handleLogin() {
+            const email = document.getElementById('email').value.toLowerCase().trim();
+            const btn = document.querySelector('.btn-primary');
+            const btnText = btn.querySelector('.btn-text');
+            
+            btn.disabled = true;
+            btnText.innerHTML = '<span class="loading"></span>Checking...';
+            
+            try {
+                // Check if email exists in purchases table
+                const { data, error } = await supabase
+                    .from('purchases')
+                    .select('email, customer_name, has_course_access')
+                    .eq('email', email)
+                    .limit(1);
+                
+                if (error) throw error;
+                
+                if (!data || data.length === 0) {
+                    showMessage('Email not found. Please use the email you purchased with.', 'error');
+                    btn.disabled = false;
+                    btnText.textContent = 'Access My Content →';
+                    return;
+                }
+                
+                const purchase = data[0];
+                
+                // Store login in localStorage
+                localStorage.setItem('member_email', email);
+                localStorage.setItem('member_name', purchase.customer_name || '');
+                localStorage.setItem('has_course', purchase.has_course_access ? 'true' : 'false');
+                
+                showMessage('Welcome back! Redirecting...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = '/books/agent-revolution/member/dashboard.html';
+                }, 1000);
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                showMessage('Something went wrong. Please try again.', 'error');
+                btn.disabled = false;
+                btnText.textContent = 'Access My Content →';
+            }
+        }
+        
+        // handleLogin is called via onclick on the button
+    </script>
+</body>
+</html>

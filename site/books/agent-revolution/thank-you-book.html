@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! | The Personal Agent Revolution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #14141f;
+            --text-primary: #f0f0f5;
+            --text-secondary: #b0b0c8;
+            --text-muted: #6a6a82;
+            --accent: #6c5ce7;
+            --accent-light: #a29bfe;
+            --green: #00b894;
+            --green-glow: rgba(0, 184, 148, 0.2);
+            --orange: #e17055;
+            --border: #2a2a3d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 40px 24px;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--green-glow);
+            border: 2px solid var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 var(--green-glow); }
+            50% { box-shadow: 0 0 0 20px transparent; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: rgba(0, 184, 148, 0.08);
+            border: 1px solid rgba(0, 184, 148, 0.2);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .download-item:last-child { margin-bottom: 0; }
+
+        .download-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .download-info .icon { font-size: 1.3rem; }
+        .download-name { font-weight: 600; font-size: 0.9rem; }
+        .download-size { color: var(--text-muted); font-size: 0.75rem; }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px var(--green-glow);
+        }
+
+        /* Signup Card */
+        .signup-card {
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .signup-card h2 {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .signup-intro {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(108, 92, 231, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-signup {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-signup:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-signup:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            display: none;
+            text-align: center;
+        }
+
+        .message.error {
+            display: block;
+            background: rgba(225, 112, 85, 0.1);
+            border: 1px solid var(--orange);
+            color: var(--orange);
+        }
+
+        .message.success {
+            display: block;
+            background: rgba(0, 184, 148, 0.1);
+            border: 1px solid var(--green);
+            color: var(--green);
+        }
+
+        .already-have {
+            text-align: center;
+            margin-top: 16px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .already-have a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* Bonuses */
+        .bonus-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bonus-item:last-child { border-bottom: none; }
+
+        .bonus-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .bonus-btn {
+            padding: 6px 14px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .bonus-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent-light);
+        }
+
+        /* Next steps */
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .step:last-child { margin-bottom: 0; }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(108, 92, 231, 0.15);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .step-text strong { color: var(--text-primary); }
+
+        .support {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .support a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .download-item { flex-direction: column; gap: 12px; text-align: center; }
+            .download-info { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="success-icon">✅</div>
+    <h1>You're in! 🎉</h1>
+    <p class="subtitle">Welcome to The Personal Agent Revolution. Your book is ready to download!</p>
+
+    <!-- Immediate Downloads -->
+    <div class="card">
+        <h2>📥 Download Your Book Now</h2>
+        <div class="download-item">
+            <div class="download-info">
+                <span class="icon">📘</span>
+                <div>
+                    <div class="download-name">The Personal Agent Revolution (PDF)</div>
+                    <div class="download-size">187 pages · 4.2 MB</div>
+                </div>
+            </div>
+            <a href="/book.pdf" download class="download-btn">↓ Download PDF</a>
+        </div>
+        <div class="download-item">
+            <div class="download-info">
+                <span class="icon">📱</span>
+                <div>
+                    <div class="download-name">The Personal Agent Revolution (EPUB)</div>
+                    <div class="download-size">For Kindle, Apple Books · 2.8 MB</div>
+                </div>
+            </div>
+            <a href="/book.epub" download class="download-btn">↓ Download EPUB</a>
+        </div>
+    </div>
+

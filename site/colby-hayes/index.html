@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colby Hayes | Static in the Dark - Debut Album</title>
+    <meta name="description" content="Colby Hayes - Indie-pop artist. Debut album 'Static in the Dark' featuring 10 original tracks of emotional, vulnerable songwriting.">
+    <link rel="canonical" href="https://reclaimmedia.co/colby-hayes/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Colby Hayes",
+        "genre": ["Indie Pop", "Bedroom Pop"],
+        "description": "Indie-pop artist known for emotional, vulnerable songwriting. Conan Gray meets Hozier.",
+        "album": {
+            "@type": "MusicAlbum",
+            "name": "Static in the Dark",
+            "datePublished": "2026-02-14",
+            "numTracks": 10
+        },
+        "sameAs": [
+            "https://youtube.com/@colbyhayes",
+            "https://instagram.com/colbyhayes",
+            "https://tiktok.com/@colbyhayes",
+            "https://open.spotify.com/artist/colbyhayes"
+        ]
+    }
+    </script>
+    <style>
+        :root {
+            --deep-blue: #1a3a4a;
+            --teal: #2d6a7a;
+            --accent: #4db8c9;
+            --soft-cream: #f5f3ef;
+            --warm-white: #fefefe;
+            --charcoal: #2a2a2a;
+            --slate: #4a5568;
+            --gold: #d4a574;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+            color: var(--soft-cream);
+            min-height: 100vh;
+        }
+
+        .nav {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 20px 60px rgba(77, 184, 201, 0.3);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--deep-blue) 100%);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--soft-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            color: var(--soft-cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .album-section {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .album-header {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #1a3a4a 0%, #2d6a7a 50%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .album-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--soft-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .album-meta {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .album-description {
+            line-height: 1.7;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .streaming-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .streaming-links a {
+            padding: 0.6rem 1.2rem;
+            background: var(--teal);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .streaming-links a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .streaming-links a.youtube {
+            background: #FF0000;
+        }
+
+        .streaming-links a.spotify {
+            background: #1DB954;
+        }
+
+        .track-list {
+            margin-top: 2rem;
+        }
+
+        .track-list h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--soft-cream);
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .track:hover {
+            background: rgba(77, 184, 201, 0.1);
+        }
+
+        .track-number {
+            width: 30px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .track-title {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .track-title a {
+            color: var(--soft-cream);
+            text-decoration: none;
+        }
+
+        .track-title a:hover {
+            color: var(--accent);
+        }
+
+        .track-duration {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        .track a.play-link {
+            margin-left: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .track a.play-link:hover {
+            color: var(--gold);
+        }
+
+        .about-section {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--soft-cream);
+        }
+
+        .about-section p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--deep-blue) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.5rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .album-header { flex-direction: column; align-items: center; text-align: center; }
+            .album-cover { width: 160px; height: 160px; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">Colby Hayes</a>
+            <div class="nav-links">
+                <a href="./">Home</a>
+                <a href="lyrics/">Lyrics</a>
+                <a href="chords/">Chords</a>
+                <a href="meaning/">Song Meanings</a>
+                <a href="playlists/">Playlists</a>
+                <a href="../">Reclaim Media</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <div class="profile-image">Artist Photo Coming Soon</div>
+            <h1>Colby Hayes</h1>
+            <p class="tagline">Indie-Pop from the Bedroom 🎤✨</p>
+            
+            <div class="social-links">
+                <a href="https://youtube.com/@colbyhayes" target="_blank">▶️ YouTube</a>
+                <a href="https://instagram.com/colbyhayes" target="_blank">📷 Instagram</a>
+                <a href="https://open.spotify.com/artist/colbyhayes" target="_blank">🎵 Spotify</a>
+                <a href="https://tiktok.com/@colbyhayes" target="_blank">🎵 TikTok</a>
+            </div>
+        </section>
+
+        <section class="album-section">
+            <div class="album-header">
+                <div class="album-cover">Album Art Coming Soon</div>
+                <div class="album-info">
+                    <h2>Static in the Dark</h2>
+                    <p class="album-meta">Debut Album | 10 Tracks | February 2026</p>
+                    <p class="album-description">
+                        From midnight overthinking to learning how to leave, "Static in the Dark" is a journey through the messy, beautiful chaos of being young and trying to figure it all out. Every song hits where it hurts.
+                    </p>
+                    <div class="streaming-links">
+                        <a href="https://youtube.com/@colbyhayes" class="youtube" target="_blank">▶️ YouTube</a>
+                        <a href="https://open.spotify.com/artist/colbyhayes" class="spotify" target="_blank">🎵 Spotify</a>
+                        <a href="#" target="_blank">🍎 Apple Music (Coming Soon)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="track-list">
+                <h3>Track List</h3>
+                
+                <div class="track">
+                    <span class="track-number">1</span>
+                    <span class="track-title"><a href="songs/midnight-thoughts.html">Midnight Thoughts</a></span>
+                    <span class="track-duration">3:24</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">2</span>
+                    <span class="track-title"><a href="songs/paper-walls.html">Paper Walls</a></span>
+                    <span class="track-duration">3:18</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">3</span>
+                    <span class="track-title"><a href="songs/exit-sign.html">Exit Sign</a></span>
+                    <span class="track-duration">3:42</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">4</span>
+                    <span class="track-title"><a href="songs/somewhere-between.html">Somewhere Between</a></span>
+                    <span class="track-duration">3:56</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">5</span>
+                    <span class="track-title"><a href="songs/twenty-something.html">Twenty-Something</a></span>
+                    <span class="track-duration">3:12</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">6</span>
+                    <span class="track-title"><a href="songs/almost-called.html">Almost Called</a></span>
+                    <span class="track-duration">3:28</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">7</span>
+                    <span class="track-title"><a href="songs/static.html">Static</a></span>
+                    <span class="track-duration">3:35</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">8</span>
+                    <span class="track-title"><a href="songs/better-stranger.html">Better Stranger</a></span>
+                    <span class="track-duration">3:22</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">9</span>
+                    <span class="track-title"><a href="songs/hometown-ghost.html">Hometown Ghost</a></span>
+                    <span class="track-duration">3:48</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+                
+                <div class="track">
+                    <span class="track-number">10</span>
+                    <span class="track-title"><a href="songs/learn-to-leave.html">Learn to Leave</a></span>
+                    <span class="track-duration">4:02</span>
+                    <a href="https://youtube.com/@colbyhayes" class="play-link" target="_blank">▶️</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>About Colby Hayes</h2>
+            <p>
+                Colby Hayes is an indie-pop artist making music for anyone who's ever stayed up too late overthinking. With a sound that blends the emotional vulnerability of Conan Gray with the soulful depth of Hozier, his songs capture the messy reality of growing up, falling out of love, and finding yourself somewhere in between.
+            </p>
+            <p>
+                From bedroom recordings to late-night confessions, "Static in the Dark" is the soundtrack to every 3AM thought you've ever had. Whether you're nursing a broken heart or just trying to figure out your twenties, there's a song here that gets it.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--accent); margin-top: 1rem;">
+                Colby Hayes is an AI-powered music project exploring the intersection of technology and authentic indie songwriting.
+            </p>
+        </section>
+
+        <section class="newsletter">
+            <h2>Join the Static 📻</h2>
+            <p>Get exclusive updates, early releases, and behind-the-scenes content.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for joining! 📻');">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Join</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Colby Hayes Music. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

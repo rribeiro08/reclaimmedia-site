@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Reclaim Media</title>
+    <meta name="description" content="Get in touch with Reclaim Media for brand partnerships, press inquiries, collaborations, and more.">
+    <link rel="canonical" href="https://reclaimmedia.co/contact/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .form-success {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid #4ecdc4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            color: #4ecdc4;
+        }
+        .form-success h3 { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">Reclaim Media</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/artists/">Artists</a>
+                <a href="/books/">Books</a>
+                <a href="/about/">About</a>
+                <a href="/press/">Press Kit</a>
+                <a href="/contact/">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>Get In Touch</h1>
+            <p>Brand partnerships, press inquiries, collaborations, and general questions</p>
+        </header>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div class="content-card">
+                <h2>Contact Form</h2>
+                <p style="margin-bottom: 1.5rem;">Fill out the form and we'll get back to you within 48 hours.</p>
+                
+                <form id="contact-form" action="https://formspree.io/f/xpwzgvvr" method="POST">
+                    <input type="hidden" name="_subject" value="New Reclaim Media Inquiry">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">First Name *</label>
+                            <input type="text" id="firstname" name="firstname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name *</label>
+                            <input type="text" id="lastname" name="lastname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company / Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry_type">Inquiry Type *</label>
+                        <select id="inquiry_type" name="inquiry_type" required>
+                            <option value="">Select...</option>
+                            <option value="Brand Partnership">Brand Partnership</option>
+                            <option value="Press / Media">Press / Media</option>
+                            <option value="Collaboration">Collaboration</option>
+                            <option value="Music Licensing">Music Licensing</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            
+            <div>
+                <div class="content-card">
+                    <h2>Inquiry Types</h2>
+                    <p><strong>🤝 Brand Partnerships</strong><br>
+                    Custom AI content, music for campaigns, sponsored experiences, and innovative collaborations.</p>
+                    <p><strong>📰 Press & Media</strong><br>
+                    Interview requests, feature stories, podcast appearances, and media coverage.</p>
+                    <p><strong>🎵 Music Licensing</strong><br>
+                    Sync licensing for film, TV, ads, and other media projects.</p>
+                    <p><strong>✨ Collaborations</strong><br>
+                    Songwriting, production, content creation, and creative partnerships.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h2>Response Time</h2>
+                    <p>We typically respond within 48 hours. For urgent press inquiries, please indicate "URGENT" in your message.</p>
+                    <p style="margin-top: 1rem;">
+                        <a href="/press/" class="btn btn-outline" style="display: inline-block;">Download Press Kit</a>
+                    </p>
+                </div>
+                
+                <div class="content-card">
+                    <h2>Direct Email</h2>
+                    <p>Prefer email? Reach us directly at:</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="mailto:hello@reclaimmedia.co" style="color: var(--accent); font-size: 1.1rem;">hello@reclaimmedia.co</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">Reclaim Media</span>
+                <p>AI-Powered Creative Studio</p>
+            </div>
+            <div class="footer-links">
+                <a href="/artists/">Artists</a>
+                <a href="/books/">Books</a>
+                <a href="/about/">About</a>
+                <a href="/press/">Press</a>
+                <a href="/contact/">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://youtube.com/@reclaimmedia" target="_blank">YouTube</a>
+                <a href="https://instagram.com/reclaimmedia" target="_blank">Instagram</a>
+                <a href="https://tiktok.com/@reclaimmedia" target="_blank">TikTok</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Reclaim Media. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

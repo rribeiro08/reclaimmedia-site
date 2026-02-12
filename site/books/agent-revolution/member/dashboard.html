@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard | The Personal Agent Revolution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a27;
+            --bg-card-hover: #22223a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a82;
+            --accent: #6c5ce7;
+            --accent-light: #a29bfe;
+            --accent-glow: rgba(108, 92, 231, 0.3);
+            --orange: #e17055;
+            --orange-bright: #ff7675;
+            --green: #00b894;
+            --border: #2a2a3d;
+            --gradient-1: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            --gradient-2: linear-gradient(135deg, #e17055 0%, #ff7675 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent-light);
+        }
+
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-email {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .btn-logout {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-logout:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* Main Content */
+        main {
+            padding: 48px 0;
+        }
+
+        .welcome {
+            margin-bottom: 48px;
+        }
+
+        .welcome h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Book Section */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .book-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .book-cover {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .book-info p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--gradient-1);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-download.secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-download.secondary:hover {
+            border-color: var(--accent);
+            box-shadow: none;
+        }
+
+        /* Course Grid */
+        .modules-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .module-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+        }
+
+        .module-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .module-card.locked:hover {
+            background: var(--bg-card);
+            border-color: var(--border);
+        }
+
+        .module-number {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+        }
+
+        .module-card.completed .module-number {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        .module-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .module-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .module-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .module-status {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+        }
+
+        .module-card.completed .module-status {
+            background: rgba(0, 184, 148, 0.1);
+            color: var(--green);
+        }
+
+        .module-card.current .module-status {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--accent-light);
+        }
+
+        /* Video Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: var(--bg-primary);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .modal-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-nav {
+            padding: 10px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-nav:hover {
+            border-color: var(--accent);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-complete {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .btn-complete:hover {
+            box-shadow: 0 4px 20px rgba(0, 184, 148, 0.3);
+        }
+
+        /* Bonuses Section */
+        .bonus-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .bonus-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .bonus-icon {
+            font-size: 1.5rem;
+        }
+
+        .bonus-title {
+            font-weight: 600;
+        }
+
+        .bonus-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 32px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        /* Loading State */
+        .loading-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .book-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .download-buttons {
+                justify-content: center;
+            }
+
+            .module-card {
+                padding: 16px;
+            }
+
+            .nav-user {
+                gap: 8px;
+            }
+
+            .user-email {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="app" style="display: none;">
+        <nav>
+            <div class="container">
+                <a href="/" class="nav-logo">The Personal Agent <span>Revolution</span></a>
+                <div class="nav-user">
+                    <span class="user-email" id="user-email"></span>
+                    <button class="btn-logout" id="logout-btn">Sign Out</button>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="container">
+                <div class="welcome">
+                    <h1>Welcome, <span id="user-name">there</span>! 👋</h1>
+                    <p>Your personal agent journey starts here.</p>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span class="progress-label">Course Progress</span>
+                        <span class="progress-label" id="progress-text">0% complete</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Book Section -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2>📚 Your Book</h2>
+                    </div>
+                    <div class="book-card">
+                        <img src="/book-cover.png" alt="The Personal Agent Revolution" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Personal Agent Revolution</h3>
+                            <p>The definitive guide to building, configuring, and running your own personal AI agent. Available in PDF and EPUB formats.</p>
+                            <div class="download-buttons">
+                                <a href="/book.pdf" download class="btn-download">
+                                    📄 Download PDF
+                                </a>
+                                <a href="/book.epub" download class="btn-download secondary">
+                                    📱 Download EPUB
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Section -->
+                <div class="section" id="course-section">
+                    <div class="section-header">
+                        <h2>🎓 Course Modules</h2>
+                    </div>
+                    <div class="modules-grid" id="modules-grid">
+                        <!-- Modules loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Bonuses Section -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2>🎁 Your Bonuses</h2>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-info">
+                            <span class="bonus-icon">🧠</span>
+                            <div>
+                                <div class="bonus-title">The Prompt Vault</div>
+                                <div class="bonus-desc">50+ battle-tested prompts for every scenario</div>
+                            </div>
+                        </div>
+                        <a href="/01-prompt-vault.md" download class="btn-download secondary">Download</a>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-info">
+                            <span class="bonus-icon">⚙️</span>
+                            <div>
+                                <div class="bonus-title">Config Templates</div>
+                                <div class="bonus-desc">Ready-to-use configurations for popular setups</div>
+                            </div>
+                        </div>
+                        <a href="/02-config-templates.md" download class="btn-download secondary">Download</a>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-info">
+                            <span class="bonus-icon">🤖</span>
+                            <div>
+                                <div class="bonus-title">Automation Playbook</div>
+                                <div class="bonus-desc">25 automations you can set up today</div>
+                            </div>
+                        </div>
+                        <a href="/03-automation-playbook.md" download class="btn-download secondary">Download</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal-overlay" id="video-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Module Title</h3>
+                <button class="modal-close" id="modal-close">×</button>
+            </div>
+            <div class="video-container">
+                <video id="video-player" controls>
+                    <source src="" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+            </div>
+            <div class="modal-nav">
+                <button class="btn-nav" id="btn-prev">← Previous</button>
+                <button class="btn-nav btn-complete" id="btn-complete">Mark Complete ✓</button>
+                <button class="btn-nav" id="btn-next">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course modules data
+        const modules = [
+            { number: 0, title: "Real-World Use Cases", subtitle: "See what's possible with your agent", video: "use-cases-complete.mp4" },
+            { number: 1, title: "What is OpenClaw?", subtitle: "Understanding personal AI agents", video: "module-1-complete.mp4" },
+            { number: 2, title: "Installing OpenClaw", subtitle: "Get your agent running in minutes", video: "module-2-complete.mp4" },
+            { number: 3, title: "Connecting Your First Channel", subtitle: "Link Telegram, WhatsApp, or Discord", video: "module-3-complete.mp4" },
+            { number: 4, title: "Giving Your Agent a Soul", subtitle: "Define personality and behavior", video: "module-4-complete.mp4" },
+            { number: 5, title: "The Memory System", subtitle: "How your agent remembers", video: "module-5-complete.mp4" },
+            { number: 6, title: "Tools and Skills", subtitle: "Give your agent superpowers", video: "module-6-complete.mp4" },
+            { number: 7, title: "Automation and Cron Jobs", subtitle: "Make your agent work automatically", video: "module-7-complete.mp4" },
+            { number: 8, title: "Nodes and Mobile Integration", subtitle: "Connect your phone and devices", video: "module-8-complete.mp4" },
+            { number: 9, title: "Multi-Agent Routing", subtitle: "Different agents for different contexts", video: "module-9-complete.mp4" },
+            { number: 10, title: "Security and Maintenance", subtitle: "Keep your agent safe and healthy", video: "module-10-complete.mp4" }
+        ];
+
+        let currentUser = null;
+        let progress = {};
+        let currentModuleIndex = -1;
+
+        // Initialize
+        async function init() {
+            // Check localStorage session
+            const memberEmail = localStorage.getItem('member_email');
+            const memberName = localStorage.getItem('member_name');
+            
+            if (!memberEmail) {
+                window.location.href = '/books/agent-revolution/member/';
+                return;
+            }
+
+            currentUser = { 
+                email: memberEmail, 
+                name: memberName || memberEmail.split('@')[0] 
+            };
+
+            // Load progress
+            await loadProgress();
+            
+            // Display UI
+            displayUser();
+            renderModules();
+            updateProgress();
+            
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            
+            // Setup event listeners
+            setupEventListeners();
+        }
+
+        async function loadProgress() {
+            try {
+                const stored = localStorage.getItem('courseProgress');
+                if (stored) {
+                    progress = JSON.parse(stored);
+                }
+            } catch (e) {
+                progress = {};
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem('courseProgress', JSON.stringify(progress));
+        }
+
+        function displayUser() {
+            const email = currentUser.email;
+            const name = currentUser.name || email.split('@')[0];
+            document.getElementById('user-email').textContent = email;
+            document.getElementById('user-name').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+        }
+
+        function renderModules() {
+            const grid = document.getElementById('modules-grid');
+            grid.innerHTML = modules.map((mod, idx) => {
+                const isCompleted = progress[mod.number];
+                const isCurrent = !isCompleted && (mod.number === 0 || progress[mod.number - 1]);
+                
+                return `
+                    <div class="module-card ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}" 
+                         data-index="${idx}" data-number="${mod.number}">
+                        <div class="module-number">${isCompleted ? '✓' : mod.number}</div>
+                        <div class="module-info">
+                            <div class="module-title">${mod.title}</div>
+                            <div class="module-subtitle">${mod.subtitle}</div>
+                        </div>
+                        <span class="module-status">
+                            ${isCompleted ? 'Completed' : isCurrent ? 'Continue' : 'Watch'}
+                        </span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateProgress() {
+            const completed = Object.values(progress).filter(Boolean).length;
+            const total = modules.length;
+            const percent = Math.round((completed / total) * 100);
+            
+            document.getElementById('progress-text').textContent = `${percent}% complete`;
+            document.getElementById('progress-fill').style.width = `${percent}%`;
+        }
+
+        function setupEventListeners() {
+            // Module clicks
+            document.getElementById('modules-grid').addEventListener('click', (e) => {
+                const card = e.target.closest('.module-card');
+                if (card && !card.classList.contains('locked')) {
+                    openModule(parseInt(card.dataset.index));
+                }
+            });
+
+            // Modal close
+            document.getElementById('modal-close').addEventListener('click', closeModal);
+            document.getElementById('video-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'video-modal') closeModal();
+            });
+
+            // Navigation
+            document.getElementById('btn-prev').addEventListener('click', () => navigateModule(-1));
+            document.getElementById('btn-next').addEventListener('click', () => navigateModule(1));
+            document.getElementById('btn-complete').addEventListener('click', markComplete);
+
+            // Logout
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('member_email');
+                localStorage.removeItem('member_name');
+                localStorage.removeItem('has_course');
+                window.location.href = '/books/agent-revolution/member/';
+            });
+
+            // Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        }
+
+        function openModule(index) {
+            currentModuleIndex = index;
+            const mod = modules[index];
+            
+            document.getElementById('modal-title').textContent = `Module ${mod.number}: ${mod.title}`;
+            
+            const video = document.getElementById('video-player');
+            video.src = `/course/${mod.video}`;
+            video.load();
+            
+            updateNavButtons();
+            document.getElementById('video-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('video-modal').classList.remove('active');
+            const video = document.getElementById('video-player');
+            video.pause();
+            video.src = '';
+            currentModuleIndex = -1;
+        }
+
+        function navigateModule(direction) {
+            const newIndex = currentModuleIndex + direction;
+            if (newIndex >= 0 && newIndex < modules.length) {
+                openModule(newIndex);
+            }
+        }
+
+        function updateNavButtons() {
+            document.getElementById('btn-prev').disabled = currentModuleIndex <= 0;
+            document.getElementById('btn-next').disabled = currentModuleIndex >= modules.length - 1;
+            
+            const mod = modules[currentModuleIndex];
+            const btnComplete = document.getElementById('btn-complete');
+            if (progress[mod.number]) {
+                btnComplete.textContent = 'Completed ✓';
+                btnComplete.disabled = true;
+            } else {
+                btnComplete.textContent = 'Mark Complete ✓';
+                btnComplete.disabled = false;
+            }
+        }
+
+        function markComplete() {
+            if (currentModuleIndex < 0) return;
+            
+            const mod = modules[currentModuleIndex];
+            progress[mod.number] = true;
+            saveProgress();
+            
+            renderModules();
+            updateProgress();
+            updateNavButtons();
+            
+            // Auto-advance after short delay
+            if (currentModuleIndex < modules.length - 1) {
+                setTimeout(() => navigateModule(1), 500);
+            }
+        }
+
+        function showError() {
+            document.getElementById('loading').innerHTML = `
+                <div style="text-align: center;">
+                    <p style="margin-bottom: 16px;">Unable to load. Please try again.</p>
+                    <a href="/member/" style="color: var(--accent-light);">Back to Login</a>
+                </div>
+            `;
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>

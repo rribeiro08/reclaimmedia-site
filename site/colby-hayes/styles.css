@@ -1,0 +1,449 @@
+/* Colby Hayes - Shared Styles */
+:root {
+    --deep-blue: #1a3a4a;
+    --teal: #2d6a7a;
+    --accent: #4db8c9;
+    --soft-cream: #f5f3ef;
+    --warm-white: #fefefe;
+    --charcoal: #2a2a2a;
+    --slate: #4a5568;
+    --gold: #d4a574;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', 'Open Sans', sans-serif;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+    color: var(--soft-cream);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Navigation */
+.nav {
+    background: rgba(26, 26, 46, 0.95);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--soft-cream);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+}
+
+.page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--soft-cream);
+    margin-bottom: 0.5rem;
+}
+
+.page-header .subtitle {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* Content Card */
+.content-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.content-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--soft-cream);
+    margin-bottom: 1rem;
+}
+
+.content-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--soft-cream);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.content-card p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+}
+
+/* Lyrics Styling */
+.lyrics {
+    white-space: pre-line;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+}
+
+.lyrics .section-tag {
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    display: block;
+}
+
+/* Song Info Box */
+.song-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    background: rgba(45, 106, 122, 0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(77, 184, 201, 0.2);
+}
+
+.song-info-item {
+    text-align: center;
+}
+
+.song-info-item .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.25rem;
+}
+
+.song-info-item .value {
+    font-weight: 600;
+    color: var(--soft-cream);
+}
+
+/* Streaming Links */
+.streaming-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.streaming-links a {
+    padding: 0.6rem 1.2rem;
+    background: var(--teal);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.streaming-links a:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+.streaming-links a.youtube {
+    background: #FF0000;
+}
+
+.streaming-links a.spotify {
+    background: #1DB954;
+}
+
+/* Chord Diagrams */
+.chord-chart {
+    font-family: 'Courier New', Consolas, monospace;
+    background: rgba(0,0,0,0.3);
+    padding: 2rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    line-height: 1.3;
+    font-size: 0.95rem;
+    white-space: pre;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+}
+
+.chord-chart .chord {
+    color: var(--accent);
+    font-weight: bold;
+    background: rgba(77, 184, 201, 0.2);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.chord {
+    color: var(--accent);
+    font-weight: bold;
+    background: rgba(77, 184, 201, 0.2);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+}
+
+/* Song Grid */
+.song-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.song-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.song-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(77, 184, 201, 0.2);
+    border-color: var(--accent);
+}
+
+.song-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--soft-cream);
+    margin-bottom: 0.5rem;
+}
+
+.song-card p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+}
+
+/* Featured Song */
+.featured-song {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(45, 106, 122, 0.15);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+    border: 1px solid rgba(77, 184, 201, 0.2);
+}
+
+.featured-song .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    font-weight: 700;
+    min-width: 40px;
+}
+
+.featured-song .info h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--soft-cream);
+    margin-bottom: 0.5rem;
+}
+
+.featured-song .info p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.featured-song .links {
+    margin-top: 0.75rem;
+}
+
+.featured-song .links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-right: 1rem;
+}
+
+.featured-song .links a:hover {
+    color: var(--gold);
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(0,0,0,0.3);
+    margin-top: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-copyright {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--gold);
+}
+
+.breadcrumb span {
+    color: rgba(255,255,255,0.4);
+    margin: 0 0.5rem;
+}
+
+/* Print Button */
+.print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.print-btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .page-header h1 { font-size: 1.8rem; }
+    .content-card { padding: 1.5rem; }
+    .nav-inner { justify-content: center; text-align: center; }
+    .featured-song { flex-direction: column; }
+    .featured-song .number { font-size: 1.5rem; }
+}
+
+/* Print Styles */
+@media print {
+    .nav, .print-btn, .streaming-links, footer, .site-footer {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .content-card {
+        background: white;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        color: black;
+    }
+    
+    .content-card h2, .content-card h3 {
+        color: black;
+    }
+    
+    .lyrics, .content-card p {
+        color: #333;
+    }
+    
+    .chord-chart {
+        background: white;
+        border: 1px solid #ccc;
+        font-size: 11pt;
+        color: black;
+    }
+    
+    .chord-chart .chord, .chord {
+        background: #eee;
+        border: 1px solid #ccc;
+        color: #333;
+    }
+    
+    .page-header {
+        padding: 1rem 0;
+    }
+    
+    .page-header h1, .page-header .subtitle {
+        color: black;
+    }
+    
+    a {
+        color: black;
+        text-decoration: none;
+    }
+}

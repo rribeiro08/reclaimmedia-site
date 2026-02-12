@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community | Reclaim - Join the Brotherhood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --flame: #FF4D00;
+            --electric-blue: #00C2FF;
+            --volt: #CCFF00;
+            --emerald: #10B981;
+            --purple: #8B5CF6;
+            --deep-navy: #0A1628;
+            --charcoal: #1A2332;
+            --white: #FFFFFF;
+            --off-white: #F7F8FA;
+            --grey-light: #E5E7EB;
+            
+            --gradient-fire: linear-gradient(135deg, #FF4D00 0%, #FF8A00 100%);
+            --gradient-ocean: linear-gradient(135deg, #00C2FF 0%, #0066FF 100%);
+            --gradient-hero: linear-gradient(135deg, #0A1628 0%, #1A2332 50%, #0A1628 100%);
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--deep-navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; }
+        h1 { font-size: clamp(3rem, 8vw, 5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        p { font-size: 1.125rem; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; }
+        
+        .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 var(--space-md); }
+        
+        .text-gradient {
+            background: var(--gradient-fire);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-blue { color: var(--electric-blue); }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(255, 77, 0, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 77, 0, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--deep-navy);
+        }
+        
+        .btn-dark {
+            background: var(--deep-navy);
+            color: var(--white);
+        }
+        
+        .btn-dark:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+        }
+        
+        .btn-lg {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--flame);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .section-tag::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-fire);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav.scrolled {
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-fire);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--flame);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-cta { display: flex; gap: 1rem; }
+        
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-toggle span {
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-toggle { display: flex; }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--deep-navy);
+                z-index: 999;
+                transition: right 0.4s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .mobile-nav.active { right: 0; }
+            
+            .mobile-nav a {
+                font-family: var(--font-display);
+                font-size: 2rem;
+                color: var(--white);
+                font-weight: 600;
+            }
+        }
+        
+        /* Hero Section */
+        .community-hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .community-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(255, 77, 0, 0.2) 0%, transparent 70%);
+        }
+        
+        .community-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(0, 194, 255, 0.1) 0%, transparent 70%);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-content h1 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .hero-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .hero-proof {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .member-avatars {
+            display: flex;
+        }
+        
+        .member-avatars img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid var(--deep-navy);
+            margin-left: -12px;
+            object-fit: cover;
+        }
+        
+        .member-avatars img:first-child {
+            margin-left: 0;
+        }
+        
+        .hero-proof-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .hero-proof-text strong {
+            color: var(--flame);
+        }
+        
+        .hero-images {
+            position: relative;
+        }
+        
+        .hero-images img {
+            width: 100%;
+            border-radius: 20px;
+        }
+        
+        .hero-images .main-image {
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-images .float-image {
+            position: absolute;
+            width: 200px;
+            bottom: -30px;
+            left: -30px;
+            border: 5px solid var(--deep-navy);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-cta {
+                justify-content: center;
+            }
+            
+            .hero-proof {
+                justify-content: center;
+            }
+            
+            .hero-images {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .hero-images .float-image {
+                width: 150px;
+            }
+        }
+        
+        /* What You Get */
+        .benefits {
+            padding: var(--space-xl) 0;
+            background: var(--white);
+        }
+        
+        .benefits-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .benefit-card {
+            padding: var(--space-md);
+            background: var(--off-white);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-fire);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1);
+        }
+        
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-fire);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto var(--space-sm);
+        }
+        
+        .benefit-card:nth-child(2) .benefit-icon { background: var(--gradient-ocean); }
+        .benefit-card:nth-child(3) .benefit-icon { background: linear-gradient(135deg, #8B5CF6, #A855F7); }
+        .benefit-card:nth-child(4) .benefit-icon { background: linear-gradient(135deg, #10B981, #34D399); }
+        .benefit-card:nth-child(5) .benefit-icon { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+        .benefit-card:nth-child(6) .benefit-icon { background: linear-gradient(135deg, #EC4899, #F472B6); }
+        
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .benefit-card p {
+            color: rgba(10, 22, 40, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Membership Tiers */
+        .pricing {
+            padding: var(--space-xl) 0;
+            background: var(--deep-navy);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(ellipse at right, rgba(255, 77, 0, 0.1), transparent 70%);
+        }
+        
+        .pricing-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .pricing-header .section-tag {
+            color: var(--electric-blue);
+        }
+        
+        .pricing-header h2 {
+            color: var(--white);
+        }
+        
+        .pricing-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: var(--space-md);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255, 77, 0, 0.1);
+            border-color: var(--flame);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-fire);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .pricing-tier {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-name {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-price {
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .price {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: var(--space-md);
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-features li svg {
+            flex-shrink: 0;
+            color: var(--emerald);
+            margin-top: 3px;
+        }
+        
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Events Section */
+        .events {
+            padding: var(--space-xl) 0;
+            background: var(--off-white);
+        }
+        
+        .events-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .event-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            transition: all 0.4s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1);
+        }
+        
+        .event-image {
+            height: 100%;
+            min-height: 200px;
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .event-content {
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--flame);
+            margin-bottom: 0.75rem;
+        }
+        
+        .event-type.virtual { color: var(--electric-blue); }
+        .event-type.retreat { color: var(--purple); }
+        
+        .event-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-content p {
+            color: rgba(10, 22, 40, 0.6);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--grey-light);
+            font-size: 0.875rem;
+            color: rgba(10, 22, 40, 0.5);
+        }
+        
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-image {
+                height: 200px;
+            }
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: var(--space-xl) 0;
+            background: var(--white);
+        }
+        
+        .testimonials-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .testimonial-card {
+            background: var(--off-white);
+            border-radius: 20px;
+            padding: var(--space-md);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 6rem;
+            color: var(--flame);
+            opacity: 0.1;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial-card p {
+            font-size: 1rem;
+            color: rgba(10, 22, 40, 0.8);
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info span {
+            font-size: 0.875rem;
+            color: rgba(10, 22, 40, 0.5);
+        }
+        
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: var(--space-xl) 0;
+            background: var(--gradient-fire);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.2), transparent 60%);
+        }
+        
+        .final-cta-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .final-cta h2 {
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .final-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-md);
+        }
+        
+        .final-cta .btn {
+            background: var(--white);
+            color: var(--flame);
+        }
+        
+        .final-cta .btn:hover {
+            background: var(--deep-navy);
+            color: var(--white);
+        }
+        
+        .guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: var(--space-md);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .guarantee svg {
+            color: var(--white);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--deep-navy);
+            padding: var(--space-lg) 0 var(--space-md);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .footer-brand .logo { margin-bottom: var(--space-sm); }
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: var(--space-md);
+        }
+        
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--flame);
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 0.75rem; }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover { color: var(--flame); }
+        
+        .footer-bottom {
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom-links a:hover { color: var(--white); }
+        
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-mark">R</div>
+                RECLAIM
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="content.html">Content</a></li>
+                <li><a href="community.html" class="active">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#pricing" class="btn btn-primary">Join the Movement</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="content.html">Content</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+        <a href="#pricing" class="btn btn-primary">Join Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="community-hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="section-tag" style="color: var(--electric-blue);">Join the Brotherhood</span>
+                    <h1>You Weren't Made to<br><span class="text-gradient">Do This Alone</span></h1>
+                    <p>Join thousands of high-achieving men who are done performing and ready to live with purpose. This is more than a community, it's a brotherhood committed to real transformation.</p>
+                    <div class="hero-cta">
+                        <a href="#pricing" class="btn btn-primary btn-lg">
+                            Join Now
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#benefits" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="hero-proof">
+                        <div class="member-avatars">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Member">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Member">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Member">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Member">
+                        </div>
+                        <div class="hero-proof-text">
+                            <strong>50,000+</strong> men already inside
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Brotherhood" class="main-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Community gathering" class="float-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="benefits-header">
+                <span class="section-tag" style="justify-content: center;">What You Get</span>
+                <h2>More Than Content, <span class="text-gradient">Transformation</span></h2>
+                <p>The Reclaim community is designed to take you from consuming content to living change.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎙️</div>
+                    <h3>Exclusive Content</h3>
+                    <p>Weekly deep-dives, behind-the-scenes episodes, and member-only masterclasses.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Brotherhood Circles</h3>
+                    <p>Small group calls with men at your level. Real conversations. Real accountability.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Private Community</h3>
+                    <p>24/7 access to a private space where iron sharpens iron. Ask questions, share wins, get support.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h3>Resource Library</h3>
+                    <p>Frameworks, guides, and tools to help you integrate purpose into every area of life.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Monthly Challenges</h3>
+                    <p>Structured challenges designed to push you beyond comfort and into growth.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Live Events</h3>
+                    <p>Virtual workshops and in-person retreats that accelerate your transformation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <span class="section-tag">Choose Your Path</span>
+                <h2>Join the <span class="text-blue">Movement</span></h2>
+                <p>Invest in yourself. The cost of staying stuck is always higher than the cost of change.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Free Tier -->
+                <div class="pricing-card">
+                    <p class="pricing-tier">Start Here</p>
+                    <h3 class="pricing-name">Explorer</h3>
+                    <div class="pricing-price">
+                        <div class="price">Free</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Weekly newsletter
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Public podcast episodes
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Free resources library
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Community events access
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="color: var(--white); border-color: rgba(255,255,255,0.3);">Get Started</a>
+                </div>
+
+                <!-- Pro Tier -->
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">Most Popular</span>
+                    <p class="pricing-tier">Go Deeper</p>
+                    <h3 class="pricing-name">Brotherhood</h3>
+                    <div class="pricing-price">
+                        <div class="price">$49<span>/month</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Everything in Explorer
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Private community access
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Weekly brotherhood calls
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Exclusive content library
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Monthly masterclasses
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Event discounts
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Join Brotherhood</a>
+                </div>
+
+                <!-- Premium Tier -->
+                <div class="pricing-card">
+                    <p class="pricing-tier">Full Immersion</p>
+                    <h3 class="pricing-name">Inner Circle</h3>
+                    <div class="pricing-price">
+                        <div class="price">$197<span>/month</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Everything in Brotherhood
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Small group coaching
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Direct access to Rudi
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Priority event access
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            1:1 strategy session (quarterly)
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Retreat access included
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-dark">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events">
+        <div class="container">
+            <div class="events-header">
+                <div>
+                    <span class="section-tag">Upcoming</span>
+                    <h2>Events & <span class="text-gradient">Experiences</span></h2>
+                </div>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80" alt="Virtual Summit">
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type virtual">🌐 Virtual</span>
+                        <h3>Identity Summit 2024</h3>
+                        <p>A 3-day virtual intensive on breaking free from performance-based identity.</p>
+                        <div class="event-meta">
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                </svg>
+                                Jan 15-17, 2025
+                            </span>
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                500 spots
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?w=400&q=80" alt="Mountain Retreat">
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type retreat">🏔️ Retreat</span>
+                        <h3>Reclaim Retreat: Colorado</h3>
+                        <p>4 days in the mountains with a small group of men committed to transformation.</p>
+                        <div class="event-meta">
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                </svg>
+                                Mar 5-9, 2025
+                            </span>
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                24 spots
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&q=80" alt="Workshop">
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type virtual">🌐 Virtual</span>
+                        <h3>Legacy Blueprint Workshop</h3>
+                        <p>A hands-on session to map out the legacy you want to leave.</p>
+                        <div class="event-meta">
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                </svg>
+                                Feb 8, 2025
+                            </span>
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                3 hours
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&q=80" alt="Local Meetup">
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">📍 In-Person</span>
+                        <h3>Reclaim Local: Austin</h3>
+                        <p>Connect with Reclaim brothers in your city. Dinner, conversation, connection.</p>
+                        <div class="event-meta">
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                </svg>
+                                Jan 28, 2025
+                            </span>
+                            <span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Austin, TX
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <span class="section-tag" style="justify-content: center;">From the Brotherhood</span>
+                <h2>Real Men. Real <span class="text-gradient">Change.</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"The brotherhood calls alone are worth 10x the membership. Being in a room with men who actually get it, who aren't afraid to go deep, changed everything for me."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Marcus" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Marcus T.</h4>
+                            <span>CEO, Member since 2022</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I came for the content. I stayed for the community. These men have become some of my closest friends and biggest accountability partners."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="David" class="author-avatar">
+                        <div class="author-info">
+                            <h4>David R.</h4>
+                            <span>Entrepreneur, Member since 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The retreat was the most transformative 4 days of my life. I went in lost and left with clarity about who I am and what I'm building."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James" class="author-avatar">
+                        <div class="author-info">
+                            <h4>James K.</h4>
+                            <span>Executive Coach, Inner Circle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2>Stop Waiting. Start Reclaiming.</h2>
+                <p>Every day you wait is another day living someone else's definition of success. Join the brotherhood and start living on purpose.</p>
+                <a href="#pricing" class="btn btn-lg">
+                    Join the Movement
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <p class="guarantee">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <polyline points="9 12 11 14 15 10"/>
+                    </svg>
+                    30-day money-back guarantee. No questions asked.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-mark">R</div>
+                        RECLAIM
+                    </a>
+                    <p>Helping high-achieving men find purpose beyond performance. It's time to reclaim who you were made to be.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Podcast">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a10 10 0 0 0-3.16 19.5l1.46-2.93A7 7 0 1 1 19 12h-2a5 5 0 1 0-5 5v9a10 10 0 0 0 0-20zm0 6a4 4 0 0 0-1 7.87V22h2v-6.13A4 4 0 0 0 12 8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="content.html">Podcast</a></li>
+                        <li><a href="content.html">Videos</a></li>
+                        <li><a href="content.html">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="community.html">Join Us</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Membership</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Speaking</a></li>
+                        <li><a href="#">Partner</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Reclaim Media. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Mobile nav toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileToggle.addEventListener('click', () => mobileNav.classList.toggle('active'));
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileNav.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>

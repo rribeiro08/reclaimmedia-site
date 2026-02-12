@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books | Reclaim Media</title>
+    <meta name="description" content="Books published by Reclaim Media. Guides on AI, automation, and the future of personal technology.">
+    <link rel="canonical" href="https://reclaimmedia.co/books/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .book-card {
+            background: var(--mid);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
+        }
+        .book-cover {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 1rem;
+        }
+        .book-info {
+            padding: 1.5rem;
+        }
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+        }
+        .book-subtitle {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+        .book-author {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .book-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .book-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        .book-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">Reclaim Media</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/artists/">Artists</a>
+                <a href="/books/">Books</a>
+                <a href="/about/">About</a>
+                <a href="/press/">Press Kit</a>
+                <a href="/contact/">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>Books</h1>
+            <p>Guides on AI, automation, and the future of personal technology</p>
+        </header>
+
+        <div class="books-grid">
+            <article class="book-card">
+                <img src="agent-revolution-cover.png" alt="The Personal Agent Revolution book cover" class="book-cover">
+                <div class="book-info">
+                    <h2 class="book-title">The Personal Agent Revolution</h2>
+                    <p class="book-subtitle">Building Your Own AI Agent with OpenClaw</p>
+                    <p class="book-author">by Rudi Ribeiro Jr.</p>
+                    <p class="book-desc">
+                        A comprehensive guide to building, configuring, and running your own personal AI agent. 
+                        Learn how to create an AI assistant that lives on your own hardware, connects to your 
+                        favorite messaging apps, and actually gets things done.
+                    </p>
+                    <div class="book-meta">
+                        <span>📖 30+ Chapters</span>
+                        <span>🎓 Video Course Included</span>
+                        <span>💰 $29.95</span>
+                    </div>
+                    <div class="book-buttons">
+                        <a href="agent-revolution/buy.html" class="btn btn-primary" >Get the Book</a>
+                        <a href="agent-revolution/" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </article>
+            
+            <div class="book-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 500px; border: 2px dashed rgba(255,255,255,0.2);">
+                <p style="font-size: 1.25rem; opacity: 0.5;">📚 More Books</p>
+                <p style="opacity: 0.4; font-size: 0.9rem;">Coming 2026</p>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <h2>Write With Us</h2>
+            <p>Have an idea for a book about AI, technology, or creative tools? We're always looking for collaborators.</p>
+            <div class="cta-buttons">
+                <a href="/contact/" class="btn btn-primary">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">Reclaim Media</span>
+                <p>AI-Powered Creative Studio</p>
+            </div>
+            <div class="footer-links">
+                <a href="/artists/">Artists</a>
+                <a href="/books/">Books</a>
+                <a href="/about/">About</a>
+                <a href="/press/">Press</a>
+                <a href="/contact/">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://youtube.com/@reclaimmedia" >YouTube</a>
+                <a href="https://instagram.com/reclaimmedia" >Instagram</a>
+                <a href="https://tiktok.com/@reclaimmedia" >TikTok</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Reclaim Media. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

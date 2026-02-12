@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Reclaim - Purpose Beyond Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           DESIGN SYSTEM (Shared)
+           ============================================ */
+        
+        :root {
+            --flame: #FF4D00;
+            --electric-blue: #00C2FF;
+            --volt: #CCFF00;
+            --deep-navy: #0A1628;
+            --charcoal: #1A2332;
+            --white: #FFFFFF;
+            --off-white: #F7F8FA;
+            --grey-light: #E5E7EB;
+            
+            --gradient-fire: linear-gradient(135deg, #FF4D00 0%, #FF8A00 100%);
+            --gradient-ocean: linear-gradient(135deg, #00C2FF 0%, #0066FF 100%);
+            --gradient-hero: linear-gradient(135deg, #0A1628 0%, #1A2332 50%, #0A1628 100%);
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--deep-navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        
+        h1 { font-size: clamp(3rem, 8vw, 5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        
+        p { font-size: 1.125rem; }
+        
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .text-gradient {
+            background: var(--gradient-fire);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-blue { color: var(--electric-blue); }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(255, 77, 0, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 77, 0, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--deep-navy);
+        }
+        
+        .btn-dark {
+            background: var(--deep-navy);
+            color: var(--white);
+        }
+        
+        .btn-dark:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+        }
+        
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--flame);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .section-tag::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-fire);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav.scrolled {
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-fire);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--flame);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-cta { display: flex; gap: 1rem; }
+        
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-toggle span {
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-toggle { display: flex; }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--deep-navy);
+                z-index: 999;
+                transition: right 0.4s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .mobile-nav.active { right: 0; }
+            
+            .mobile-nav a {
+                font-family: var(--font-display);
+                font-size: 2rem;
+                color: var(--white);
+                font-weight: 600;
+            }
+        }
+        
+        /* ============================================
+           PAGE HERO
+           ============================================ */
+        
+        .page-hero {
+            min-height: 60vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(255, 77, 0, 0.15) 0%, transparent 70%);
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-lg) 0;
+        }
+        
+        .page-hero h1 {
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .page-hero p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.25rem;
+        }
+        
+        /* ============================================
+           STORY SECTION
+           ============================================ */
+        
+        .story {
+            padding: var(--space-xl) 0;
+            background: var(--white);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        .story-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+        
+        .story-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(255, 77, 0, 0.2), transparent);
+        }
+        
+        .story-badge {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
+        .story-badge h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .story-badge span {
+            color: var(--flame);
+            font-weight: 600;
+        }
+        
+        .story-content h2 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .story-content p {
+            color: rgba(10, 22, 40, 0.7);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .story-content blockquote {
+            background: var(--off-white);
+            border-left: 4px solid var(--flame);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            font-style: italic;
+            font-size: 1.25rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ============================================
+           VISION / MISSION
+           ============================================ */
+        
+        .vision {
+            padding: var(--space-xl) 0;
+            background: var(--deep-navy);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(0, 194, 255, 0.1) 0%, transparent 70%);
+        }
+        
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .vision-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: var(--space-lg);
+            transition: all 0.4s ease;
+        }
+        
+        .vision-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+        }
+        
+        .vision-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-fire);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .vision-card:nth-child(2) .vision-icon {
+            background: var(--gradient-ocean);
+        }
+        
+        .vision-card h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .vision-card p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ============================================
+           FOUNDER SECTION
+           ============================================ */
+        
+        .founder {
+            padding: var(--space-xl) 0;
+            background: var(--off-white);
+        }
+        
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: var(--space-lg);
+            align-items: start;
+        }
+        
+        .founder-image {
+            position: sticky;
+            top: 120px;
+        }
+        
+        .founder-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        
+        .founder-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: var(--space-sm);
+        }
+        
+        .founder-social a {
+            width: 48px;
+            height: 48px;
+            background: var(--deep-navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .founder-social a:hover {
+            background: var(--flame);
+            transform: translateY(-3px);
+        }
+        
+        .founder-content h2 {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .founder-title {
+            color: var(--flame);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        
+        .founder-content p {
+            color: rgba(10, 22, 40, 0.7);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .founder-content p:first-of-type {
+            font-size: 1.25rem;
+            color: var(--deep-navy);
+        }
+        
+        .founder-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--grey-light);
+        }
+        
+        .highlight {
+            text-align: center;
+            padding: var(--space-sm);
+            background: var(--white);
+            border-radius: 12px;
+        }
+        
+        .highlight-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--flame);
+        }
+        
+        .highlight-label {
+            font-size: 0.875rem;
+            color: rgba(10, 22, 40, 0.6);
+        }
+        
+        @media (max-width: 1024px) {
+            .founder-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .founder-image {
+                position: relative;
+                top: 0;
+            }
+            
+            .founder-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ============================================
+           VALUES SECTION
+           ============================================ */
+        
+        .values {
+            padding: var(--space-xl) 0;
+            background: var(--white);
+        }
+        
+        .values-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .value-card {
+            padding: var(--space-md);
+            border-radius: 20px;
+            background: var(--off-white);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1);
+        }
+        
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-fire);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto var(--space-sm);
+        }
+        
+        .value-card:nth-child(2) .value-icon { background: var(--gradient-ocean); }
+        .value-card:nth-child(3) .value-icon { background: linear-gradient(135deg, #8B5CF6, #A855F7); }
+        .value-card:nth-child(4) .value-icon { background: linear-gradient(135deg, #10B981, #34D399); }
+        .value-card:nth-child(5) .value-icon { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+        .value-card:nth-child(6) .value-icon { background: linear-gradient(135deg, #EC4899, #F472B6); }
+        
+        .value-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .value-card p {
+            color: rgba(10, 22, 40, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        
+        .about-cta {
+            padding: var(--space-xl) 0;
+            background: var(--off-white);
+        }
+        
+        .cta-card {
+            background: var(--gradient-hero);
+            border-radius: 30px;
+            padding: var(--space-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255, 77, 0, 0.2), transparent 60%);
+        }
+        
+        .cta-card-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-card h2 {
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .cta-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        
+        .footer {
+            background: var(--deep-navy);
+            padding: var(--space-lg) 0 var(--space-md);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .footer-brand .logo {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: var(--space-md);
+        }
+        
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--flame);
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 0.75rem; }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover { color: var(--flame); }
+        
+        .footer-bottom {
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom-links a:hover { color: var(--white); }
+        
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-mark">R</div>
+                RECLAIM
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="content.html">Content</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="community.html" class="btn btn-primary">Join the Movement</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="content.html">Content</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+        <a href="community.html" class="btn btn-primary">Join Now</a>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container page-hero-content">
+            <span class="section-tag" style="justify-content: center;">Our Story</span>
+            <h1>Built for Men Who<br><span class="text-gradient">Want More</span></h1>
+            <p>We're not here to help you perform better. We're here to help you live better.</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story">
+        <div class="container story-grid">
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80" alt="Rudi Ribeiro">
+                <div class="story-badge">
+                    <h4>Founded</h4>
+                    <span>2020</span>
+                </div>
+            </div>
+            <div class="story-content">
+                <span class="section-tag">The Beginning</span>
+                <h2>From Achievement to <span class="text-gradient">Awakening</span></h2>
+                <p>Reclaim didn't start as a media company. It started with a breakdown.</p>
+                <p>After years of chasing every marker of success, the career, the accolades, the recognition, Rudi Ribeiro found himself at the top of a mountain he never wanted to climb. Everything looked right on paper. Everything felt wrong on the inside.</p>
+                <blockquote>
+                    "I achieved everything I thought I wanted and realized I had been running from myself the whole time."
+                </blockquote>
+                <p>That moment of painful clarity became the seed of Reclaim. Not another self-help brand promising optimization. Something different: a space for men to ask the real questions.</p>
+                <p>Who am I when I stop performing? What do I actually want? What was I made for?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="vision">
+        <div class="container">
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="vision-icon">🔭</div>
+                    <h3>Our Vision</h3>
+                    <p>A generation of men who lead from identity, not insecurity. Who build legacies, not just careers. Who know that their worth was never something they had to earn.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">🎯</div>
+                    <h3>Our Mission</h3>
+                    <p>To create content, community, and experiences that help high-achieving men break free from performance-based identity and discover purpose beyond success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder">
+        <div class="container founder-grid">
+            <div class="founder-image">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80" alt="Rudi Ribeiro - Founder">
+                <div class="founder-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="founder-content">
+                <span class="section-tag">Meet the Founder</span>
+                <h2>Rudi Ribeiro</h2>
+                <p class="founder-title">Founder & Chief Storyteller</p>
+                <p>Rudi is a former high-performer turned purpose advocate. After a decade in the corporate world, he walked away from a successful career to pursue the question that haunted him: "Is this really it?"</p>
+                <p>What he discovered changed everything. The validation he had chased his whole life was never going to fill the void, because the void wasn't about achievement. It was about identity.</p>
+                <p>Now Rudi dedicates his life to helping other men make that same discovery before they waste years climbing the wrong mountain. Through Reclaim, he's built a platform, podcast, and community that reaches millions of men worldwide.</p>
+                <p>When he's not creating content, you'll find him with his family, in nature, or having deep conversations with men who are ready to do the real work.</p>
+                <div class="founder-highlights">
+                    <div class="highlight">
+                        <div class="highlight-number">12M+</div>
+                        <div class="highlight-label">People Reached</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-number">200+</div>
+                        <div class="highlight-label">Episodes</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-number">50K+</div>
+                        <div class="highlight-label">Community Members</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <div class="values-header">
+                <span class="section-tag" style="justify-content: center;">What We Stand For</span>
+                <h2>Our Core <span class="text-gradient">Values</span></h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>Radical Honesty</h3>
+                    <p>We tell the truth, even when it's uncomfortable. Growth requires confronting reality.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔥</div>
+                    <h3>Purposeful Action</h3>
+                    <p>We don't just talk about change, we create it. Insight without action is entertainment.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Brotherhood</h3>
+                    <p>Men need men. We create spaces where vulnerability is strength and support is unconditional.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🙏</div>
+                    <h3>Faith Over Fear</h3>
+                    <p>We believe in something bigger than ourselves. Purpose comes from connection to the eternal.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Legacy Mindset</h3>
+                    <p>We play the long game. Every decision is measured against what we're building for generations.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Identity First</h3>
+                    <p>Who you are determines what you do. We start with the inside and work out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-card-content">
+                    <h2>Ready to Start Your Journey?</h2>
+                    <p>You've read the story. Now it's time to write your own. Join thousands of men who are done performing and ready to live.</p>
+                    <div class="cta-buttons">
+                        <a href="community.html" class="btn btn-primary">Join the Community</a>
+                        <a href="content.html" class="btn btn-secondary">Explore Content</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-mark">R</div>
+                        RECLAIM
+                    </a>
+                    <p>Helping high-achieving men find purpose beyond performance. It's time to reclaim who you were made to be.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Podcast">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a10 10 0 0 0-3.16 19.5l1.46-2.93A7 7 0 1 1 19 12h-2a5 5 0 1 0-5 5v9a10 10 0 0 0 0-20zm0 6a4 4 0 0 0-1 7.87V22h2v-6.13A4 4 0 0 0 12 8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="content.html">Podcast</a></li>
+                        <li><a href="content.html">Videos</a></li>
+                        <li><a href="content.html">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="community.html">Join Us</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Membership</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Speaking</a></li>
+                        <li><a href="#">Partner</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Reclaim Media. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileToggle.addEventListener('click', () => mobileNav.classList.toggle('active'));
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileNav.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>

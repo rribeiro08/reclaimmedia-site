@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Personal Agent Revolution | Reclaim Media</title>
+    <meta name="description" content="Build your own AI agent with OpenClaw. A comprehensive guide to creating, configuring, and running personal AI assistants.">
+    <link rel="canonical" href="https://reclaimmedia.co/books/agent-revolution/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .book-hero {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+        .book-cover-large {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .book-hero-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .book-hero-info .subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .book-hero-info .author {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        .book-hero-info .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+        .price-box {
+            background: var(--mid);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .toc-section {
+            background: var(--dark);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .toc-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .toc-section ul {
+            list-style: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .toc-section li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .toc-section li:last-child {
+            border-bottom: none;
+        }
+        .bonuses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .bonus-card {
+            background: var(--dark);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            text-align: center;
+        }
+        .bonus-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .bonus-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .bonus-card p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            .book-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .book-cover-large {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">Reclaim Media</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/artists/">Artists</a>
+                <a href="/books/">Books</a>
+                <a href="/about/">About</a>
+                <a href="/press/">Press Kit</a>
+                <a href="/contact/">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="book-hero">
+            <img src="../agent-revolution-cover.png" alt="The Personal Agent Revolution book cover" class="book-cover-large">
+            <div class="book-hero-info">
+                <h1>The Personal Agent Revolution</h1>
+                <p class="subtitle">Building Your Own AI Agent with OpenClaw</p>
+                <p class="author">by Rudi Ribeiro Jr.</p>
+                <p class="description">
+                    Imagine having an AI assistant that actually knows you. One that lives on your own hardware, 
+                    connects to your favorite messaging apps, remembers your preferences, and gets things done 
+                    without you having to explain everything twice.
+                </p>
+                <p class="description">
+                    This comprehensive guide takes you from zero to running your own personal AI agent. 
+                    Whether you're a developer, tech enthusiast, or just someone tired of AI tools that 
+                    forget who you are, this book shows you how to build something better.
+                </p>
+                <div class="price-box">
+                    <span class="price">$29.95</span>
+                    <p class="price-note">Includes eBook, video course, and 3 bonus guides</p>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="buy.html" class="btn btn-primary" >Get the Book →</a>
+                    <a href="/books/" class="btn btn-outline">← All Books</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>What You'll Learn</h2>
+            <div class="toc-grid">
+                <div class="toc-section">
+                    <h3>Part I: The Vision</h3>
+                    <ul>
+                        <li>The Promise of Personal Agents</li>
+                        <li>The AI Agent Landscape</li>
+                        <li>Core Concepts</li>
+                        <li>The OpenClaw Story</li>
+                        <li>Choosing Your Setup</li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Part II: Getting Started</h3>
+                    <ul>
+                        <li>Installation</li>
+                        <li>Your First Conversation</li>
+                        <li>Configuration Deep Dive</li>
+                        <li>Model Providers</li>
+                        <li>Connecting Channels</li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Part III: The Agent</h3>
+                    <ul>
+                        <li>SOUL.md: Giving Your Agent a Soul</li>
+                        <li>USER.md and IDENTITY.md</li>
+                        <li>AGENTS.md: The Operating Manual</li>
+                        <li>The Memory System</li>
+                        <li>Workspace Mastery</li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Part IV: Power Features</h3>
+                    <ul>
+                        <li>Skills</li>
+                        <li>Tools Deep Dive</li>
+                        <li>Browser Automation</li>
+                        <li>Cron and Automation</li>
+                        <li>Multi-Agent Routing</li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Part V: Channels</h3>
+                    <ul>
+                        <li>WhatsApp Deep Dive</li>
+                        <li>Telegram Deep Dive</li>
+                        <li>Discord Deep Dive</li>
+                        <li>Signal Deep Dive</li>
+                        <li>iMessage & Slack</li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Part VI: Mastery</h3>
+                    <ul>
+                        <li>Security & Privacy</li>
+                        <li>Performance Optimization</li>
+                        <li>Troubleshooting</li>
+                        <li>Real-World Examples</li>
+                        <li>The Future of Agents</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>What's Included</h2>
+            <div class="bonuses">
+                <div class="bonus-card">
+                    <div class="icon">📖</div>
+                    <h3>Complete eBook</h3>
+                    <p>30+ chapters covering everything from setup to advanced automation</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="icon">🎬</div>
+                    <h3>Video Course</h3>
+                    <p>10 video modules walking you through the key concepts step-by-step</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="icon">💡</div>
+                    <h3>Prompt Vault</h3>
+                    <p>50+ tested prompts for common agent tasks and automations</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Config Templates</h3>
+                    <p>Ready-to-use configuration files for different use cases</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>About the Author</h2>
+            <p>
+                <strong>Rudi Ribeiro Jr.</strong> is a technologist, builder, and one of the earliest adopters of OpenClaw. 
+                He's been running personal AI agents daily since the early days, refining his setup through 
+                hundreds of hours of real-world use. This guide distills everything he's learned into a 
+                practical roadmap for anyone who wants to build their own agent.
+            </p>
+            <p style="margin-top: 1rem;">
+                When he's not building AI systems, Rudi works in enterprise SaaS sales and writes about the 
+                intersection of technology, productivity, and personal development.
+            </p>
+        </div>
+
+        <div class="cta-card">
+            <h2>Ready to Build Your Agent?</h2>
+            <p>Get the complete guide, video course, and all bonuses for just $29.95.</p>
+            <div class="cta-buttons">
+                <a href="buy.html" class="btn btn-primary" >Get the Book →</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">Reclaim Media</span>
+                <p>AI-Powered Creative Studio</p>
+            </div>
+            <div class="footer-links">
+                <a href="/artists/">Artists</a>
+                <a href="/books/">Books</a>
+                <a href="/about/">About</a>
+                <a href="/press/">Press</a>
+                <a href="/contact/">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://youtube.com/@reclaimmedia" >YouTube</a>
+                <a href="https://instagram.com/reclaimmedia" >Instagram</a>
+                <a href="https://tiktok.com/@reclaimmedia" >TikTok</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Reclaim Media. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

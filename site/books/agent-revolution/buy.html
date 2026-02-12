@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Personal Agent Revolution: Build Your Own AI Agent with OpenClaw</title>
+    <meta name="description" content="The definitive guide to building, configuring, and running your own personal AI agent. Stop renting AI: own it.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a27;
+            --bg-card-hover: #22223a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a82;
+            --accent: #6c5ce7;
+            --accent-light: #a29bfe;
+            --accent-glow: rgba(108, 92, 231, 0.3);
+            --orange: #e17055;
+            --orange-bright: #ff7675;
+            --green: #00b894;
+            --border: #2a2a3d;
+            --gradient-1: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            --gradient-2: linear-gradient(135deg, #e17055 0%, #ff7675 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo span {
+            color: var(--accent-light);
+        }
+
+        .nav-cta {
+            background: var(--gradient-2);
+            color: white;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(225, 112, 85, 0.4);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(225, 112, 85, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(108, 92, 231, 0.15);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '⚡';
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-2);
+            color: white;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(225, 112, 85, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Book Visual */
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-3d {
+            width: 520px;
+            height: 680px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 100%;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
+            transform: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            text-align: center;
+            border-left: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover::before {
+            display: none;
+        }
+
+        .book-cover::after {
+            display: none;
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .book-cover h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: white;
+            position: relative;
+        }
+
+        .book-cover p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        .book-cover .author {
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        /* ===== SOCIAL PROOF BAR ===== */
+        .social-proof {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+
+        .social-proof .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .proof-item .icon {
+            font-size: 1.3rem;
+        }
+
+        .proof-item strong {
+            color: var(--text-secondary);
+        }
+
+        /* ===== PROBLEM SECTION ===== */
+        .problem {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-light);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 60px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            border-color: rgba(225, 112, 85, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .problem-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .problem-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== SOLUTION / BENEFITS ===== */
+        .benefits {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 40px var(--accent-glow);
+        }
+
+        .benefit-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== TABLE OF CONTENTS ===== */
+        .toc {
+            padding: 100px 0;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .toc-part {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .toc-part:hover {
+            border-color: var(--accent);
+        }
+
+        .toc-part-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .toc-part h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .toc-part ul {
+            list-style: none;
+        }
+
+        .toc-part li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc-part li::before {
+            content: '→';
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .toc-full-span {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== BONUSES ===== */
+        .bonuses {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .bonus-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .bonus-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bonus-card::before {
+            content: 'FREE BONUS';
+            position: absolute;
+            top: 16px;
+            right: -28px;
+            background: var(--green);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px 36px;
+            transform: rotate(45deg);
+            letter-spacing: 0.1em;
+        }
+
+        .bonus-card .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .bonus-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .bonus-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .bonus-value {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .bonus-value s {
+            color: var(--text-muted);
+        }
+
+        .bonus-value strong {
+            color: var(--green);
+        }
+
+        /* ===== AUTHOR ===== */
+        .author-section {
+            padding: 100px 0;
+        }
+
+        .author-section .container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .author-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--orange) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 8px 40px var(--accent-glow);
+        }
+
+        .author-info h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .author-title {
+            color: var(--accent-light);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .author-bio {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        .author-credentials {
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .testimonial-stars {
+            color: #ffd700;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== PRICING CTA ===== */
+        .pricing {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .pricing-box {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 48px;
+            position: relative;
+            box-shadow: 0 0 80px var(--accent-glow);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-1);
+            color: white;
+            padding: 6px 24px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .pricing-includes {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+        }
+
+        .pricing-value {
+            margin-bottom: 32px;
+        }
+
+        .pricing-original {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-right: 12px;
+        }
+
+        .pricing-current {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .pricing-current sup {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .pricing-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 36px;
+        }
+
+        .pricing-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .pricing-list li .check {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .pricing-list li s {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 18px 36px;
+            font-size: 1.15rem;
+        }
+
+        .pricing-guarantee {
+            margin-top: 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+
+        .faq-question {
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-light);
+        }
+
+        .faq-question .toggle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding-top: 16px;
+        }
+
+        .faq-item.open .toggle {
+            transform: rotate(45deg);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* ===== CODE BLOCK ===== */
+        .code-block {
+            background: #0d0d18;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 24px;
+            overflow-x: auto;
+        }
+
+        .code-block .comment { color: var(--text-muted); }
+        .code-block .keyword { color: var(--accent-light); }
+        .code-block .string { color: var(--green); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero h1 { font-size: 2.8rem; }
+            .hero-description { margin: 0 auto 36px; }
+            .hero-cta-group { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .stat { text-align: center; }
+
+            .book-3d { width: 380px; height: 500px; }
+
+            .benefits-grid,
+            .bonus-list,
+            .testimonial-grid { grid-template-columns: 1fr 1fr; }
+
+            .author-section .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .author-avatar { margin: 0 auto; }
+            .author-credentials { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 120px 0 60px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+
+            .section-title { font-size: 2rem; }
+
+            .problem-grid,
+            .benefits-grid,
+            .bonus-list,
+            .testimonial-grid,
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toc-full-span { grid-column: auto; }
+
+            .hero-stats { flex-direction: column; gap: 16px; }
+
+            .pricing-box { padding: 36px 24px; }
+            .pricing-current { font-size: 2.8rem; }
+
+            .social-proof .container { gap: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-cta-group { flex-direction: column; }
+            .btn-primary { width: 100%; justify-content: center; }
+            .btn-secondary { width: 100%; justify-content: center; }
+            .book-3d { width: 220px; height: 300px; }
+            .book-cover h2 { font-size: 1.1rem; }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: rotateY(-15deg) rotateX(5deg) translateY(0); }
+            50% { transform: rotateY(-15deg) rotateX(5deg) translateY(-10px); }
+        }
+
+        .book-cover {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <a href="#" class="nav-logo">🤖 <span>Personal Agent</span> Revolution</a>
+        <a href="checkout.html" class="nav-cta">Get Your Copy →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">New Release: 2026 Edition</div>
+            <h1>The Personal<br><span class="gradient-text">Agent Revolution</span></h1>
+            <p class="hero-subtitle">Build Your Own AI Agent with OpenClaw</p>
+            <p class="hero-description">The definitive guide to building, configuring, and running your own self-hosted AI agent: one that lives in your messaging apps, knows your preferences, and works for <em>you</em>. Not Silicon Valley. You.</p>
+            <div class="hero-cta-group">
+                <a href="checkout.html" class="btn-primary">Get Your Copy Now →</a>
+                <a href="#toc" class="btn-secondary">📖 See What's Inside</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">37</div>
+                    <div class="stat-label">Chapters</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">187</div>
+                    <div class="stat-label">Pages</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Platforms</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="book-3d">
+                <div class="book-cover" style="background: none !important; padding: 0 !important;">
+                    <img src="book-cover.png" alt="The Personal Agent Revolution Book Cover" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof">
+    <div class="container">
+        <div class="proof-item">
+            <span class="icon">📘</span>
+            <span><strong>47,000+</strong> words of practical guidance</span>
+        </div>
+        <div class="proof-item">
+            <span class="icon">🔓</span>
+            <span><strong>MIT Licensed</strong>: fully open source</span>
+        </div>
+        <div class="proof-item">
+            <span class="icon">⚡</span>
+            <span><strong>Real configs</strong>: not theory</span>
+        </div>
+        <div class="proof-item">
+            <span class="icon">💬</span>
+            <span><strong>6 platforms</strong>: one agent</span>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+    <div class="container">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">You're renting AI.<br>You should own it.</h2>
+        <p class="section-subtitle">Cloud chatbots are someone else's agent running on someone else's servers under someone else's rules. Every conversation trains their model. Every limitation is their decision. You deserve better.</p>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <span class="icon">🏰</span>
+                <h3>The Walled Garden Problem</h3>
+                <p>Locked into one ecosystem. Can't switch models, add custom tools, or connect your own infrastructure. You're a tenant, not an owner.</p>
+            </div>
+            <div class="problem-card">
+                <span class="icon">🔐</span>
+                <h3>The Privacy Problem</h3>
+                <p>Your business strategy, personal messages, and financial details: flowing through servers you don't control. Training models you don't own.</p>
+            </div>
+            <div class="problem-card">
+                <span class="icon">📱</span>
+                <h3>The Channel Problem</h3>
+                <p>You live across WhatsApp, Telegram, Slack, Discord, iMessage, Signal. Your AI lives in a browser tab. The disconnect is the problem.</p>
+            </div>
+            <div class="problem-card">
+                <span class="icon">🤖</span>
+                <h3>The Personality Problem</h3>
+                <p>"Great question!": every AI chatbot ever. You can't make it match your style. Can't make it sarcastic in Discord and professional in Slack.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+    <div class="container">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">What you'll build with this book</h2>
+        <p class="section-subtitle">A personal AI agent that runs on your hardware, connects to your messaging apps, and works exactly the way you want it to.</p>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="icon">🧠</span>
+                <h3>Give It a Soul</h3>
+                <p>Write SOUL.md: your agent's personality, values, and communication style. Make it truly yours.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="icon">💬</span>
+                <h3>Every Channel, One Agent</h3>
+                <p>WhatsApp, Telegram, Discord, Slack, Signal, iMessage. One agent. Seamless context across all platforms.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="icon">🔧</span>
+                <h3>Tools & Automation</h3>
+                <p>Web browsing, file operations, shell commands, cron jobs, API calls. Your agent doesn't just chat: it works.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="icon">🧩</span>
+                <h3>Memory That Grows</h3>
+                <p>Daily memory files, long-term curated knowledge. Your agent gets smarter every day because it remembers everything.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="icon">📱</span>
+                <h3>Mobile Integration</h3>
+                <p>Connect your phone as a node. Camera, location, notifications, screen capture: all accessible to your agent.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="icon">🛡️</span>
+                <h3>Security by Default</h3>
+                <p>Your data on your hardware. Prompt injection defense. Access controls. Tool permissions. Real security, not promises.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="toc" id="toc">
+    <div class="container">
+        <span class="section-label">What's Inside</span>
+        <h2 class="section-title">37 chapters of practical guidance</h2>
+        <p class="section-subtitle">From zero to a fully configured personal AI agent: every step documented, every decision explained.</p>
+        <div class="toc-grid">
+            <div class="toc-part">
+                <span class="toc-part-label">Part I</span>
+                <h3>The Vision</h3>
+                <ul>
+                    <li>The Promise of Personal Agents</li>
+                    <li>The AI Agent Landscape</li>
+                    <li>Core Concepts</li>
+                    <li>The OpenClaw Story</li>
+                    <li>Choosing Your Setup</li>
+                </ul>
+            </div>
+            <div class="toc-part">
+                <span class="toc-part-label">Part II</span>
+                <h3>Getting Started</h3>
+                <ul>
+                    <li>Installation (Zero to Gateway in 15 min)</li>
+                    <li>Your First Conversation</li>
+                    <li>Configuration Deep Dive</li>
+                    <li>Model Providers</li>
+                    <li>Connecting Channels</li>
+                </ul>
+            </div>
+            <div class="toc-part">
+                <span class="toc-part-label">Part III</span>
+                <h3>The Agent</h3>
+                <ul>
+                    <li>SOUL.md: Giving Your Agent a Soul</li>
+                    <li>USER.md and IDENTITY.md</li>
+                    <li>AGENTS.md: The Operating Manual</li>
+                    <li>The Memory System</li>
+                    <li>TOOLS.md and HEARTBEAT.md</li>
+                    <li>Workspace Mastery</li>
+                </ul>
+            </div>
+            <div class="toc-part">
+                <span class="toc-part-label">Part IV</span>
+                <h3>Power Features</h3>
+                <ul>
+                    <li>Skills & Plugins</li>
+                    <li>Tools Deep Dive</li>
+                    <li>Browser Automation</li>
+                    <li>Cron and Automation</li>
+                    <li>Nodes and Mobile</li>
+                    <li>Multi-Agent Routing</li>
+                    <li>Canvas</li>
+                </ul>
+            </div>
+            <div class="toc-part">
+                <span class="toc-part-label">Part V</span>
+                <h3>Channels Deep Dive</h3>
+                <ul>
+                    <li>WhatsApp Deep Dive</li>
+                    <li>Telegram Deep Dive</li>
+                    <li>Discord Deep Dive</li>
+                    <li>Signal Deep Dive</li>
+                    <li>iMessage Deep Dive</li>
+                    <li>Slack Deep Dive</li>
+                </ul>
+            </div>
+            <div class="toc-part">
+                <span class="toc-part-label">Parts VI & VII</span>
+                <h3>Advanced & The Future</h3>
+                <ul>
+                    <li>Security & Hardening</li>
+                    <li>Scaling and Performance</li>
+                    <li>Plugins & API Integration</li>
+                    <li>Troubleshooting</li>
+                    <li>The Agent Ecosystem</li>
+                    <li>Community & What's Next</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BONUSES -->
+<section class="bonuses">
+    <div class="container">
+        <span class="section-label">Free Bonuses</span>
+        <h2 class="section-title">$89.85 in bonuses: yours free today</h2>
+        <p class="section-subtitle">Every book purchase includes three bonus resources that accelerate your agent-building journey.</p>
+        <div class="bonus-list">
+            <div class="bonus-card">
+                <span class="icon">🗂️</span>
+                <h3>The Agent Prompt Vault</h3>
+                <p>50+ battle-tested prompts and SOUL.md templates for every use case: personality, tone, tasks, safety, and multi-agent routing.</p>
+                <span class="bonus-value"><s>$329.95</s> → <strong>FREE</strong></span>
+            </div>
+            <div class="bonus-card">
+                <span class="icon">⚙️</span>
+                <h3>Quick-Start Config Templates</h3>
+                <p>Ready-to-use configuration files for every setup in the book. Copy, paste, customize, launch. No blank-page problem.</p>
+                <span class="bonus-value"><s>$29.95</s> → <strong>FREE</strong></span>
+            </div>
+            <div class="bonus-card">
+                <span class="icon">🚀</span>
+                <h3>The Agent Automation Playbook</h3>
+                <p>30 copy-paste automations: morning briefings, message triage, server monitoring, expense tracking, and more.</p>
+                <span class="bonus-value"><s>$129.95</s> → <strong>FREE</strong></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author-section">
+    <div class="container">
+        <div class="author-avatar">👨‍💻</div>
+        <div class="author-info">
+            <span class="section-label">About the Author</span>
+            <h3>Rudi Ribeiro Jr.</h3>
+            <p class="author-title">AI Pioneer · Builder · Technology Executive</p>
+            <p class="author-bio">Rudi isn't writing about AI agents from the sidelines: he runs one daily. As an early adopter of OpenClaw and a technology executive at HubSpot, he operates at the intersection of enterprise software and cutting-edge AI.</p>
+            <p class="author-bio">His personal agent runs 24/7, connected to every messaging platform he uses, managing his communication, automating his workflows, and getting smarter every day. This book is the distillation of hundreds of hours of real-world agent development: not theory, but practice.</p>
+            <p class="author-bio">When he's not building AI systems, Rudi is shipping products, leading teams, and figuring out what's next in the space between humans and machines.</p>
+            <div class="author-credentials">
+                <div class="credential">🏢 HubSpot Executive</div>
+                <div class="credential">🔧 OpenClaw Early Adopter</div>
+                <div class="credential">🤖 Daily Agent User</div>
+                <div class="credential">📖 Practitioner First</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <div class="container">
+        <span class="section-label">What Readers Say</span>
+        <h2 class="section-title">Early reader reactions</h2>
+        <p class="section-subtitle">From developers who got early access to the manuscript.</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"I went from zero to a working personal agent in a weekend. The SOUL.md chapter alone changed how I think about AI interaction. This isn't a theoretical book: it's a build manual."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">M</div>
+                    <div>
+                        <div class="testimonial-name">Marcus T.</div>
+                        <div class="testimonial-role">Senior Developer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Finally, someone explains the self-hosted AI agent approach without hand-waving. The channel integration chapters are incredibly detailed. My agent now handles WhatsApp and Slack seamlessly."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">S</div>
+                    <div>
+                        <div class="testimonial-name">Sarah K.</div>
+                        <div class="testimonial-role">Engineering Manager</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"The automation chapter is worth the price alone. I set up a morning briefing, message triage, and weekly review in one afternoon. My agent saves me 2+ hours daily. Not exaggerating."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">D</div>
+                    <div>
+                        <div class="testimonial-name">David R.</div>
+                        <div class="testimonial-role">Startup Founder</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING CTA -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <span class="section-label">Get Started Today</span>
+        <h2 class="section-title">Own your AI future</h2>
+        <p class="section-subtitle" style="margin: 0 auto 60px;">Less than the cost of one month of ChatGPT Plus: and you'll own it forever.</p>
+        <div class="pricing-box">
+            <span class="pricing-badge">2026 Launch Price</span>
+            <h3 class="pricing-title">The Complete Agent Package</h3>
+            <p class="pricing-includes">Book + All 3 Bonuses</p>
+            <div class="pricing-value">
+                <span class="pricing-original">$119.80</span>
+                <span class="pricing-current"><sup>$</sup>29<sup>.95</sup></span>
+            </div>
+            <ul class="pricing-list">
+                <li><span class="check">✓</span> The Personal Agent Revolution (37 chapters, 187 pages)</li>
+                <li><span class="check">✓</span> The Agent Prompt Vault: 50+ prompts <s>$329.95</s></li>
+                <li><span class="check">✓</span> Quick-Start Config Templates <s>$29.95</s></li>
+                <li><span class="check">✓</span> The Agent Automation Playbook: 30 automations <s>$129.95</s></li>
+                <li><span class="check">✓</span> Instant digital delivery</li>
+                <li><span class="check">✓</span> Lifetime updates: new chapters included</li>
+            </ul>
+            <a href="checkout.html" class="btn-primary pricing-cta">Get Your Copy Now: $29.95 →</a>
+            <p class="pricing-guarantee">🔒 Secure checkout · Instant delivery · 30-day money-back guarantee</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+    <div class="container">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Common questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Do I need to be a developer to use this book?</span>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">Not a professional developer, no. If you're comfortable using a terminal, editing config files, and following step-by-step instructions, you have enough skill. The book assumes comfort with basic command-line operations: not software engineering expertise.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What hardware do I need?</span>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">A Mac Mini, a Linux server, or even a $5/month VPS. The gateway is lightweight: it's a Node.js application that connects to AI APIs. You don't need a GPU or expensive hardware. The book covers all setup options in detail.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Which AI models does OpenClaw support?</span>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">All of them. OpenClaw works with OpenAI (GPT-4, GPT-5), Anthropic (Claude), Google (Gemini), DeepSeek, and local models via Ollama. You can switch models anytime or use different models for different tasks.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Is OpenClaw really free?</span>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">Yes. OpenClaw is MIT-licensed, fully open source. You still need to pay for AI model access (API costs or subscriptions like Claude Max / ChatGPT Plus), but the gateway software itself is completely free.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What format is the book delivered in?</span>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">PDF and EPUB for reading on any device. Plus all bonus materials as downloadable files. You get instant access after purchase: no waiting.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What if I'm not satisfied?</span>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">Full 30-day money-back guarantee. If the book doesn't help you build a working personal agent, email us and we'll refund every penny. No questions asked.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="pricing" style="padding-bottom: 80px;">
+    <div class="container">
+        <h2 class="section-title">Stop renting AI. Start owning it.</h2>
+        <p class="section-subtitle" style="margin: 0 auto 40px;">Your personal agent is waiting to be built. This book shows you exactly how.</p>
+        <a href="checkout.html" class="btn-primary" style="font-size: 1.2rem; padding: 20px 48px;">Get The Personal Agent Revolution: $29.95 →</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>© 2026 Reclaim Media. All rights reserved.</p>
+        <p style="margin-top: 8px;"><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="mailto:support@reclaimmedia.com">Contact</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

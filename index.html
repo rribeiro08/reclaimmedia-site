@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclaim Media | Reclaim Your Sound</title>
+    <meta name="description" content="Reclaim Media - A modern digital media company and record label. Home of Dakota Rose and emerging artists.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'reclaim': {
+                            dark: '#0a0a0a',
+                            darker: '#050505',
+                            accent: '#c9a962',
+                            'accent-light': '#e0c98a',
+                        }
+                    },
+                    fontFamily: {
+                        'display': ['Georgia', 'serif'],
+                        'body': ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .font-display {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.95) 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #c9a962 0%, #e0c98a 50%, #c9a962 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(201, 169, 98, 0.15);
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .vinyl-spin {
+            animation: spin 8s linear infinite;
+            animation-play-state: paused;
+        }
+        .vinyl-spin:hover {
+            animation-play-state: running;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-reclaim-dark text-white antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-reclaim-dark/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-display font-bold tracking-tight">
+                    <span class="text-gradient">RECLAIM</span>
+                    <span class="text-white/90 font-light ml-1">MEDIA</span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#artists" class="text-sm text-white/70 hover:text-reclaim-accent transition-colors">Artists</a>
+                    <a href="#about" class="text-sm text-white/70 hover:text-reclaim-accent transition-colors">About</a>
+                    <a href="#releases" class="text-sm text-white/70 hover:text-reclaim-accent transition-colors">Releases</a>
+                    <a href="#contact" class="text-sm text-white/70 hover:text-reclaim-accent transition-colors">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Nav -->
+            <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+                <div class="flex flex-col gap-4">
+                    <a href="#artists" class="text-white/70 hover:text-reclaim-accent transition-colors">Artists</a>
+                    <a href="#about" class="text-white/70 hover:text-reclaim-accent transition-colors">About</a>
+                    <a href="#releases" class="text-white/70 hover:text-reclaim-accent transition-colors">Releases</a>
+                    <a href="#contact" class="text-white/70 hover:text-reclaim-accent transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"30\" cy=\"30\" r=\"1\" fill=\"white\"/></svg>'); background-size: 60px 60px;"></div>
+        </div>
+        
+        <!-- Gradient Accent -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-reclaim-accent/5 rounded-full blur-[150px]"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <p class="text-reclaim-accent text-sm tracking-[0.3em] uppercase mb-6 animate-fade-up" style="animation-delay: 0.2s;">Digital Media Company & Record Label</p>
+            
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] animate-fade-up" style="animation-delay: 0.4s;">
+                Reclaim Your<br>
+                <span class="text-gradient">Sound</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up" style="animation-delay: 0.6s;">
+                Where authentic voices find their stage. We champion artists who dare to be different.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style="animation-delay: 0.8s;">
+                <a href="#artists" class="px-8 py-4 bg-reclaim-accent text-reclaim-dark font-semibold rounded-full hover:bg-reclaim-accent-light transition-colors">
+                    Meet Our Artists
+                </a>
+                <a href="#contact" class="px-8 py-4 border border-white/20 text-white rounded-full hover:bg-white/5 transition-colors">
+                    Work With Us
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Featured Artist Section -->
+    <section id="artists" class="py-24 md:py-32 bg-reclaim-darker">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-reclaim-accent text-sm tracking-[0.2em] uppercase mb-4">Featured Artist</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold">Dakota Rose</h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Artist Image -->
+                <div class="relative group">
+                    <div class="aspect-[4/5] bg-gradient-to-br from-reclaim-accent/20 to-transparent rounded-2xl overflow-hidden">
+                        <!-- Placeholder Image -->
+                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900">
+                            <div class="text-center">
+                                <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-reclaim-accent/20 flex items-center justify-center">
+                                    <svg class="w-16 h-16 text-reclaim-accent/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                                    </svg>
+                                </div>
+                                <p class="text-white/40 text-sm">Artist Photo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Frame -->
+                    <div class="absolute -inset-4 border border-reclaim-accent/20 rounded-3xl -z-10"></div>
+                </div>
+                
+                <!-- Artist Info -->
+                <div>
+                    <span class="inline-block px-4 py-1.5 bg-reclaim-accent/10 text-reclaim-accent text-sm rounded-full mb-6">
+                        Country / Country-Pop
+                    </span>
+                    
+                    <h3 class="font-display text-3xl md:text-4xl font-bold mb-6">
+                        Authentic Stories,<br>Unforgettable Melodies
+                    </h3>
+                    
+                    <p class="text-white/60 text-lg leading-relaxed mb-8">
+                        Dakota Rose brings a fresh voice to country music, blending timeless storytelling with modern pop sensibilities. Her music speaks to the dreamer in all of us, capturing moments of heartbreak, hope, and everything in between.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="px-6 py-4 bg-white/5 rounded-xl">
+                            <p class="text-2xl font-bold text-reclaim-accent">2025</p>
+                            <p class="text-sm text-white/50">Debut Year</p>
+                        </div>
+                        <div class="px-6 py-4 bg-white/5 rounded-xl">
+                            <p class="text-2xl font-bold text-reclaim-accent">Nashville</p>
+                            <p class="text-sm text-white/50">Based In</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#releases" class="inline-flex items-center gap-2 text-reclaim-accent hover:text-reclaim-accent-light transition-colors">
+                        <span>Listen Now</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 bg-reclaim-dark relative overflow-hidden">
+        <!-- Background Element -->
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-[600px] bg-gradient-to-l from-reclaim-accent/5 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-reclaim-accent text-sm tracking-[0.2em] uppercase mb-4">About Us</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-8">
+                        More Than a Label, <br>
+                        <span class="text-gradient">A Movement</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-white/60 text-lg leading-relaxed">
+                        <p>
+                            Reclaim Media was born from a simple belief: every authentic voice deserves to be heard. We're not just another record label, we're a creative partner dedicated to empowering artists who refuse to compromise their vision.
+                        </p>
+                        <p>
+                            In an industry often driven by algorithms and trends, we choose to invest in artistry. We provide our artists with the tools, support, and freedom to create music that matters.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-white/10">
+                        <div>
+                            <p class="text-3xl font-bold text-white">100%</p>
+                            <p class="text-sm text-white/50 mt-1">Artist-First Focus</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-white">2025</p>
+                            <p class="text-sm text-white/50 mt-1">Founded</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-white">∞</p>
+                            <p class="text-sm text-white/50 mt-1">Creative Freedom</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual Element -->
+                <div class="relative hidden lg:block">
+                    <div class="w-80 h-80 mx-auto relative">
+                        <!-- Vinyl Record Visual -->
+                        <div class="vinyl-spin absolute inset-0 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 shadow-2xl">
+                            <div class="absolute inset-8 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800">
+                                <div class="absolute inset-0 rounded-full" style="background: repeating-radial-gradient(circle at center, transparent 0, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);"></div>
+                            </div>
+                            <div class="absolute inset-[35%] rounded-full bg-reclaim-accent flex items-center justify-center">
+                                <span class="font-display text-reclaim-dark font-bold text-sm">RM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Releases Section -->
+    <section id="releases" class="py-24 md:py-32 bg-reclaim-darker">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-reclaim-accent text-sm tracking-[0.2em] uppercase mb-4">Music</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold">Latest Releases</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Release Card 1 -->
+                <div class="group hover-lift bg-white/5 rounded-2xl overflow-hidden">
+                    <div class="aspect-square bg-gradient-to-br from-reclaim-accent/30 to-reclaim-accent/5 flex items-center justify-center relative overflow-hidden">
+                        <div class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-4 right-4 px-3 py-1 bg-black/50 backdrop-blur rounded-full text-xs">
+                            Coming Soon
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-white/50 text-sm mb-2">Dakota Rose</p>
+                        <h3 class="font-semibold text-lg mb-4">Debut Single</h3>
+                        <div class="flex gap-3">
+                            <a href="#" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors" title="Spotify">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors" title="Apple Music">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.364-1.29.44-2.27 1.22-2.91 2.45-.378.73-.553 1.52-.623 2.34-.02.26-.03.52-.04.78-.01.23-.01.46-.01.69v10.75c0 .28.01.55.02.83.04.76.13 1.51.39 2.22.6 1.6 1.8 2.61 3.41 3.07.61.17 1.24.26 1.88.3.32.02.65.04.97.05h12.04c.24 0 .49-.01.73-.02.79-.04 1.57-.13 2.31-.4 1.55-.58 2.58-1.75 3.09-3.34.23-.71.34-1.44.38-2.19.01-.2.02-.4.03-.6V6.124zm-6.63 8.166c-.03.19-.06.38-.11.57-.21.77-.65 1.39-1.3 1.87-.6.44-1.28.7-2.01.83-.32.06-.65.09-.98.09-.67 0-1.26-.17-1.78-.53-.37-.26-.61-.61-.73-1.05-.05-.19-.08-.39-.08-.59.01-.37.09-.72.28-1.04.25-.43.6-.77 1.02-1.04.53-.34 1.1-.57 1.71-.72.62-.15 1.25-.22 1.89-.21.08 0 .16.01.25.01.06.37.08.76.06 1.15-.04.57-.15 1.12-.44 1.62-.35.6-.84 1.05-1.51 1.31-.4.16-.82.24-1.25.24-.21 0-.42-.02-.62-.06-.37-.08-.72-.23-1-.49-.17-.16-.3-.35-.38-.57-.05-.15-.08-.31-.07-.47.02-.53.22-.99.55-1.4.4-.5.91-.86 1.49-1.12.62-.28 1.27-.45 1.95-.52.16-.02.33-.03.49-.03V7.07c0-.2-.03-.4-.1-.6-.12-.36-.38-.59-.74-.67-.15-.03-.3-.05-.46-.05-.36 0-.71.06-1.05.17-.59.19-1.1.52-1.53.97-.48.5-.82 1.1-.99 1.79-.06.24-.1.48-.11.72 0 .11 0 .23.01.34.01.09.02.17.03.26l-1.04.34v-5.6c.2-.01.4-.01.6-.01.93-.01 1.87.03 2.8.15.69.09 1.35.26 1.97.57.74.38 1.27.94 1.54 1.72.11.32.17.66.18 1v4.89z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Release Card 2 (Placeholder) -->
+                <div class="group hover-lift bg-white/5 rounded-2xl overflow-hidden opacity-60">
+                    <div class="aspect-square bg-gradient-to-br from-zinc-700/30 to-zinc-800/30 flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-12 h-12 mx-auto mb-3 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                            </svg>
+                            <p class="text-white/30 text-sm">More Music Coming</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-white/30 text-sm mb-2">Artist TBA</p>
+                        <h3 class="font-semibold text-lg text-white/50">Stay Tuned</h3>
+                    </div>
+                </div>
+                
+                <!-- Release Card 3 (Placeholder) -->
+                <div class="group hover-lift bg-white/5 rounded-2xl overflow-hidden opacity-40">
+                    <div class="aspect-square bg-gradient-to-br from-zinc-700/20 to-zinc-800/20 flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-12 h-12 mx-auto mb-3 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                            <p class="text-white/20 text-sm">Future Release</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-white/20 text-sm mb-2">Coming Soon</p>
+                        <h3 class="font-semibold text-lg text-white/30">New Music</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 md:py-32 bg-reclaim-dark relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-reclaim-darker to-transparent"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <p class="text-reclaim-accent text-sm tracking-[0.2em] uppercase mb-4">Get In Touch</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">Let's Create<br>Something Together</h2>
+                <p class="text-white/60 text-lg max-w-2xl mx-auto">
+                    Whether you're an artist looking for a home, or a collaborator with a vision, we'd love to hear from you.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- General Inquiries -->
+                <div class="bg-white/5 rounded-2xl p-8 hover-lift">
+                    <div class="w-12 h-12 bg-reclaim-accent/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-reclaim-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">General Inquiries</h3>
+                    <p class="text-white/50 mb-4">Questions, partnerships, or just want to say hi?</p>
+                    <a href="mailto:hello@reclaimmedia.co" class="text-reclaim-accent hover:text-reclaim-accent-light transition-colors">
+                        hello@reclaimmedia.co
+                    </a>
+                </div>
+                
+                <!-- Press -->
+                <div class="bg-white/5 rounded-2xl p-8 hover-lift">
+                    <div class="w-12 h-12 bg-reclaim-accent/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-reclaim-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-2">Press & Media</h3>
+                    <p class="text-white/50 mb-4">Interview requests, press kits, and media inquiries.</p>
+                    <a href="mailto:press@reclaimmedia.co" class="text-reclaim-accent hover:text-reclaim-accent-light transition-colors">
+                        press@reclaimmedia.co
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="text-center">
+                <p class="text-white/40 text-sm mb-6">Follow the journey</p>
+                <div class="flex justify-center gap-6">
+                    <a href="https://instagram.com/reclaimmedia8" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-reclaim-accent/20 hover:text-reclaim-accent transition-all" title="Instagram">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-reclaim-accent/20 hover:text-reclaim-accent transition-all" title="Twitter/X">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-reclaim-accent/20 hover:text-reclaim-accent transition-all" title="TikTok">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-reclaim-accent/20 hover:text-reclaim-accent transition-all" title="YouTube">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-reclaim-darker border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="font-display font-bold text-gradient">RECLAIM</span>
+                    <span class="text-white/50 font-light">MEDIA</span>
+                </div>
+                <p class="text-white/30 text-sm">
+                    © 2025 Reclaim Media. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scroll offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
