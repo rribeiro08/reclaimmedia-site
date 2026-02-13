@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colby Hayes | Static in the Dark - Debut Album</title>
-    <meta name="description" content="Colby Hayes - Indie-pop artist. Debut album 'Static in the Dark' featuring 10 original tracks of emotional, vulnerable songwriting.">
+    <title>Colby Hayes | Static - Debut Album</title>
+    <meta name="description" content="Colby Hayes - Indie-pop artist. Debut album 'Static' featuring 10 original tracks of emotional, vulnerable songwriting.">
     <link rel="canonical" href="https://reclaimmedia.co/colby-hayes/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -18,89 +19,20 @@
         "description": "Indie-pop artist known for emotional, vulnerable songwriting. Conan Gray meets Hozier.",
         "album": {
             "@type": "MusicAlbum",
-            "name": "Static in the Dark",
+            "name": "Static",
             "datePublished": "2026-02-14",
             "numTracks": 10
         },
         "sameAs": [
             "https://youtube.com/@colbyhayes",
             "https://instagram.com/colbyhayes",
-            "https://tiktok.com/@colbyhayes",
+            "https://tiktok.com/@colbyhayesmusic",
             "https://open.spotify.com/artist/colbyhayes"
         ]
     }
     </script>
     <style>
-        :root {
-            --deep-blue: #1a3a4a;
-            --teal: #2d6a7a;
-            --accent: #4db8c9;
-            --soft-cream: #f5f3ef;
-            --warm-white: #fefefe;
-            --charcoal: #2a2a2a;
-            --slate: #4a5568;
-            --gold: #d4a574;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
-            color: var(--soft-cream);
-            min-height: 100vh;
-        }
-
-        .nav {
-            background: rgba(26, 26, 46, 0.95);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .nav-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--soft-cream);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
+        /* Home page specific styles */
         .hero {
             text-align: center;
             padding: 3rem 0 2rem;
@@ -208,37 +140,6 @@
         .album-description {
             line-height: 1.7;
             color: rgba(255,255,255,0.8);
-        }
-
-        .streaming-links {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .streaming-links a {
-            padding: 0.6rem 1.2rem;
-            background: var(--teal);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .streaming-links a:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .streaming-links a.youtube {
-            background: #FF0000;
-        }
-
-        .streaming-links a.spotify {
-            background: #1DB954;
         }
 
         .track-list {
@@ -386,17 +287,26 @@
             .newsletter-form { flex-direction: column; }
         }
     </style>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Colby Hayes | Static - Debut Album">
+    <meta property="og:description" content="Indie-pop artist. Debut album Static featuring 10 original tracks of emotional, vulnerable songwriting.">
+    <meta property="og:type" content="music.musician">
+    <meta property="og:url" content="https://reclaimmedia.co/colby-hayes/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Colby Hayes | Static - Debut Album">
+    <meta name="twitter:description" content="Indie-pop artist. Debut album Static featuring 10 original tracks of emotional, vulnerable songwriting.">
 </head>
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="index.html" class="nav-brand">Colby Hayes</a>
+            <a href="./index.html" class="nav-brand">Colby Hayes</a>
             <div class="nav-links">
                 <a href="./">Home</a>
-                <a href="lyrics/">Lyrics</a>
-                <a href="chords/">Chords</a>
-                <a href="meaning/">Song Meanings</a>
-                <a href="playlists/">Playlists</a>
+                <a href="./lyrics/">Lyrics</a>
+                <a href="./chords/">Chords</a>
+                <a href="./meaning/">Song Meanings</a>
+                <a href="./playlists/">Playlists</a>
                 <a href="../">Reclaim Media</a>
             </div>
         </div>
@@ -414,20 +324,20 @@
                 <a href="https://youtube.com/@colbyhayes" target="_blank">▶️ YouTube</a>
                 <a href="https://instagram.com/colbyhayes" target="_blank">📷 Instagram</a>
                 <a href="https://open.spotify.com/artist/colbyhayes" target="_blank">🎵 Spotify</a>
-                <a href="https://tiktok.com/@colbyhayes" target="_blank">🎵 TikTok</a>
+                <a href="https://tiktok.com/@colbyhayesmusic" target="_blank">🎵 TikTok</a>
             </div>
         </section>
 
         <section class="album-section">
             <div class="album-header">
                 <div class="album-cover">
-                    <img src="album-cover.jpg" alt="Static in the Dark Album Cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    <img src="album-cover.jpg" alt="Static Album Cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                 </div>
                 <div class="album-info">
-                    <h2>Static in the Dark</h2>
+                    <h2>Static</h2>
                     <p class="album-meta">Debut Album | 10 Tracks | February 2026</p>
                     <p class="album-description">
-                        From midnight overthinking to learning how to leave, "Static in the Dark" is a journey through the messy, beautiful chaos of being young and trying to figure it all out. Every song hits where it hurts.
+                        From midnight overthinking to learning how to leave, "Static" is a journey through the messy, beautiful chaos of being young and trying to figure it all out. Every song hits where it hurts.
                     </p>
                     <div class="streaming-links">
                         <a href="https://youtube.com/@colbyhayes" class="youtube" target="_blank">▶️ YouTube</a>
@@ -515,7 +425,7 @@
         <section class="about-section">
             <h2>About Colby Hayes</h2>
             <p>
-                Colby Hayes is an indie-pop artist who transforms late-night overthinking into something beautiful. His debut album "Static in the Dark" is a collection of ten songs that feel like texts you almost sent, conversations you rehearsed in the shower, and the moments you wish you could take back.
+                Colby Hayes is an indie-pop artist who transforms late-night overthinking into something beautiful. His debut album "Static" is a collection of ten songs that feel like texts you almost sent, conversations you rehearsed in the shower, and the moments you wish you could take back.
             </p>
             <p>
                 Growing up between coffee shops and bedroom studios, Colby developed a sound that sits comfortably in the space between quiet reflection and anthemic release. His music doesn't shy away from the uncomfortable parts of growing up: the situationships that never quite became relationships, the hometown memories that follow you everywhere, and the slow realization that some people are better left as strangers.

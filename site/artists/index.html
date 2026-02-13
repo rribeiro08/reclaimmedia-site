@@ -11,6 +11,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Reclaim Media Artists",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Dakota Rose",
+          "url": "https://reclaimmedia.co/dakota-rose/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Colby Hayes",
+          "url": "https://reclaimmedia.co/colby-hayes/"
+        }
+      ]
+    }
+    </script>
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Artists | Reclaim Media">
+    <meta property="og:description" content="Meet the artists of Reclaim Media. AI-powered musicians creating authentic, heartfelt music.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reclaimmedia.co/artists/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Artists | Reclaim Media">
+    <meta name="twitter:description" content="Meet the artists of Reclaim Media. AI-powered musicians creating authentic, heartfelt music.">
 </head>
 <body>
     <nav class="nav">
@@ -52,10 +82,19 @@
                 </div>
             </article>
             
-            <div class="artist-card coming-soon">
-                <p class="coming-soon-text">🎸 Rock Artist</p>
-                <p style="opacity: 0.4; font-size: 0.9rem;">Coming 2026</p>
-            </div>
+            <article class="artist-card">
+                <img src="/colby-hayes/headshot.png" alt="Colby Hayes" class="artist-image">
+                <div class="artist-info">
+                    <h3 class="artist-name">Colby Hayes</h3>
+                    <p class="artist-genre">Indie Pop • Bedroom Pop</p>
+                    <p class="artist-desc">
+                        Emotional, vulnerable songwriting that sits somewhere between Conan Gray and Hozier. 
+                        Debut album "Static in the Dark" features 10 original tracks of late-night thoughts, 
+                        almost-sent texts, and the quiet ache of growing up.
+                    </p>
+                    <a href="/colby-hayes/" class="artist-link">Visit Artist Page →</a>
+                </div>
+            </article>
             
             <div class="artist-card coming-soon">
                 <p class="coming-soon-text">🎹 Electronic Artist</p>

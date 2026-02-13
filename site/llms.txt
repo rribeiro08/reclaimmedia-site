@@ -1,0 +1,33 @@
+# Reclaim Media
+
+> AI-powered creative studio creating music, stories, and digital experiences using cutting-edge AI technology. Founded by Rudi Ribeiro Jr.
+
+## About
+- AI-powered creative studio based in the United States
+- Creates AI music artists with full personas, original music, and authentic storytelling
+- Also produces books, courses, and digital content
+- Founded by Rudi Ribeiro Jr., technologist and enterprise sales professional
+
+## Artists
+
+### Dakota Rose
+- Genre: Country music from Nashville
+- Debut Album: "Heart Wide Open" (12 tracks)
+- Style: Heartfelt country storytelling with powerful vocals
+- Streaming: Available on Spotify, YouTube, Apple Music
+- [Dakota Rose Artist Page](https://reclaimmedia.co/dakota-rose): Full track listing and bio
+- [Lyrics](https://reclaimmedia.co/dakota-rose/lyrics/index.html): Complete lyrics
+- [Song Meanings](https://reclaimmedia.co/dakota-rose/meaning/3-am.html): Analysis
+- [Guitar Chords](https://reclaimmedia.co/dakota-rose/chords/index.html): All songs
+
+### Colby Hayes
+- Genre: Indie Pop / Bedroom Pop
+- Debut Album: "Static" (10 tracks)
+- Style: Emotional, vulnerable songwriting
+- [Colby Hayes Artist Page](https://reclaimmedia.co/colby-hayes): Bio and music
+
+## Books
+- [The Personal Agent Revolution](https://reclaimmedia.co/books/agent-revolution): Building Your Own AI Agent with OpenClaw by Rudi Ribeiro Jr. ($29.95)
+
+## Contact
+- Website: https://reclaimmedia.co
