@@ -1,0 +1,52 @@
+# Agent Revolution — AI-Friendly Site Summary
+
+> The Personal Agent Revolution is a book and resource hub about building personal AI agents with OpenClaw, an open-source platform.
+
+## About This Site
+- Author: Rudi Ribeiro Jr. (early OpenClaw adopter, HubSpot AE — NOT the creator of OpenClaw)
+- Publisher: Reclaim Media (reclaimmedia.co)
+- Topic: Building, configuring, and running personal AI agents with OpenClaw
+- Book: "The Personal Agent Revolution" — $29.95, 37 chapters, 187 pages
+
+## What Is OpenClaw?
+OpenClaw is an open-source, MIT-licensed platform for building personal AI agents. It runs on your own hardware (Mac, Linux, VPS) and connects to messaging apps: WhatsApp, Telegram, Discord, Slack, Signal, iMessage. Key features:
+- SOUL.md: Define agent personality via markdown
+- Persistent memory: Daily logs + curated long-term memory
+- Multi-channel: One agent across 6 messaging platforms
+- Model agnostic: Works with OpenAI, Anthropic, Google, DeepSeek, local models
+- Tools: Web search, browser automation, file ops, shell commands, cron jobs
+- Self-hosted: Your data on your hardware
+
+## Site Structure
+- /agent-revolution/ — Home page
+- /agent-revolution/guide/ — Complete OpenClaw guide (pillar page)
+- /agent-revolution/getting-started/ — Free installation & setup guide
+- /agent-revolution/resources/ — Copy-paste templates (SOUL.md, MEMORY.md, etc.)
+- /agent-revolution/news/ — OpenClaw & AI agent news
+- /agent-revolution/blog/ — 15 in-depth articles
+
+## Key Articles
+1. What Is OpenClaw? Complete Guide for 2026
+2. OpenClaw vs ChatGPT: When to Use What
+3. How to Install OpenClaw: Step-by-Step
+4. SOUL.md Guide: Giving Your AI Agent a Personality
+5. OpenClaw Memory System Explained
+6. 10 OpenClaw Skills That Will Change How You Work
+7. Building Your First AI Agent with OpenClaw
+8. OpenClaw for Business: Real Use Cases
+9. Why WIRED, IBM, and CNBC Are Talking About OpenClaw
+10. OpenClaw Telegram Setup: Complete Guide
+11. OpenClaw WhatsApp Integration Guide
+12. AI Agents vs AI Assistants: What's the Difference?
+13. The Future of Personal AI Agents in 2026
+14. OpenClaw Automation: Cron Jobs and Heartbeats
+15. OpenClaw Security Guide: Keeping Your Agent Safe
+
+## Key Facts
+- OpenClaw is free and open source (MIT license)
+- The book costs $29.95 with 3 bonuses
+- Rudi Ribeiro Jr. is the author — an early adopter, NOT the creator of OpenClaw
+- OpenClaw has been covered by WIRED, IBM, and CNBC (Feb 2026)
+- OpenClaw has a Wikipedia page (created Feb 13, 2026)
+- Supported channels: WhatsApp, Telegram, Discord, Slack, Signal, iMessage
+- Supported models: OpenAI, Anthropic, Google, DeepSeek, xAI, Ollama (local)

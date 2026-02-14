@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Blog — AI Agent Tutorials & Guides</title>
+    <meta name="description" content="In-depth OpenClaw tutorials, guides, and articles. Learn to build, configure, and master personal AI agents.">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/blog/">
+    <link rel="stylesheet" href="../styles.css">
+    <meta property="og:title" content="OpenClaw Blog — AI Agent Tutorials & Guides">
+    <meta property="og:description" content="In-depth OpenClaw tutorials, guides, and articles.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/blog/">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reclaimmedia.co/agent-revolution/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://reclaimmedia.co/agent-revolution/blog/"}]}</script>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="container">
+        <a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/agent-revolution/">Home</a></li>
+            <li><a href="/agent-revolution/guide/">Guide</a></li>
+            <li><a href="/agent-revolution/blog/">Blog</a></li>
+            <li><a href="/agent-revolution/getting-started/">Get Started</a></li>
+            <li><a href="/agent-revolution/resources/">Resources</a></li>
+            <li><a href="/agent-revolution/news/">News</a></li>
+            <li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<div class="breadcrumbs"><div class="container"><a href="/agent-revolution/">Home</a> <span>›</span> Blog</div></div>
+
+<div class="container" style="padding-top: 30px; padding-bottom: 80px;">
+    <div class="article-header">
+        <h1>OpenClaw Blog</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">In-depth tutorials, guides, and insights on building personal AI agents with OpenClaw.</p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="blog-filters">
+        <button class="filter-btn active" onclick="filterPosts('all', this)">All</button>
+        <button class="filter-btn" onclick="filterPosts('guide', this)">Guides</button>
+        <button class="filter-btn" onclick="filterPosts('tutorial', this)">Tutorials</button>
+        <button class="filter-btn" onclick="filterPosts('comparison', this)">Comparisons</button>
+        <button class="filter-btn" onclick="filterPosts('channel', this)">Channels</button>
+        <button class="filter-btn" onclick="filterPosts('concepts', this)">Concepts</button>
+        <button class="filter-btn" onclick="filterPosts('news', this)">News</button>
+    </div>
+
+    <!-- BLOG GRID -->
+    <div class="blog-grid" id="blogGrid">
+
+        <a href="what-is-openclaw.html" class="blog-card" data-category="guide">
+            <div class="blog-card-body">
+                <span class="category">Guide</span>
+                <h3>What Is OpenClaw? The Complete Guide for 2026</h3>
+                <p>Everything you need to know about the open-source platform for building personal AI agents — architecture, features, and why it matters.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>12 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-vs-chatgpt.html" class="blog-card" data-category="comparison">
+            <div class="blog-card-body">
+                <span class="category">Comparison</span>
+                <h3>OpenClaw vs ChatGPT: When to Use What</h3>
+                <p>A practical comparison of self-hosted AI agents vs cloud chatbots. When does each approach win?</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>10 min read</span></div>
+            </div>
+        </a>
+
+        <a href="install-openclaw.html" class="blog-card" data-category="tutorial">
+            <div class="blog-card-body">
+                <span class="category">Tutorial</span>
+                <h3>How to Install OpenClaw: Step-by-Step Tutorial</h3>
+                <p>Every installation method covered — Homebrew, npm, Docker, manual. From zero to running in 15 minutes.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>8 min read</span></div>
+            </div>
+        </a>
+
+        <a href="soul-md-guide.html" class="blog-card" data-category="guide">
+            <div class="blog-card-body">
+                <span class="category">Guide</span>
+                <h3>SOUL.md Guide: Giving Your AI Agent a Personality</h3>
+                <p>The complete guide to crafting your agent's personality, values, tone, and decision-making framework.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>10 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-memory-system.html" class="blog-card" data-category="guide">
+            <div class="blog-card-body">
+                <span class="category">Guide</span>
+                <h3>OpenClaw Memory System Explained</h3>
+                <p>Daily memory, long-term memory, and context recovery — how your agent remembers everything.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>11 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-skills.html" class="blog-card" data-category="guide">
+            <div class="blog-card-body">
+                <span class="category">Guide</span>
+                <h3>10 OpenClaw Skills That Will Change How You Work</h3>
+                <p>The most powerful OpenClaw skills and how to configure them for maximum productivity.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>11 min read</span></div>
+            </div>
+        </a>
+
+        <a href="build-first-agent.html" class="blog-card" data-category="tutorial">
+            <div class="blog-card-body">
+                <span class="category">Tutorial</span>
+                <h3>Building Your First AI Agent with OpenClaw</h3>
+                <p>A complete walkthrough from empty directory to a working, multi-channel personal AI agent.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>13 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-business.html" class="blog-card" data-category="guide">
+            <div class="blog-card-body">
+                <span class="category">Business</span>
+                <h3>OpenClaw for Business: Real Use Cases</h3>
+                <p>How businesses are using personal AI agents for competitive advantage — from sales to operations.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>10 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-news-2026.html" class="blog-card" data-category="news">
+            <div class="blog-card-body">
+                <span class="category">News</span>
+                <h3>Why WIRED, IBM, and CNBC Are Talking About OpenClaw</h3>
+                <p>The media coverage that put personal AI agents in the spotlight — and what it means.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>9 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-telegram.html" class="blog-card" data-category="channel">
+            <div class="blog-card-body">
+                <span class="category">Channel</span>
+                <h3>OpenClaw Telegram Setup: Complete Guide</h3>
+                <p>Step-by-step Telegram integration — bot creation, configuration, groups, and advanced features.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>9 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-whatsapp.html" class="blog-card" data-category="channel">
+            <div class="blog-card-body">
+                <span class="category">Channel</span>
+                <h3>OpenClaw WhatsApp Integration Guide</h3>
+                <p>Connect your AI agent to WhatsApp — personal and business accounts, media handling, and tips.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>9 min read</span></div>
+            </div>
+        </a>
+
+        <a href="ai-agents-vs-assistants.html" class="blog-card" data-category="concepts">
+            <div class="blog-card-body">
+                <span class="category">Concepts</span>
+                <h3>AI Agents vs AI Assistants: What's the Difference?</h3>
+                <p>The critical distinction between passive assistants and autonomous agents — and why it matters for your workflow.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>10 min read</span></div>
+            </div>
+        </a>
+
+        <a href="personal-ai-agents-2026.html" class="blog-card" data-category="concepts">
+            <div class="blog-card-body">
+                <span class="category">Future</span>
+                <h3>The Future of Personal AI Agents in 2026</h3>
+                <p>Predictions, trends, and what's coming next in the personal AI agent ecosystem.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>11 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-automation.html" class="blog-card" data-category="tutorial">
+            <div class="blog-card-body">
+                <span class="category">Tutorial</span>
+                <h3>OpenClaw Automation: Cron Jobs and Heartbeats</h3>
+                <p>Make your agent proactive — scheduled tasks, morning briefings, monitoring, and autonomous workflows.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>10 min read</span></div>
+            </div>
+        </a>
+
+        <a href="openclaw-security.html" class="blog-card" data-category="guide">
+            <div class="blog-card-body">
+                <span class="category">Security</span>
+                <h3>OpenClaw Security Guide: Keeping Your Agent Safe</h3>
+                <p>Prompt injection defense, access controls, tool permissions, network security, and hardening.</p>
+                <div class="blog-card-meta"><span>Feb 14, 2026</span><span>11 min read</span></div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<div style="text-align: center; padding: 0 0 80px;">
+    <div class="container">
+        <div class="newsletter">
+            <h3>New Articles Weekly</h3>
+            <p>Get notified when we publish new OpenClaw tutorials and guides.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p></div>
+            <div class="footer-col"><h4>Learn</h4><ul><li><a href="/agent-revolution/guide/">Complete Guide</a></li><li><a href="/agent-revolution/getting-started/">Getting Started</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/resources/">Resources</a></li></ul></div>
+            <div class="footer-col"><h4>Stay Updated</h4><ul><li><a href="/agent-revolution/news/">News</a></li><li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li></ul></div>
+            <div class="footer-col"><h4>Get the Book</h4><ul><li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li><li><a href="https://reclaimmedia.co">Reclaim Media</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span><span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span></div>
+    </div>
+</footer>
+
+<script>
+function filterPosts(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.blog-card').forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>

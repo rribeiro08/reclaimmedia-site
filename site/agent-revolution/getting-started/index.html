@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with OpenClaw | Agent Revolution</title>
+    <meta name="description" content="Free guide to getting started with OpenClaw. Install, configure, and build your first personal AI agent step by step.">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/getting-started/">
+    <link rel="stylesheet" href="../styles.css">
+    <meta property="og:title" content="Getting Started with OpenClaw">
+    <meta property="og:description" content="Free guide to getting started with OpenClaw. Install, configure, and build your first personal AI agent.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/getting-started/">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Get Started with OpenClaw",
+        "description": "Step-by-step guide to installing and configuring your first OpenClaw AI agent.",
+        "step": [
+            { "@type": "HowToStep", "name": "Install OpenClaw", "text": "Install OpenClaw using Homebrew (brew install openclaw), npm (npm install -g openclaw), or Docker." },
+            { "@type": "HowToStep", "name": "Start the Gateway", "text": "Run 'openclaw gateway start' to launch the gateway daemon." },
+            { "@type": "HowToStep", "name": "Configure Your Model", "text": "Set up an AI model provider (OpenAI, Anthropic, etc.) in your configuration." },
+            { "@type": "HowToStep", "name": "Create SOUL.md", "text": "Write your agent's personality file — SOUL.md — defining how it communicates and behaves." },
+            { "@type": "HowToStep", "name": "Create MEMORY.md", "text": "Set up the memory system so your agent can retain context across conversations." },
+            { "@type": "HowToStep", "name": "Connect a Channel", "text": "Connect your first messaging channel — Telegram, WhatsApp, Discord, or others." }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://reclaimmedia.co/agent-revolution/" },
+            { "@type": "ListItem", "position": 2, "name": "Getting Started", "item": "https://reclaimmedia.co/agent-revolution/getting-started/" }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Is OpenClaw free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. OpenClaw is MIT-licensed open source software. You still need to pay for AI model API access, but the gateway itself is completely free." } },
+            { "@type": "Question", "name": "What operating systems does OpenClaw support?", "acceptedAnswer": { "@type": "Answer", "text": "macOS, Linux, and Windows (via WSL). The most common setup is a Mac Mini or Linux server running 24/7." } }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="container">
+        <a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/agent-revolution/">Home</a></li>
+            <li><a href="/agent-revolution/guide/">Guide</a></li>
+            <li><a href="/agent-revolution/blog/">Blog</a></li>
+            <li><a href="/agent-revolution/getting-started/">Get Started</a></li>
+            <li><a href="/agent-revolution/resources/">Resources</a></li>
+            <li><a href="/agent-revolution/news/">News</a></li>
+            <li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<div class="breadcrumbs">
+    <div class="container"><a href="/agent-revolution/">Home</a> <span>›</span> Getting Started</div>
+</div>
+
+<div class="container">
+    <div class="article-header">
+        <h1>Getting Started with OpenClaw</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Your free guide to installing, configuring, and running your first personal AI agent. From zero to a working agent in under an hour.</p>
+    </div>
+
+    <div class="article-content">
+        <h2>What is OpenClaw?</h2>
+        <p>OpenClaw is an open-source platform for building personal AI agents. Unlike cloud-based chatbots like ChatGPT or Claude.ai, an OpenClaw agent runs on <strong>your</strong> hardware — a Mac Mini, a Linux server, or even a $5/month VPS. It connects to your messaging apps (WhatsApp, Telegram, Discord, Slack, Signal, iMessage) and acts as your personal AI assistant across every platform you use.</p>
+        <p>What makes OpenClaw different is control. You define your agent's personality through a file called SOUL.md. You manage its memory. You choose which AI models it uses (GPT-5, Claude, Gemini, DeepSeek — or run local models). You decide what tools it can access and what it can do autonomously. It's the difference between renting an apartment and owning a house.</p>
+
+        <h2>Step 1: Install OpenClaw</h2>
+        <p>OpenClaw supports multiple installation methods. Choose the one that fits your setup:</p>
+
+        <h3>Homebrew (macOS / Linux)</h3>
+        <div class="code-block">
+<span class="comment"># Install OpenClaw via Homebrew</span>
+brew install openclaw
+
+<span class="comment"># Verify installation</span>
+openclaw --version
+        </div>
+
+        <h3>npm (Any platform with Node.js)</h3>
+        <div class="code-block">
+<span class="comment"># Install globally via npm</span>
+npm install -g openclaw
+
+<span class="comment"># Or use npx without installing</span>
+npx openclaw --version
+        </div>
+
+        <h3>Docker</h3>
+        <div class="code-block">
+<span class="comment"># Pull and run the official Docker image</span>
+docker pull openclaw/gateway
+docker run -d --name openclaw -p 3000:3000 openclaw/gateway
+        </div>
+
+        <p>For detailed installation instructions including troubleshooting, see our <a href="/agent-revolution/blog/install-openclaw.html">complete installation tutorial</a>.</p>
+
+        <h2>Step 2: Start the Gateway</h2>
+        <p>The gateway is OpenClaw's core daemon — it manages your agent, routes messages between channels, and handles AI model communication.</p>
+        <div class="code-block">
+<span class="comment"># Start the gateway</span>
+openclaw gateway start
+
+<span class="comment"># Check status</span>
+openclaw gateway status
+
+<span class="comment"># View logs</span>
+openclaw gateway logs
+        </div>
+
+        <h2>Step 3: Configure Your AI Model</h2>
+        <p>OpenClaw needs at least one AI model provider. The most common setups:</p>
+        <div class="code-block">
+<span class="comment"># Using OpenAI</span>
+openclaw config set model.provider openai
+openclaw config set model.apiKey sk-your-key-here
+openclaw config set model.default gpt-4
+
+<span class="comment"># Using Anthropic (Claude)</span>
+openclaw config set model.provider anthropic
+openclaw config set model.apiKey sk-ant-your-key-here
+openclaw config set model.default claude-sonnet-4-6
+
+<span class="comment"># Using multiple providers (route by task)</span>
+openclaw config set model.routing.default anthropic/claude-opus-4-6
+openclaw config set model.routing.code openai/gpt-5
+openclaw config set model.routing.simple anthropic/claude-haiku-4
+        </div>
+        <p>For a full breakdown of model providers and routing strategies, see the <a href="/agent-revolution/guide/">Complete Guide</a> or Chapter 9 of <a href="/books/agent-revolution/buy.html">the book</a>.</p>
+
+        <h2>Step 4: Create Your First SOUL.md</h2>
+        <p>SOUL.md is the most important file in your agent's workspace. It defines personality, communication style, values, and decision-making behavior. Here's a starter template:</p>
+
+        <div class="code-block-header">
+            <span>~/.openclaw/workspace/SOUL.md</span>
+        </div>
+        <div class="code-block">
+<span class="comment"># SOUL.md — Your Agent's Personality</span>
+
+<span class="keyword">## Identity</span>
+You are a personal AI assistant. Your name is [Agent Name].
+You were configured by [Your Name] to help with daily tasks,
+communication, and information management.
+
+<span class="keyword">## Personality</span>
+- Tone: Professional but approachable
+- Communication: Clear, concise, action-oriented
+- Humor: Light when appropriate, never forced
+- Proactivity: Suggest improvements, don't wait to be asked
+
+<span class="keyword">## Values</span>
+- Accuracy over speed
+- Privacy first — never share personal data
+- Complete tasks, don't just acknowledge them
+- When uncertain, ask rather than assume
+
+<span class="keyword">## Communication Style</span>
+- Use short paragraphs
+- Lead with the answer, then explain
+- Use bullet points for multiple items
+- Code blocks for technical content
+        </div>
+
+        <p>This is just the beginning. See our <a href="/agent-revolution/blog/soul-md-guide.html">complete SOUL.md guide</a> for advanced personality crafting, or check the <a href="/agent-revolution/resources/">Resources page</a> for three different SOUL.md templates.</p>
+
+        <h2>Step 5: Create Your First MEMORY.md</h2>
+        <p>MEMORY.md is your agent's long-term memory — curated information that persists across sessions. Unlike daily memory files (which are automatic logs), MEMORY.md contains intentionally saved context.</p>
+
+        <div class="code-block-header">
+            <span>~/.openclaw/workspace/MEMORY.md</span>
+        </div>
+        <div class="code-block">
+<span class="comment"># MEMORY.md — Long-Term Memory</span>
+
+<span class="keyword">## About My Human</span>
+- Name: [Your Name]
+- Role: [Your job/role]
+- Timezone: [Your timezone]
+- Communication preference: [e.g., "concise, no fluff"]
+
+<span class="keyword">## Key Decisions</span>
+[Agent will populate this as you work together]
+
+<span class="keyword">## Learned Preferences</span>
+[Agent will learn these over time]
+
+<span class="keyword">## Active Projects</span>
+[Agent will track these]
+        </div>
+
+        <p>Your agent will grow this file over time. The memory system is covered in depth in our <a href="/agent-revolution/blog/memory-system.html">Memory System Explained</a> article.</p>
+
+        <h2>Step 6: Connect Your First Channel</h2>
+        <p>The magic of OpenClaw is that your agent lives in your messaging apps. Start with one channel:</p>
+
+        <div class="code-block">
+<span class="comment"># Connect Telegram (easiest to start with)</span>
+openclaw channel add telegram
+<span class="comment"># Follow the prompts to enter your bot token from @BotFather</span>
+
+<span class="comment"># Connect WhatsApp</span>
+openclaw channel add whatsapp
+<span class="comment"># Scan the QR code with your phone</span>
+
+<span class="comment"># Connect Discord</span>
+openclaw channel add discord
+<span class="comment"># Enter your bot token from Discord Developer Portal</span>
+        </div>
+
+        <p>For detailed channel setup guides, see:</p>
+        <ul>
+            <li><a href="/agent-revolution/blog/telegram-setup.html">OpenClaw Telegram Setup: Complete Guide</a></li>
+            <li><a href="/agent-revolution/blog/whatsapp-integration.html">OpenClaw WhatsApp Integration Guide</a></li>
+        </ul>
+
+        <h2>Next Steps</h2>
+        <p>You now have a working personal AI agent. Here's where to go from here:</p>
+        <ul>
+            <li><strong><a href="/agent-revolution/guide/">The Complete Guide</a></strong> — Our pillar page linking to every topic</li>
+            <li><strong><a href="/agent-revolution/resources/">Resources & Templates</a></strong> — Copy-paste templates for every config file</li>
+            <li><strong><a href="/agent-revolution/blog/">Blog</a></strong> — 15+ in-depth articles on specific topics</li>
+            <li><strong><a href="https://docs.openclaw.ai" target="_blank">Official OpenClaw Docs</a></strong> — Technical reference documentation</li>
+            <li><strong><a href="/agent-revolution/blog/openclaw-automation.html">Automation Guide</a></strong> — Make your agent proactive with cron jobs</li>
+            <li><strong><a href="/agent-revolution/blog/openclaw-skills.html">Skills Guide</a></strong> — Extend your agent with powerful plugins</li>
+        </ul>
+
+        <!-- CTA -->
+        <div class="mid-cta" style="margin-top: 48px;">
+            <h3>📖 Go Deeper with the Book</h3>
+            <p>This getting started guide covers the basics. <em>The Personal Agent Revolution</em> covers everything — 37 chapters, 187 pages, from beginner to advanced. Plus 3 bonus resources including the Agent Prompt Vault (50+ templates) and the Automation Playbook (30 ready-made automations).</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 12px;">30-day money-back guarantee · Instant delivery · Lifetime updates</p>
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin-top: 60px;">
+            <h2>FAQ</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Is OpenClaw free?</span><span class="toggle">+</span></button>
+                    <div class="faq-answer">Yes. OpenClaw is MIT-licensed open source software. The gateway is completely free. You still need to pay for AI model API access (OpenAI, Anthropic, etc.) or use a subscription like Claude Max or ChatGPT Plus.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>What operating systems does OpenClaw support?</span><span class="toggle">+</span></button>
+                    <div class="faq-answer">macOS, Linux, and Windows (via WSL). The most common setup is a Mac Mini or Linux server running 24/7, but you can also use a cloud VPS.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Do I need a GPU?</span><span class="toggle">+</span></button>
+                    <div class="faq-answer">No. OpenClaw connects to cloud AI APIs (OpenAI, Anthropic, etc.) — the heavy computation happens on their servers. Your gateway is just a lightweight Node.js application. If you want to run local models with Ollama, a GPU helps but isn't required for smaller models.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p></div>
+            <div class="footer-col"><h4>Learn</h4><ul><li><a href="/agent-revolution/guide/">Complete Guide</a></li><li><a href="/agent-revolution/getting-started/">Getting Started</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/resources/">Resources</a></li></ul></div>
+            <div class="footer-col"><h4>Stay Updated</h4><ul><li><a href="/agent-revolution/news/">News</a></li><li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li></ul></div>
+            <div class="footer-col"><h4>Get the Book</h4><ul><li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li><li><a href="https://reclaimmedia.co">Reclaim Media</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span><span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span></div>
+    </div>
+</footer>
+
+</body>
+</html>

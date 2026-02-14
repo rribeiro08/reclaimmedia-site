@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Automation: Cron Jobs and Heartbeats Guide</title>
+    <meta name="description" content="Make your OpenClaw agent proactive with scheduled tasks, morning briefings, monitoring, and autonomous workflows using cron jobs and the heartbeat system.">
+    <meta name="keywords" content="openclaw automation, openclaw cron jobs, openclaw heartbeat, ai agent automation, proactive ai agent, openclaw scheduled tasks">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/blog/openclaw-automation.html">
+    <link rel="stylesheet" href="../styles.css">
+    <meta property="og:title" content="OpenClaw Automation: Cron Jobs and Heartbeats">
+    <meta property="og:description" content="Make your agent proactive — scheduled tasks, morning briefings, monitoring, and autonomous workflows.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/blog/openclaw-automation.html">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OpenClaw Automation: Cron Jobs and Heartbeats","author":{"@type":"Person","name":"Rudi Ribeiro Jr."},"publisher":{"@type":"Organization","name":"Reclaim Media"},"datePublished":"2026-02-14","dateModified":"2026-02-14","description":"Guide to making your OpenClaw agent proactive with automation.","mainEntityOfPage":"https://reclaimmedia.co/agent-revolution/blog/openclaw-automation.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reclaimmedia.co/agent-revolution/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://reclaimmedia.co/agent-revolution/blog/"},{"@type":"ListItem","position":3,"name":"Automation","item":"https://reclaimmedia.co/agent-revolution/blog/openclaw-automation.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is OpenClaw's heartbeat system?","acceptedAnswer":{"@type":"Answer","text":"The heartbeat is OpenClaw's scheduled task system. At configurable intervals, the agent 'wakes up' and checks HEARTBEAT.md for tasks to perform — morning briefings, monitoring checks, data collection, maintenance tasks, and more. It's how your agent becomes proactive instead of purely reactive."}},{"@type":"Question","name":"Can OpenClaw run cron jobs?","acceptedAnswer":{"@type":"Answer","text":"Yes. OpenClaw supports both its native heartbeat system (defined in HEARTBEAT.md) and integration with system cron for more complex scheduling needs. The heartbeat system is simpler for most use cases; system cron provides more granular timing control."}},{"@type":"Question","name":"What can I automate with OpenClaw?","acceptedAnswer":{"@type":"Answer","text":"Common automations include morning briefings, website monitoring, scheduled reports, data backups, content scheduling, competitive intelligence, email digests, system health checks, and social media management. Essentially anything you'd do manually on a schedule."}},{"@type":"Question","name":"Is OpenClaw automation safe?","acceptedAnswer":{"@type":"Answer","text":"Automation respects your trust tier configuration. Auto-approved tasks (reading files, searching web) run freely. Tasks requiring human approval still prompt you. You define the boundaries in AGENTS.md, ensuring automated tasks never exceed your comfort level."}}]}</script>
+</head>
+<body>
+
+<nav class="site-nav"><div class="container"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><ul class="nav-links" id="navLinks"><li><a href="/agent-revolution/">Home</a></li><li><a href="/agent-revolution/guide/">Guide</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/getting-started/">Get Started</a></li><li><a href="/agent-revolution/resources/">Resources</a></li><li><a href="/agent-revolution/news/">News</a></li><li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button></div></nav>
+
+<div class="breadcrumbs"><div class="container"><a href="/agent-revolution/">Home</a> <span>›</span> <a href="/agent-revolution/blog/">Blog</a> <span>›</span> Automation</div></div>
+
+<div class="container">
+    <div class="article-header">
+        <h1>OpenClaw Automation: Cron Jobs and Heartbeats</h1>
+        <div class="article-meta">
+            <span class="category">Tutorial</span>
+            <span>Feb 14, 2026</span>
+            <span>10 min read</span>
+            <span>By Rudi Ribeiro Jr.</span>
+        </div>
+    </div>
+
+    <div class="article-content">
+
+        <p>The moment your agent starts doing things without being asked is the moment it stops being a chatbot and becomes an agent. Automation is what makes the <a href="ai-agents-vs-assistants.html">agent vs assistant distinction</a> real — a proactive AI that monitors, alerts, reports, and acts on schedule transforms your relationship with technology.</p>
+
+        <p>OpenClaw's automation happens through two systems: the heartbeat (built-in scheduled checks) and integration with system cron for more complex scheduling. Both are simple to set up and dramatically expand what your agent can do.</p>
+
+        <h2>The Heartbeat System</h2>
+
+        <p>The heartbeat is OpenClaw's native automation engine. At regular intervals, the agent "wakes up" and checks <code>HEARTBEAT.md</code> in your workspace for tasks to perform. Think of it as a configurable alarm clock for your agent.</p>
+
+        <h3>How It Works</h3>
+        <ol>
+            <li>The gateway fires a heartbeat at configured intervals (typically every 15-60 minutes)</li>
+            <li>The agent reads HEARTBEAT.md</li>
+            <li>It evaluates which tasks are due based on time and conditions</li>
+            <li>It executes due tasks and logs results to daily <a href="openclaw-memory-system.html">memory</a></li>
+            <li>If a task produces output for you, it sends it to the configured channel</li>
+        </ol>
+
+        <h3>Your First HEARTBEAT.md</h3>
+
+        <div class="code-block">
+<span class="comment"># HEARTBEAT.md</span>
+
+## Core Principle
+Catch leverage early, ignore noise. Silence = nothing worth acting on.
+
+## Morning Briefing
+- **When:** 5:30am weekdays
+- **Channel:** Telegram
+- **Tasks:**
+  - Check today's calendar events
+  - Review yesterday's memory for pending items
+  - Summarize overnight work completed
+  - Flag urgent emails or messages
+  - Weather forecast for the day
+
+## Evening Scan
+- **When:** 8:00pm daily
+- **Channel:** Telegram
+- **Tasks:**
+  - Summarize what was accomplished today
+  - List items that need attention tomorrow
+  - Check for any scheduled overnight work to approve
+
+## Health Check
+- **When:** Every 4 hours
+- **Action:** Check gateway status, channel connections, disk space
+- **Alert only if:** Something is wrong
+        </div>
+
+        <p>Notice the principle at the top: "Silence = nothing worth acting on." This is crucial. A heartbeat that sends you a message every 15 minutes saying "Everything is fine!" defeats the purpose. The agent should only contact you when there's something worth your attention.</p>
+
+        <h2>Common Automation Recipes</h2>
+
+        <h3>1. Morning Briefing (The Gateway Drug)</h3>
+
+        <p>This is where most people start, and it's immediately valuable:</p>
+
+        <div class="code-block">
+## Morning Briefing
+- **When:** 6:00am weekdays
+- **Channel:** Telegram (as voice message)
+- **Include:**
+  - Calendar: Today's meetings with times and participants
+  - Tasks: Open action items from yesterday
+  - Emails: Flagged or urgent messages
+  - Weather: Temperature and conditions
+  - Custom: [Add anything relevant to your work]
+        </div>
+
+        <p>Using the TTS <a href="openclaw-skills.html">skill</a>, this can be delivered as an audio message you listen to while getting ready — arguably the most pleasant way to start a workday.</p>
+
+        <h3>2. Website Monitoring</h3>
+
+        <div class="code-block">
+## Website Monitor
+- **When:** Every 2 hours
+- **Check:** https://status.yourservice.com
+- **Alert if:** Status is not "All Systems Operational"
+- **Also check:** Response time > 3 seconds
+- **Channel:** Telegram + Slack
+        </div>
+
+        <h3>3. Competitive Intelligence</h3>
+
+        <div class="code-block">
+## Competitor Watch
+- **When:** 9:00am weekdays
+- **Do:**
+  - Search web for "[Competitor Name] news" (past 24 hours)
+  - Check competitor pricing page for changes
+  - Scan competitor social media for announcements
+- **Report:** Only if new information found
+- **Save:** Findings to memory/competitive-intel.md
+        </div>
+
+        <h3>4. Content Pipeline</h3>
+
+        <div class="code-block">
+## Content Check
+- **When:** 10:00am Monday
+- **Do:**
+  - Review content calendar for the week
+  - Check which posts are drafted but not published
+  - Identify gaps in the publishing schedule
+  - Generate content brief for missing slots
+- **Report:** Telegram with action items
+        </div>
+
+        <h3>5. System Maintenance</h3>
+
+        <div class="code-block">
+## System Health
+- **When:** Every 6 hours
+- **Check:**
+  - Disk space (alert if > 85% used)
+  - Memory usage
+  - pm2 process status
+  - SSL certificate expiry (alert if < 14 days)
+  - Backup status
+- **Alert only if:** Issues detected
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 50+ Automation Recipes in the Book</h3>
+            <p><em>The Personal Agent Revolution</em> includes 50+ tested automation recipes covering sales, content, monitoring, personal productivity, and team coordination.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <h2>System Cron Integration</h2>
+
+        <p>For more granular scheduling or tasks that need to run regardless of gateway state, you can use system cron:</p>
+
+        <div class="code-block">
+<span class="comment"># Edit crontab</span>
+crontab -e
+
+<span class="comment"># Morning briefing at 5:30am weekdays</span>
+30 5 * * 1-5 openclaw run "Deliver morning briefing to Telegram"
+
+<span class="comment"># Hourly health check</span>
+0 * * * * openclaw run "Check system health, alert if issues"
+
+<span class="comment"># Daily backup at midnight</span>
+0 0 * * * openclaw run "Backup workspace to git, commit daily changes"
+
+<span class="comment"># Weekly report every Friday at 4pm</span>
+0 16 * * 5 openclaw run "Generate weekly summary and send to Telegram"
+        </div>
+
+        <p>The <code>openclaw run</code> command sends a message to your agent as if you typed it. The agent processes it with full access to its personality, memory, skills, and tools.</p>
+
+        <h2>The Overnight Work Pattern</h2>
+
+        <p>One powerful automation pattern: queue work in the evening, let the agent execute overnight, review results in the morning.</p>
+
+        <div class="code-block">
+<span class="comment"># In AGENTS.md or a dedicated overnight-work.md</span>
+
+## Overnight Work Flow
+1. **8pm:** Evening scan delivers findings and proposals
+2. **Rudi approves:** Mark items as APPROVED
+3. **Overnight:** Agent moves items to IN PROGRESS, executes
+4. **5:30am:** Morning briefing reports COMPLETED items
+
+## Current Queue
+### APPROVED
+- Generate 7 social media posts for next week
+- Research top 5 VPS providers and create comparison
+
+### IN PROGRESS
+[Agent moves items here during execution]
+
+### COMPLETED
+[Agent moves items here when done, includes results]
+        </div>
+
+        <p>This pattern is incredibly efficient. You approve a batch of work before bed. You wake up to completed deliverables. Your agent literally works while you sleep.</p>
+
+        <h2>Automation Safety</h2>
+
+        <p>Automated tasks respect your trust tier configuration in <a href="openclaw-security.html">AGENTS.md</a>:</p>
+
+        <ul>
+            <li><strong>Tier 1 tasks</strong> (read, search, analyze, draft) run freely during automation</li>
+            <li><strong>Tier 2 tasks</strong> (deploy, schedule) execute but notify you</li>
+            <li><strong>Tier 3 tasks</strong> (external communications, spending) are queued for your approval, even during automated runs</li>
+        </ul>
+
+        <p>This means your 3am health check can read logs and analyze errors (Tier 1), restart a crashed service (Tier 2 with notification), but won't send an email to your client about the outage (Tier 3 — waits for your approval).</p>
+
+        <h2>Debugging Automation</h2>
+
+        <h3>Check Heartbeat Logs</h3>
+        <div class="code-block">
+<span class="comment"># View recent heartbeat activity</span>
+openclaw gateway logs --filter heartbeat
+
+<span class="comment"># Check if heartbeats are firing</span>
+openclaw gateway status
+        </div>
+
+        <h3>Common Issues</h3>
+        <ul>
+            <li><strong>Heartbeats not firing:</strong> Check gateway is running, heartbeat interval is configured</li>
+            <li><strong>Tasks not executing:</strong> Check HEARTBEAT.md formatting, ensure conditions are met</li>
+            <li><strong>No output:</strong> The agent may have determined there's nothing to report (which is correct behavior)</li>
+            <li><strong>Too many notifications:</strong> Add "alert only if" conditions to reduce noise</li>
+        </ul>
+
+        <h2>Advanced: Chaining Automations</h2>
+
+        <p>Individual automations are useful. Chains are powerful:</p>
+
+        <div class="code-block">
+## Content Automation Chain
+1. **Monday 9am:** Research trending topics (web search)
+2. **Monday 10am:** Generate content briefs from research
+3. **Monday-Wednesday:** Draft articles from approved briefs
+4. **Thursday 9am:** Compile all drafts for review
+5. **Friday:** Schedule approved content for next week
+        </div>
+
+        <p>Each step depends on the previous one. The agent manages the state, tracks progress in daily memory, and only proceeds when preconditions are met.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>What is OpenClaw's heartbeat system?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">A scheduled task system. The agent checks HEARTBEAT.md at regular intervals and executes due tasks — briefings, monitoring, reports, etc.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Can OpenClaw run cron jobs?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Yes. Both the native heartbeat system and system cron integration are supported. Use heartbeat for most tasks, cron for precise timing.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>What can I automate?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Morning briefings, monitoring, reports, content pipeline, backups, competitive intel, system maintenance — anything you'd do manually on a schedule.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Is automation safe?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Yes. Automation respects your trust tiers. Safe operations auto-execute. Risky operations still require your approval, even during automated runs.</div>
+            </div>
+        </div>
+
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=OpenClaw%20Automation%3A%20Cron%20Jobs%20and%20Heartbeats&url=https://reclaimmedia.co/agent-revolution/blog/openclaw-automation.html" target="_blank" class="share-btn twitter">𝕏 Share</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://reclaimmedia.co/agent-revolution/blog/openclaw-automation.html" target="_blank" class="share-btn linkedin">LinkedIn</a>
+        </div>
+
+        <div class="author-bio-box">
+            <div class="avatar">👨‍💻</div>
+            <div>
+                <h4>Rudi Ribeiro Jr.</h4>
+                <div class="role">Early OpenClaw Adopter · HubSpot AE · Author of The Personal Agent Revolution</div>
+                <p>Rudi runs a personal AI agent daily and wrote <a href="/books/agent-revolution/buy.html">The Personal Agent Revolution</a> based on hundreds of hours of real-world experience. He is not the creator of OpenClaw — he's a power user who documented everything he learned.</p>
+            </div>
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 Master OpenClaw with the Book</h3>
+            <p>37 chapters, 187 pages, 3 bonus resources. 50+ automation recipes included.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <div class="related-articles">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <a href="openclaw-skills.html" class="blog-card"><div class="blog-card-body"><h3>10 OpenClaw Skills That Will Change How You Work</h3></div></a>
+                <a href="build-first-agent.html" class="blog-card"><div class="blog-card-body"><h3>Building Your First AI Agent</h3></div></a>
+                <a href="openclaw-security.html" class="blog-card"><div class="blog-card-body"><h3>OpenClaw Security Guide</h3></div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p></div><div class="footer-col"><h4>Learn</h4><ul><li><a href="/agent-revolution/guide/">Complete Guide</a></li><li><a href="/agent-revolution/getting-started/">Getting Started</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/resources/">Resources</a></li></ul></div><div class="footer-col"><h4>Stay Updated</h4><ul><li><a href="/agent-revolution/news/">News</a></li><li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li></ul></div><div class="footer-col"><h4>Get the Book</h4><ul><li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li><li><a href="https://reclaimmedia.co">Reclaim Media</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span><span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span></div></div></footer>
+
+</body>
+</html>

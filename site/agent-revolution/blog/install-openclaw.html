@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Install OpenClaw: Step-by-Step Tutorial (2026)</title>
+    <meta name="description" content="Complete OpenClaw installation guide covering Homebrew, npm, Docker, and manual setup. Go from zero to a running AI agent in 15 minutes.">
+    <meta name="keywords" content="install openclaw, openclaw setup, openclaw tutorial, openclaw homebrew, openclaw docker">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/blog/install-openclaw.html">
+    <link rel="stylesheet" href="../styles.css">
+    <meta property="og:title" content="How to Install OpenClaw: Step-by-Step Tutorial (2026)">
+    <meta property="og:description" content="Every installation method covered — Homebrew, npm, Docker, manual. From zero to running in 15 minutes.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/blog/install-openclaw.html">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Install OpenClaw: Step-by-Step Tutorial","author":{"@type":"Person","name":"Rudi Ribeiro Jr."},"publisher":{"@type":"Organization","name":"Reclaim Media"},"datePublished":"2026-02-14","dateModified":"2026-02-14","description":"Complete OpenClaw installation guide covering every method.","mainEntityOfPage":"https://reclaimmedia.co/agent-revolution/blog/install-openclaw.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reclaimmedia.co/agent-revolution/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://reclaimmedia.co/agent-revolution/blog/"},{"@type":"ListItem","position":3,"name":"Install OpenClaw","item":"https://reclaimmedia.co/agent-revolution/blog/install-openclaw.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the system requirements for OpenClaw?","acceptedAnswer":{"@type":"Answer","text":"Node.js 18 or higher, macOS, Linux, or Windows (via WSL). No GPU required. The gateway runs on any machine with 512MB+ RAM — a Mac Mini, Linux VPS ($5/mo), Raspberry Pi, or even a shared hosting account with Node.js support."}},{"@type":"Question","name":"How long does OpenClaw installation take?","acceptedAnswer":{"@type":"Answer","text":"The actual installation takes 2-3 minutes. Setting up your first channel (Telegram, WhatsApp, etc.) adds another 5-10 minutes. Full workspace configuration with personality and memory takes about an hour, but you can start chatting immediately."}},{"@type":"Question","name":"Can I install OpenClaw on a VPS?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any VPS with Node.js 18+ works — DigitalOcean, Linode, Hetzner, AWS EC2, etc. A $5/month VPS is plenty for a personal agent. Use pm2 or systemd to keep the gateway running."}},{"@type":"Question","name":"Do I need to install AI models locally?","acceptedAnswer":{"@type":"Answer","text":"No. OpenClaw connects to cloud AI providers (OpenAI, Anthropic, etc.) via their APIs. The AI computation happens on their servers. If you want fully local operation, you can optionally use Ollama to run models on your own hardware, but this requires a GPU."}}]}</script>
+</head>
+<body>
+
+<nav class="site-nav"><div class="container"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><ul class="nav-links" id="navLinks"><li><a href="/agent-revolution/">Home</a></li><li><a href="/agent-revolution/guide/">Guide</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/getting-started/">Get Started</a></li><li><a href="/agent-revolution/resources/">Resources</a></li><li><a href="/agent-revolution/news/">News</a></li><li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button></div></nav>
+
+<div class="breadcrumbs"><div class="container"><a href="/agent-revolution/">Home</a> <span>›</span> <a href="/agent-revolution/blog/">Blog</a> <span>›</span> Install OpenClaw</div></div>
+
+<div class="container">
+    <div class="article-header">
+        <h1>How to Install OpenClaw: Step-by-Step Tutorial</h1>
+        <div class="article-meta">
+            <span class="category">Tutorial</span>
+            <span>Feb 14, 2026</span>
+            <span>8 min read</span>
+            <span>By Rudi Ribeiro Jr.</span>
+        </div>
+    </div>
+
+    <div class="article-content">
+
+        <p>Getting OpenClaw running is surprisingly simple. The entire platform is a Node.js application — no GPU required, no complex dependencies, no Docker wizardry (unless you want it). In this guide, I'll walk through every installation method so you can pick the one that matches your setup.</p>
+
+        <h2>Prerequisites</h2>
+
+        <p>Before you start, make sure you have:</p>
+
+        <ul>
+            <li><strong>Node.js 18 or higher</strong> — Check with <code>node --version</code></li>
+            <li><strong>A machine to run the gateway</strong> — Mac, Linux, or Windows (WSL). A Mac Mini, Linux VPS, or even a Raspberry Pi works.</li>
+            <li><strong>An AI model API key</strong> — You'll need at least one: OpenAI, Anthropic, or another supported provider</li>
+        </ul>
+
+        <p>That's it. No GPU, no CUDA, no 32GB of RAM. The gateway is lightweight — it orchestrates, it doesn't compute. The heavy lifting happens on the AI provider's servers.</p>
+
+        <h2>Method 1: Homebrew (macOS — Recommended)</h2>
+
+        <p>If you're on a Mac, this is the fastest path:</p>
+
+        <div class="code-block">
+<span class="comment"># Install OpenClaw</span>
+brew install openclaw
+
+<span class="comment"># Verify installation</span>
+openclaw --version
+
+<span class="comment"># Start the gateway</span>
+openclaw gateway start
+
+<span class="comment"># Check status</span>
+openclaw gateway status
+        </div>
+
+        <p>That's genuinely it. Homebrew handles dependencies, creates the workspace directory at <code>~/.openclaw/workspace/</code>, and sets up the CLI. The gateway starts as a background daemon.</p>
+
+        <h2>Method 2: npm (Cross-Platform)</h2>
+
+        <p>Works on macOS, Linux, and Windows (via WSL):</p>
+
+        <div class="code-block">
+<span class="comment"># Install globally via npm</span>
+npm install -g openclaw
+
+<span class="comment"># Or use npx to run without global install</span>
+npx openclaw gateway start
+        </div>
+
+        <p>The npm method is the most portable. If you have Node.js, you have OpenClaw. This is also the recommended approach for VPS deployments.</p>
+
+        <h2>Method 3: Docker</h2>
+
+        <p>If you prefer containerized deployments:</p>
+
+        <div class="code-block">
+<span class="comment"># Pull the official image</span>
+docker pull openclaw/gateway:latest
+
+<span class="comment"># Run with your workspace mounted</span>
+docker run -d \
+  --name openclaw \
+  -v ~/.openclaw:/root/.openclaw \
+  -p 3000:3000 \
+  openclaw/gateway:latest
+        </div>
+
+        <p>Docker is ideal for users who want isolation or are deploying alongside other services. The mounted volume ensures your workspace files persist between container restarts.</p>
+
+        <h2>Method 4: Manual / From Source</h2>
+
+        <p>For developers who want to inspect or modify the code:</p>
+
+        <div class="code-block">
+<span class="comment"># Clone the repository</span>
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+
+<span class="comment"># Install dependencies</span>
+npm install
+
+<span class="comment"># Start the gateway</span>
+npm start
+        </div>
+
+        <p>Building from source gives you full access to the codebase. This is the MIT-licensed, open-source project — you can fork it, modify it, contribute to it, or just read the code to understand what's happening under the hood.</p>
+
+        <h2>Post-Installation Setup</h2>
+
+        <p>Once the gateway is running, you need to configure three things:</p>
+
+        <h3>1. Set Up Your AI Model</h3>
+
+        <p>OpenClaw needs at least one AI model to function. The most common choices:</p>
+
+        <div class="code-block">
+<span class="comment"># Configure via the CLI</span>
+openclaw config set model.default "anthropic/claude-sonnet-4"
+openclaw config set model.apiKey "sk-ant-..."
+
+<span class="comment"># Or set environment variables</span>
+export ANTHROPIC_API_KEY="sk-ant-..."
+export OPENAI_API_KEY="sk-..."
+        </div>
+
+        <p>You can use any combination of providers. Many users set up multiple models and <a href="what-is-openclaw.html">route different tasks to different models</a> based on cost and capability.</p>
+
+        <h3>2. Connect Your First Channel</h3>
+
+        <p>Your agent needs somewhere to talk. <a href="openclaw-telegram.html">Telegram</a> is the easiest first channel:</p>
+
+        <div class="code-block">
+<span class="comment"># Add Telegram channel</span>
+openclaw channel add telegram
+
+<span class="comment"># Follow the prompts to enter your bot token</span>
+<span class="comment"># (Get a token from @BotFather on Telegram)</span>
+        </div>
+
+        <p>For other channels, see our <a href="openclaw-whatsapp.html">WhatsApp guide</a> or the <a href="/agent-revolution/guide/">complete guide</a>.</p>
+
+        <h3>3. Create Your Workspace Files</h3>
+
+        <p>The workspace at <code>~/.openclaw/workspace/</code> defines your agent. At minimum, create these files:</p>
+
+        <div class="code-block">
+<span class="comment"># Create the essential files</span>
+cd ~/.openclaw/workspace
+
+<span class="comment"># SOUL.md — Your agent's personality</span>
+cat > SOUL.md << 'EOF'
+# Who I Am
+I am a helpful, direct personal assistant.
+I value clarity over verbosity.
+I lead with the answer, then explain if needed.
+EOF
+
+<span class="comment"># USER.md — Context about you</span>
+cat > USER.md << 'EOF'
+# About My Human
+Name: [Your Name]
+Timezone: [Your Timezone]
+Key context: [Anything your agent should always know]
+EOF
+        </div>
+
+        <p>These files are just the starting point. Read our <a href="soul-md-guide.html">SOUL.md deep dive</a> and <a href="build-first-agent.html">Building Your First Agent</a> tutorial for complete guidance on crafting these files.</p>
+
+        <div class="mid-cta">
+            <h3>📖 Complete Setup in the Book</h3>
+            <p><em>The Personal Agent Revolution</em> includes complete, ready-to-use configuration files — SOUL.md templates, AGENTS.md examples, and advanced workspace setups tested over hundreds of hours.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <h2>Verify Everything Works</h2>
+
+        <p>Let's confirm your installation:</p>
+
+        <div class="code-block">
+<span class="comment"># Check gateway status</span>
+openclaw gateway status
+
+<span class="comment"># You should see:</span>
+<span class="comment"># Gateway: running</span>
+<span class="comment"># Model: anthropic/claude-sonnet-4</span>
+<span class="comment"># Channels: telegram (connected)</span>
+<span class="comment"># Workspace: /Users/you/.openclaw/workspace</span>
+        </div>
+
+        <p>Now open Telegram, find your bot, and send it a message. If everything is configured correctly, your agent will respond. Congratulations — you have a personal AI agent running on your hardware.</p>
+
+        <h2>Keeping OpenClaw Running 24/7</h2>
+
+        <p>For the agent to be always available, the gateway needs to stay running. Here are the common approaches:</p>
+
+        <h3>macOS: launchd (Automatic)</h3>
+        <p>The Homebrew installation typically sets up a launchd service automatically. If not:</p>
+
+        <div class="code-block">
+<span class="comment"># Enable auto-start on macOS</span>
+openclaw gateway enable
+        </div>
+
+        <h3>Linux/VPS: pm2 (Recommended)</h3>
+        <p>pm2 is a Node.js process manager that handles restarts, logging, and monitoring:</p>
+
+        <div class="code-block">
+<span class="comment"># Install pm2</span>
+npm install -g pm2
+
+<span class="comment"># Start OpenClaw with pm2</span>
+pm2 start openclaw -- gateway start
+
+<span class="comment"># Save so it survives reboot</span>
+pm2 save
+pm2 startup
+        </div>
+
+        <h3>Linux/VPS: systemd</h3>
+        <p>For systemd-based Linux distributions:</p>
+
+        <div class="code-block">
+<span class="comment"># Create a systemd service file</span>
+sudo cat > /etc/systemd/system/openclaw.service << 'EOF'
+[Unit]
+Description=OpenClaw Gateway
+After=network.target
+
+[Service]
+Type=simple
+User=your-username
+ExecStart=/usr/local/bin/openclaw gateway start --foreground
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+<span class="comment"># Enable and start</span>
+sudo systemctl enable openclaw
+sudo systemctl start openclaw
+        </div>
+
+        <h2>Common Installation Issues</h2>
+
+        <h3>Node.js Version Too Old</h3>
+        <p>OpenClaw requires Node.js 18+. If you're on an older version:</p>
+        <div class="code-block">
+<span class="comment"># Using nvm (recommended)</span>
+nvm install 20
+nvm use 20
+
+<span class="comment"># Or update via Homebrew</span>
+brew upgrade node
+        </div>
+
+        <h3>Permission Errors on npm Global Install</h3>
+        <p>If you get EACCES errors:</p>
+        <div class="code-block">
+<span class="comment"># Fix npm permissions (don't use sudo)</span>
+mkdir -p ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+        </div>
+
+        <h3>Gateway Won't Start</h3>
+        <p>Check the logs:</p>
+        <div class="code-block">
+<span class="comment"># View gateway logs</span>
+openclaw gateway logs
+
+<span class="comment"># Common fix: port already in use</span>
+openclaw gateway stop
+openclaw gateway start
+        </div>
+
+        <h3>Channel Connection Fails</h3>
+        <p>Most channel issues are authentication-related. Double-check your bot token (Telegram) or phone number linking (WhatsApp). Our <a href="openclaw-telegram.html">Telegram</a> and <a href="openclaw-whatsapp.html">WhatsApp</a> guides cover troubleshooting in detail.</p>
+
+        <h2>Recommended VPS Providers</h2>
+
+        <p>If you don't have a Mac Mini or Linux server at home, a VPS works perfectly:</p>
+
+        <ul>
+            <li><strong>Hetzner</strong> — €3.99/mo for 2 vCPU, 4GB RAM. Best value in Europe.</li>
+            <li><strong>DigitalOcean</strong> — $6/mo for 1 vCPU, 1GB RAM. Simple, reliable.</li>
+            <li><strong>Linode (Akamai)</strong> — $5/mo for 1 vCPU, 1GB RAM. Good documentation.</li>
+            <li><strong>AWS Lightsail</strong> — $3.50/mo for 512MB RAM. Cheapest option.</li>
+        </ul>
+
+        <p>Any of these will run OpenClaw comfortably. The gateway is lightweight — most of the CPU and memory usage goes to the Node.js runtime itself, not the OpenClaw application.</p>
+
+        <h2>Next Steps</h2>
+
+        <p>You've got OpenClaw installed and running. Here's your roadmap:</p>
+
+        <ol>
+            <li><a href="soul-md-guide.html"><strong>Craft Your SOUL.md</strong></a> — Give your agent a real personality</li>
+            <li><a href="build-first-agent.html"><strong>Build Your First Agent</strong></a> — Complete workspace configuration</li>
+            <li><a href="openclaw-memory-system.html"><strong>Set Up Memory</strong></a> — Enable persistent context</li>
+            <li><a href="openclaw-skills.html"><strong>Add Skills</strong></a> — Web search, file access, browser control</li>
+            <li><a href="openclaw-automation.html"><strong>Enable Automation</strong></a> — Morning briefings, scheduled tasks</li>
+        </ol>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>What are the system requirements?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Node.js 18+, macOS/Linux/Windows (WSL). No GPU required. 512MB+ RAM. A $5/mo VPS works fine.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>How long does installation take?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">2-3 minutes for the install. 5-10 minutes for channel setup. About an hour for full workspace configuration.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Can I install on a VPS?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Yes. Any VPS with Node.js 18+ works. DigitalOcean, Linode, Hetzner, AWS — all supported. Use pm2 or systemd to keep it running.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Do I need AI models installed locally?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">No. OpenClaw connects to cloud AI providers via their APIs. For fully local operation, you can optionally use Ollama, but that requires a GPU.</div>
+            </div>
+        </div>
+
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=How%20to%20Install%20OpenClaw%3A%20Step-by-Step&url=https://reclaimmedia.co/agent-revolution/blog/install-openclaw.html" target="_blank" class="share-btn twitter">𝕏 Share</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://reclaimmedia.co/agent-revolution/blog/install-openclaw.html" target="_blank" class="share-btn linkedin">LinkedIn</a>
+        </div>
+
+        <div class="author-bio-box">
+            <div class="avatar">👨‍💻</div>
+            <div>
+                <h4>Rudi Ribeiro Jr.</h4>
+                <div class="role">Early OpenClaw Adopter · HubSpot AE · Author of The Personal Agent Revolution</div>
+                <p>Rudi runs a personal AI agent daily and wrote <a href="/books/agent-revolution/buy.html">The Personal Agent Revolution</a> based on hundreds of hours of real-world experience. He is not the creator of OpenClaw — he's a power user who documented everything he learned.</p>
+            </div>
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 Master OpenClaw with the Book</h3>
+            <p>37 chapters, 187 pages, 3 bonus resources. Everything you need to build and run a personal AI agent.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <div class="related-articles">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <a href="build-first-agent.html" class="blog-card"><div class="blog-card-body"><h3>Building Your First AI Agent with OpenClaw</h3></div></a>
+                <a href="soul-md-guide.html" class="blog-card"><div class="blog-card-body"><h3>SOUL.md Guide: Giving Your Agent a Personality</h3></div></a>
+                <a href="openclaw-telegram.html" class="blog-card"><div class="blog-card-body"><h3>OpenClaw Telegram Setup: Complete Guide</h3></div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p></div><div class="footer-col"><h4>Learn</h4><ul><li><a href="/agent-revolution/guide/">Complete Guide</a></li><li><a href="/agent-revolution/getting-started/">Getting Started</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/resources/">Resources</a></li></ul></div><div class="footer-col"><h4>Stay Updated</h4><ul><li><a href="/agent-revolution/news/">News</a></li><li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li></ul></div><div class="footer-col"><h4>Get the Book</h4><ul><li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li><li><a href="https://reclaimmedia.co">Reclaim Media</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span><span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span></div></div></footer>
+
+</body>
+</html>

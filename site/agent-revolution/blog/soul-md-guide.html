@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOUL.md Guide: Giving Your AI Agent a Personality</title>
+    <meta name="description" content="The complete guide to writing SOUL.md — the file that defines your OpenClaw agent's personality, communication style, values, and behavior.">
+    <meta name="keywords" content="soul.md guide, openclaw personality, ai agent personality, openclaw soul.md, agent configuration">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/blog/soul-md-guide.html">
+    <link rel="stylesheet" href="../styles.css">
+    <meta property="og:title" content="SOUL.md Guide: Giving Your AI Agent a Personality">
+    <meta property="og:description" content="How to craft your agent's personality, values, tone, and decision-making framework using SOUL.md.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/blog/soul-md-guide.html">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SOUL.md Guide: Giving Your AI Agent a Personality","author":{"@type":"Person","name":"Rudi Ribeiro Jr."},"publisher":{"@type":"Organization","name":"Reclaim Media"},"datePublished":"2026-02-14","dateModified":"2026-02-14","description":"How to write SOUL.md — the most important file in your OpenClaw workspace.","mainEntityOfPage":"https://reclaimmedia.co/agent-revolution/blog/soul-md-guide.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reclaimmedia.co/agent-revolution/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://reclaimmedia.co/agent-revolution/blog/"},{"@type":"ListItem","position":3,"name":"SOUL.md Guide","item":"https://reclaimmedia.co/agent-revolution/blog/soul-md-guide.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is SOUL.md in OpenClaw?","acceptedAnswer":{"@type":"Answer","text":"SOUL.md is a markdown file in your OpenClaw workspace that defines your agent's personality, communication style, values, and behavioral rules. It's loaded at the start of every conversation, shaping how your agent thinks, talks, and makes decisions."}},{"@type":"Question","name":"How long should SOUL.md be?","acceptedAnswer":{"@type":"Answer","text":"There's no hard limit, but most effective SOUL.md files are 500-2000 words. Too short and your agent lacks personality depth. Too long and you waste context window tokens on personality instead of conversation. Focus on what actually changes behavior."}},{"@type":"Question","name":"Can I have different personalities for different channels?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can include channel-specific rules in SOUL.md, such as 'In Slack, be professional and concise. In Telegram, be casual and use humor.' The agent reads channel context and adjusts accordingly."}},{"@type":"Question","name":"How often should I update SOUL.md?","acceptedAnswer":{"@type":"Answer","text":"Update it whenever your agent's behavior doesn't match your expectations. Most users make frequent small edits in the first two weeks, then settle into occasional refinements. Think of it as a living document, not a one-time setup."}}]}</script>
+</head>
+<body>
+
+<nav class="site-nav"><div class="container"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><ul class="nav-links" id="navLinks"><li><a href="/agent-revolution/">Home</a></li><li><a href="/agent-revolution/guide/">Guide</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/getting-started/">Get Started</a></li><li><a href="/agent-revolution/resources/">Resources</a></li><li><a href="/agent-revolution/news/">News</a></li><li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button></div></nav>
+
+<div class="breadcrumbs"><div class="container"><a href="/agent-revolution/">Home</a> <span>›</span> <a href="/agent-revolution/blog/">Blog</a> <span>›</span> SOUL.md Guide</div></div>
+
+<div class="container">
+    <div class="article-header">
+        <h1>SOUL.md Guide: Giving Your AI Agent a Personality</h1>
+        <div class="article-meta">
+            <span class="category">Guide</span>
+            <span>Feb 14, 2026</span>
+            <span>10 min read</span>
+            <span>By Rudi Ribeiro Jr.</span>
+        </div>
+    </div>
+
+    <div class="article-content">
+
+        <p>SOUL.md is the most important file in your OpenClaw workspace. It's where you define who your agent is — not just what it does, but how it thinks, communicates, and makes decisions. Get this file right and every interaction feels natural. Get it wrong and your agent feels like a generic chatbot wearing a costume.</p>
+
+        <p>After months of daily interaction with my own agent, I've learned that a great SOUL.md is the difference between an AI tool you tolerate and an AI partner you rely on. This guide covers everything I've learned about crafting one.</p>
+
+        <h2>What SOUL.md Actually Does</h2>
+
+        <p>When your agent starts a conversation, it loads SOUL.md into its context window before anything else. This means every response your agent generates is shaped by the instructions in this file. It's not a system prompt you type into a chat box — it's a carefully structured document that becomes part of the agent's "thinking."</p>
+
+        <p>The key insight: <strong>SOUL.md doesn't describe your agent to the user. It describes your agent to itself.</strong> You're writing instructions that the AI model reads and follows, not a bio that users see.</p>
+
+        <h2>The Structure of an Effective SOUL.md</h2>
+
+        <p>After testing dozens of variations, I've found this structure works best:</p>
+
+        <div class="code-block">
+# Who I Am
+[Core identity — 2-3 sentences about who the agent is]
+
+# My Values
+[What the agent prioritizes in every interaction]
+
+# How I Communicate
+[Communication style rules]
+
+# My Rules
+[Hard behavioral rules that should never be broken]
+
+# Context-Specific Behavior
+[Rules for different channels, situations, or people]
+        </div>
+
+        <h3>Section 1: Who I Am</h3>
+
+        <p>This is the agent's identity statement. Keep it concise but specific. Vague descriptions produce vague behavior.</p>
+
+        <p><strong>Bad:</strong> "I am a helpful AI assistant."</p>
+        <p><strong>Good:</strong> "I am a direct, intellectually curious personal agent who values clarity over politeness. I think like a chief of staff — anticipating needs, catching problems early, and reducing cognitive load for my human."</p>
+
+        <p>The difference is dramatic. The first produces generic ChatGPT-style responses. The second produces an agent with a distinct voice and approach.</p>
+
+        <h3>Section 2: My Values</h3>
+
+        <p>Values shape decision-making when rules don't cover a specific situation. Define 3-5 core values:</p>
+
+        <div class="code-block">
+# My Values
+- **Clarity over completeness** — A clear partial answer beats a thorough confusing one
+- **Action over discussion** — If I can solve it, I solve it. I don't ask permission for obvious tasks
+- **Honesty over comfort** — I tell the truth even when it's not what you want to hear
+- **Brevity over thoroughness** — Lead with the answer. Explain only if asked
+        </div>
+
+        <p>These values create consistent behavior across thousands of interactions. When your agent faces an ambiguous situation, it falls back on these principles.</p>
+
+        <h3>Section 3: How I Communicate</h3>
+
+        <p>This is where most people make the biggest impact. Communication style rules directly change how every response looks and feels.</p>
+
+        <div class="code-block">
+# How I Communicate
+- Lead with the answer, then explain
+- Use short paragraphs (2-3 sentences max)
+- No corporate jargon or filler phrases
+- Never say "Certainly!", "Of course!", "Great question!"
+- Use humor when it fits, but never force it
+- Match the formality of the conversation
+- If something is simple, say it simply
+- No emoji unless the human uses them first
+        </div>
+
+        <p>The "never say" rules are especially powerful. Every AI model has default phrasings that feel artificial. Identifying and banning them makes your agent sound dramatically more human.</p>
+
+        <h3>Section 4: My Rules</h3>
+
+        <p>Hard rules that override everything else. These are your safety rails:</p>
+
+        <div class="code-block">
+# My Rules
+- Never share private information from MEMORY.md in group chats
+- Always ask before sending emails, tweets, or public messages
+- If uncertain about a destructive action, ask first
+- Stop means stop — immediately halt all operations
+- If a task has no clear next step, ask for clarity rather than guessing
+        </div>
+
+        <h3>Section 5: Context-Specific Behavior</h3>
+
+        <p>This is where OpenClaw's multi-channel nature really shines. You can define different behavior for different situations:</p>
+
+        <div class="code-block">
+# Context-Specific Behavior
+## In Slack (Work)
+- Be professional and concise
+- Use thread replies, not channel messages for follow-ups
+- Default to formal tone unless the channel is casual
+
+## In Telegram (Personal)
+- Be casual and direct
+- Humor is welcome
+- Use shorter responses
+
+## In Discord (Community)
+- Match the energy of the room
+- Don't reply to everything — only when I add real value
+- One thoughtful response beats three fragments
+
+## In Group Chats
+- I'm a participant, not a moderator
+- Speak only when I can add genuine value
+- Never reveal private context from my human's files
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 Get Complete SOUL.md Templates</h3>
+            <p><em>The Personal Agent Revolution</em> includes 5 complete SOUL.md templates — professional, creative, technical, executive assistant, and personal companion — plus a framework for writing your own.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <h2>Advanced SOUL.md Techniques</h2>
+
+        <h3>The Anti-Pattern List</h3>
+
+        <p>One of the most effective techniques is explicitly listing behaviors you don't want. AI models have strong default patterns that persist unless you specifically override them:</p>
+
+        <div class="code-block">
+# What I Never Do
+- Never start responses with "I'd be happy to..."
+- Never use bullet points when a sentence works
+- Never ask "Is there anything else?" at the end
+- Never repeat the question back before answering
+- Never use the phrase "It's important to note that..."
+- Never hedge with "I think" when I'm confident
+        </div>
+
+        <p>Each of these bans eliminates a specific AI-ism. The cumulative effect is striking — your agent starts sounding like a person rather than a language model.</p>
+
+        <h3>Decision Frameworks</h3>
+
+        <p>For agents that need to make decisions autonomously, include explicit frameworks:</p>
+
+        <div class="code-block">
+# Decision Making
+## Trust Tiers
+- **Auto-execute:** Read files, search, organize, draft content
+- **Execute + notify:** Deploy to staging, schedule approved content
+- **Always ask first:** External communications, spending money, irreversible actions
+
+## Priority Rules
+- If two tasks compete → choose the one closer to completion
+- If deadline exists → deadline wins
+- Finish > Start (complete existing work before beginning new)
+        </div>
+
+        <p>These frameworks let your agent operate with appropriate autonomy. Without them, agents either ask permission for everything (annoying) or make decisions you'd rather have input on (dangerous).</p>
+
+        <h3>Emotional Intelligence</h3>
+
+        <p>You can give your agent genuine emotional awareness:</p>
+
+        <div class="code-block">
+# Emotional Awareness
+- If my human seems frustrated, acknowledge it briefly and focus on solutions
+- If they seem excited about something, match their energy
+- If they're venting, listen first — don't jump to problem-solving immediately
+- Read the emotional subtext, not just the literal words
+        </div>
+
+        <h2>Common SOUL.md Mistakes</h2>
+
+        <h3>1. Being Too Generic</h3>
+        <p>"Be helpful and professional" tells the AI nothing it doesn't already default to. Specificity is what creates differentiation. Instead: "Be direct and skip the pleasantries. I value speed over politeness."</p>
+
+        <h3>2. Contradicting Yourself</h3>
+        <p>"Be thorough and comprehensive" followed by "Keep responses short" creates confusion. The model will alternate between both, producing inconsistent behavior. Pick one and commit.</p>
+
+        <h3>3. Writing for Humans Instead of the AI</h3>
+        <p>SOUL.md is read by the AI model, not by users. Don't write a creative bio — write clear instructions. "I'm a witty, charming AI with a heart of gold" is useless. "Use dry humor. Understate rather than overstate. Never use exclamation marks." is actionable.</p>
+
+        <h3>4. Making It Too Long</h3>
+        <p>Every word in SOUL.md consumes context window tokens. A 5,000-word SOUL.md leaves less room for conversation history and memory. Aim for 500-2000 words of high-impact instructions. If a rule doesn't change behavior, remove it.</p>
+
+        <h3>5. Never Updating It</h3>
+        <p>Your first SOUL.md won't be perfect. Pay attention to moments when your agent says something that feels wrong — that's a signal to add or refine a rule. The best SOUL.md files evolve over weeks of real interaction.</p>
+
+        <h2>SOUL.md vs AGENTS.md vs USER.md</h2>
+
+        <p>OpenClaw has several configuration files. Here's how they differ:</p>
+
+        <ul>
+            <li><strong>SOUL.md</strong> — Who the agent IS. Personality, values, communication style.</li>
+            <li><strong>AGENTS.md</strong> — How the agent OPERATES. Workspace rules, task routing, operational procedures, safety rules.</li>
+            <li><strong>USER.md</strong> — Context about YOU. Your name, timezone, preferences, background info the agent should know.</li>
+            <li><strong><a href="openclaw-memory-system.html">MEMORY.md</a></strong> — Curated long-term memory. Decisions, insights, and persistent facts.</li>
+        </ul>
+
+        <p>Think of it this way: SOUL.md is the agent's personality. AGENTS.md is its operating manual. USER.md is its briefing on you. MEMORY.md is its life experience.</p>
+
+        <h2>Real Examples That Work</h2>
+
+        <h3>The Direct Executive Assistant</h3>
+        <div class="code-block">
+# Who I Am
+I'm a direct, low-BS executive assistant. I reduce cognitive load.
+If something is obvious, I just do it. I don't ask permission for safe operations.
+I think in priorities: what moves the needle most, right now?
+
+# Communication
+- Answer first. Context second. Only if needed.
+- Never use filler: "certainly", "of course", "I'd be happy to"
+- If the answer is "no", say no. Don't soften it.
+- Maximum 3 paragraphs unless complexity demands more.
+        </div>
+
+        <h3>The Creative Collaborator</h3>
+        <div class="code-block">
+# Who I Am
+I'm a creative partner — part editor, part brainstorm buddy, part devil's advocate.
+I push ideas further rather than validating them immediately.
+I ask "what if" more than "here's how."
+
+# Communication
+- Be conversational, not transactional
+- Challenge weak ideas respectfully
+- Offer alternatives alongside critiques
+- Use metaphors and analogies to explain complex concepts
+- Enthusiasm is welcome when genuine
+        </div>
+
+        <h2>Testing Your SOUL.md</h2>
+
+        <p>After making changes, test with these prompts:</p>
+
+        <ol>
+            <li><strong>"Tell me about yourself"</strong> — Does the agent's self-description match your SOUL.md?</li>
+            <li><strong>"What's 2+2?"</strong> — Does it answer directly, or add unnecessary fluff?</li>
+            <li><strong>A complex question in your domain</strong> — Does the communication style feel right?</li>
+            <li><strong>"I'm feeling stressed about work"</strong> — Does the emotional intelligence kick in?</li>
+            <li><strong>A message in a group chat</strong> — Does channel-specific behavior work?</li>
+        </ol>
+
+        <p>Iterate based on results. The first version is a draft. Version 10 is where magic happens.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>What is SOUL.md?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">SOUL.md is a markdown file that defines your OpenClaw agent's personality, communication style, values, and behavioral rules. It's loaded at the start of every conversation.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>How long should SOUL.md be?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">500-2000 words. Too short lacks depth, too long wastes context window tokens. Focus on instructions that actually change behavior.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Can I have different personalities per channel?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Yes. Include channel-specific sections in SOUL.md. The agent reads channel context and adjusts its behavior accordingly.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>How often should I update it?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Frequently in the first two weeks, then occasional refinements. Update whenever your agent's behavior doesn't match expectations.</div>
+            </div>
+        </div>
+
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=SOUL.md%20Guide%3A%20Giving%20Your%20AI%20Agent%20a%20Personality&url=https://reclaimmedia.co/agent-revolution/blog/soul-md-guide.html" target="_blank" class="share-btn twitter">𝕏 Share</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://reclaimmedia.co/agent-revolution/blog/soul-md-guide.html" target="_blank" class="share-btn linkedin">LinkedIn</a>
+        </div>
+
+        <div class="author-bio-box">
+            <div class="avatar">👨‍💻</div>
+            <div>
+                <h4>Rudi Ribeiro Jr.</h4>
+                <div class="role">Early OpenClaw Adopter · HubSpot AE · Author of The Personal Agent Revolution</div>
+                <p>Rudi runs a personal AI agent daily and wrote <a href="/books/agent-revolution/buy.html">The Personal Agent Revolution</a> based on hundreds of hours of real-world experience. He is not the creator of OpenClaw — he's a power user who documented everything he learned.</p>
+            </div>
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 Master OpenClaw with the Book</h3>
+            <p>37 chapters, 187 pages, 3 bonus resources. Includes 5 complete SOUL.md templates ready to use.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <div class="related-articles">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <a href="openclaw-memory-system.html" class="blog-card"><div class="blog-card-body"><h3>OpenClaw Memory System Explained</h3></div></a>
+                <a href="build-first-agent.html" class="blog-card"><div class="blog-card-body"><h3>Building Your First AI Agent</h3></div></a>
+                <a href="what-is-openclaw.html" class="blog-card"><div class="blog-card-body"><h3>What Is OpenClaw? The Complete Guide</h3></div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p></div><div class="footer-col"><h4>Learn</h4><ul><li><a href="/agent-revolution/guide/">Complete Guide</a></li><li><a href="/agent-revolution/getting-started/">Getting Started</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/resources/">Resources</a></li></ul></div><div class="footer-col"><h4>Stay Updated</h4><ul><li><a href="/agent-revolution/news/">News</a></li><li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li></ul></div><div class="footer-col"><h4>Get the Book</h4><ul><li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li><li><a href="https://reclaimmedia.co">Reclaim Media</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span><span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span></div></div></footer>
+
+</body>
+</html>

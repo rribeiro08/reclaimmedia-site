@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw WhatsApp Integration Guide (2026)</title>
+    <meta name="description" content="Complete guide to connecting OpenClaw to WhatsApp. Personal and business accounts, QR code linking, media handling, group chats, and troubleshooting.">
+    <meta name="keywords" content="openclaw whatsapp, openclaw whatsapp setup, ai agent whatsapp, whatsapp bot openclaw, openclaw whatsapp integration">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/blog/openclaw-whatsapp.html">
+    <link rel="stylesheet" href="../styles.css">
+    <meta property="og:title" content="OpenClaw WhatsApp Integration Guide">
+    <meta property="og:description" content="Connect your AI agent to WhatsApp — personal and business accounts, media handling, and tips.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/blog/openclaw-whatsapp.html">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OpenClaw WhatsApp Integration Guide","author":{"@type":"Person","name":"Rudi Ribeiro Jr."},"publisher":{"@type":"Organization","name":"Reclaim Media"},"datePublished":"2026-02-14","dateModified":"2026-02-14","description":"Complete guide to connecting OpenClaw to WhatsApp.","mainEntityOfPage":"https://reclaimmedia.co/agent-revolution/blog/openclaw-whatsapp.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://reclaimmedia.co/agent-revolution/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://reclaimmedia.co/agent-revolution/blog/"},{"@type":"ListItem","position":3,"name":"WhatsApp Integration","item":"https://reclaimmedia.co/agent-revolution/blog/openclaw-whatsapp.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does OpenClaw connect to WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"OpenClaw connects to WhatsApp using a web bridge that links to your WhatsApp account via QR code, similar to WhatsApp Web. Once linked, your agent can send and receive messages through your WhatsApp number."}},{"@type":"Question","name":"Will my contacts know they're talking to an AI?","acceptedAnswer":{"@type":"Answer","text":"Messages come from your WhatsApp number, so contacts see them as coming from you. It's your responsibility to be transparent about AI-assisted communication. Many users configure their agent to only respond to specific contacts or in specific scenarios."}},{"@type":"Question","name":"Can OpenClaw handle WhatsApp groups?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your agent can read and respond to messages in WhatsApp groups. Configure group behavior in SOUL.md to control when the agent speaks and when it stays silent."}},{"@type":"Question","name":"Does the WhatsApp connection stay active?","acceptedAnswer":{"@type":"Answer","text":"The WhatsApp web bridge needs to maintain a connection. If your phone goes offline for extended periods, the connection may drop and need re-linking. Running the gateway on a VPS with stable internet minimizes disconnection issues."}}]}</script>
+</head>
+<body>
+
+<nav class="site-nav"><div class="container"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><ul class="nav-links" id="navLinks"><li><a href="/agent-revolution/">Home</a></li><li><a href="/agent-revolution/guide/">Guide</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/getting-started/">Get Started</a></li><li><a href="/agent-revolution/resources/">Resources</a></li><li><a href="/agent-revolution/news/">News</a></li><li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button></div></nav>
+
+<div class="breadcrumbs"><div class="container"><a href="/agent-revolution/">Home</a> <span>›</span> <a href="/agent-revolution/blog/">Blog</a> <span>›</span> WhatsApp Integration</div></div>
+
+<div class="container">
+    <div class="article-header">
+        <h1>OpenClaw WhatsApp Integration Guide</h1>
+        <div class="article-meta">
+            <span class="category">Channel</span>
+            <span>Feb 14, 2026</span>
+            <span>9 min read</span>
+            <span>By Rudi Ribeiro Jr.</span>
+        </div>
+    </div>
+
+    <div class="article-content">
+
+        <p>WhatsApp is where most of the world communicates. With over 2 billion users, it's likely your primary messaging app — and that makes it an incredibly powerful channel for your OpenClaw agent. Having your AI assistant available in the same app where you chat with family, friends, and colleagues means it's always just a message away.</p>
+
+        <p>WhatsApp integration is slightly more complex than <a href="openclaw-telegram.html">Telegram</a> because there's no official bot API for personal accounts. But the result is worth it — your agent responds from your actual WhatsApp number, making the experience seamless.</p>
+
+        <h2>How WhatsApp Integration Works</h2>
+
+        <p>Unlike Telegram (which has a dedicated Bot API), WhatsApp integration works through a web bridge — essentially the same technology that powers WhatsApp Web and WhatsApp Desktop. OpenClaw connects to your WhatsApp account via QR code, then can read incoming messages and send responses.</p>
+
+        <p><strong>Important to understand:</strong> Messages come from your WhatsApp number. Your contacts see responses as coming from you, not from a separate bot account. This has implications for transparency and how you configure the agent's behavior.</p>
+
+        <h2>Step 1: Prerequisites</h2>
+
+        <ul>
+            <li>OpenClaw <a href="install-openclaw.html">installed</a> and gateway running</li>
+            <li>A WhatsApp account with an active phone number</li>
+            <li>Your phone with WhatsApp installed (needed for initial QR code scan)</li>
+        </ul>
+
+        <h2>Step 2: Add the WhatsApp Channel</h2>
+
+        <div class="code-block">
+<span class="comment"># Add WhatsApp channel</span>
+openclaw channel add whatsapp
+
+<span class="comment"># The CLI will display a QR code</span>
+<span class="comment"># Scan it with WhatsApp on your phone:</span>
+<span class="comment"># WhatsApp > Settings > Linked Devices > Link a Device</span>
+        </div>
+
+        <p>After scanning the QR code, the connection establishes within seconds. Your gateway is now linked to your WhatsApp account.</p>
+
+        <h2>Step 3: Configure Who the Agent Responds To</h2>
+
+        <p>This is critical. Unlike Telegram (where people message a bot and know they're talking to AI), WhatsApp messages come from your personal number. You need to decide:</p>
+
+        <h3>Option A: Respond Only to Your Own Messages</h3>
+        <p>The safest starting configuration. The agent only processes messages you send to yourself (using WhatsApp's "Message Yourself" feature) or messages from specific contacts you whitelist.</p>
+
+        <h3>Option B: Respond to Specific Contacts</h3>
+        <p>Whitelist specific phone numbers or contacts. The agent responds to messages from these contacts and ignores everyone else.</p>
+
+        <h3>Option C: Respond to All Messages</h3>
+        <p>The agent processes all incoming messages. This requires careful SOUL.md configuration to avoid awkward situations.</p>
+
+        <p>I recommend starting with Option A or B. Expand to Option C only after you're confident in your agent's behavior and your contacts are aware you're using AI assistance.</p>
+
+        <h2>Step 4: WhatsApp-Specific SOUL.md Rules</h2>
+
+        <p>Add WhatsApp-specific behavior to your <a href="soul-md-guide.html">SOUL.md</a>:</p>
+
+        <div class="code-block">
+## WhatsApp Behavior
+- Messages come from my number — be aware contacts think it's me
+- In personal chats: be warm and conversational
+- In group chats: only respond when directly mentioned or asked a question
+- Never send unsolicited messages to contacts without my explicit instruction
+- For sensitive conversations: flag them for my review rather than responding
+- Keep messages shorter than other channels — WhatsApp is mobile-first
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 Complete Channel Configuration in the Book</h3>
+            <p><em>The Personal Agent Revolution</em> covers WhatsApp setup in depth — including contact management, auto-response rules, media handling, and multi-device synchronization.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <h2>Media Handling</h2>
+
+        <p>WhatsApp is a media-rich platform. Your OpenClaw agent can handle:</p>
+
+        <h3>Receiving</h3>
+        <ul>
+            <li><strong>Photos and videos</strong> — Analyzed with vision models if configured</li>
+            <li><strong>Voice messages</strong> — Transcribed to text for processing</li>
+            <li><strong>Documents</strong> — PDFs, spreadsheets, and other files can be read</li>
+            <li><strong>Location shares</strong> — Processed as geographic context</li>
+            <li><strong>Contacts</strong> — Contact cards can be read and stored</li>
+        </ul>
+
+        <h3>Sending</h3>
+        <ul>
+            <li><strong>Text messages</strong> — With WhatsApp formatting (bold, italic, monospace)</li>
+            <li><strong>Images</strong> — Generated images or screenshots</li>
+            <li><strong>Voice notes</strong> — Via TTS for audio responses</li>
+            <li><strong>Documents</strong> — Files from the workspace</li>
+        </ul>
+
+        <h2>Group Chat Behavior</h2>
+
+        <p>WhatsApp groups require the most careful configuration. Your agent sees all messages in groups your account belongs to. Without rules, it might respond to everything — which is disastrous in a family group chat.</p>
+
+        <p>Recommended group chat rules:</p>
+
+        <ul>
+            <li><strong>Mention-only mode:</strong> Agent responds only when your name is mentioned or it's directly addressed</li>
+            <li><strong>Silent observation:</strong> Agent reads group messages for context (useful for memory) but never responds unless you explicitly instruct it</li>
+            <li><strong>Selective groups:</strong> Whitelist specific groups where the agent can participate; mute all others</li>
+        </ul>
+
+        <h2>Connection Stability</h2>
+
+        <p>The WhatsApp web bridge connection can occasionally disconnect. Common causes and solutions:</p>
+
+        <h3>Phone Goes Offline</h3>
+        <p>WhatsApp's multi-device support has improved this significantly, but extended phone downtime can still cause disconnections. Solution: Keep your phone connected to WiFi and powered.</p>
+
+        <h3>WhatsApp Updates</h3>
+        <p>Major WhatsApp updates occasionally break the web bridge temporarily. Solution: Keep OpenClaw updated, as the community typically patches bridge compatibility within days.</p>
+
+        <h3>Session Expiry</h3>
+        <p>WhatsApp linked device sessions can expire after 14 days of phone inactivity. Solution: Ensure your phone opens WhatsApp at least once every two weeks.</p>
+
+        <div class="code-block">
+<span class="comment"># Check WhatsApp connection status</span>
+openclaw gateway status
+
+<span class="comment"># Re-link if disconnected</span>
+openclaw channel relink whatsapp
+<span class="comment"># Scan new QR code with your phone</span>
+        </div>
+
+        <h2>WhatsApp vs Telegram: Which Channel First?</h2>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead><tr style="border-bottom: 2px solid var(--border);"><th style="text-align: left; padding: 12px; color: var(--text-secondary);">Factor</th><th style="text-align: left; padding: 12px; color: var(--text-secondary);">WhatsApp</th><th style="text-align: left; padding: 12px; color: var(--text-secondary);">Telegram</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px;">Setup Difficulty</td><td style="padding: 12px; color: var(--text-muted);">Medium (QR bridge)</td><td style="padding: 12px; color: var(--green);">Easy (Bot API)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px;">Identity</td><td style="padding: 12px; color: var(--text-muted);">Your phone number</td><td style="padding: 12px; color: var(--green);">Separate bot account</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px;">Connection Stability</td><td style="padding: 12px; color: var(--text-muted);">Occasional re-linking</td><td style="padding: 12px; color: var(--green);">Very stable</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px;">Rich Features</td><td style="padding: 12px; color: var(--green);">End-to-end encryption</td><td style="padding: 12px; color: var(--green);">Inline buttons, reactions</td></tr>
+                <tr><td style="padding: 12px;">User Base</td><td style="padding: 12px; color: var(--green);">2B+ users globally</td><td style="padding: 12px; color: var(--text-muted);">900M+ users</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Recommendation:</strong> Start with <a href="openclaw-telegram.html">Telegram</a> for ease of setup and clear bot identity. Add WhatsApp once you're comfortable with your agent's behavior and want it in your primary messaging app.</p>
+
+        <h2>Privacy Considerations</h2>
+
+        <p>WhatsApp messages are end-to-end encrypted between devices. However, when your OpenClaw agent processes messages, they're decrypted on your machine and then sent to the AI model provider's API for processing. This means:</p>
+
+        <ul>
+            <li>Messages are encrypted in transit between WhatsApp users</li>
+            <li>Messages are decrypted on your gateway machine</li>
+            <li>Message content is sent to OpenAI/Anthropic/etc. for AI processing</li>
+            <li>Responses are encrypted back through WhatsApp</li>
+        </ul>
+
+        <p>For maximum privacy, use local models via Ollama — this keeps everything on your hardware. For details on security configuration, see our <a href="openclaw-security.html">Security Guide</a>.</p>
+
+        <h2>Practical WhatsApp Use Cases</h2>
+
+        <ul>
+            <li><strong>Quick queries on the go:</strong> Ask your agent questions while walking, driving (voice), or commuting</li>
+            <li><strong>Morning briefing delivery:</strong> Receive your <a href="openclaw-automation.html">daily briefing</a> in WhatsApp, read it over coffee</li>
+            <li><strong>Photo analysis:</strong> Snap a photo and ask your agent to analyze it (receipts, documents, products)</li>
+            <li><strong>Voice interaction:</strong> Send voice notes, get voice responses — hands-free AI assistance</li>
+            <li><strong>Family coordination:</strong> Agent helps manage schedules and reminders through family groups</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>How does OpenClaw connect to WhatsApp?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Via a web bridge using QR code linking, similar to WhatsApp Web. Messages are sent/received through your WhatsApp number.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Will contacts know it's an AI?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Messages come from your number, so contacts see them as from you. Be transparent about AI assistance. Configure carefully who the agent responds to.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Can it handle group chats?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Yes. Configure group behavior in SOUL.md — mention-only mode, selective groups, or silent observation are recommended approaches.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')"><span>Does the connection stay active?</span><span class="toggle">+</span></button>
+                <div class="faq-answer">Usually yes. Occasional re-linking may be needed after phone downtime or WhatsApp updates. Running on a VPS with stable internet minimizes issues.</div>
+            </div>
+        </div>
+
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=OpenClaw%20WhatsApp%20Integration%20Guide&url=https://reclaimmedia.co/agent-revolution/blog/openclaw-whatsapp.html" target="_blank" class="share-btn twitter">𝕏 Share</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://reclaimmedia.co/agent-revolution/blog/openclaw-whatsapp.html" target="_blank" class="share-btn linkedin">LinkedIn</a>
+        </div>
+
+        <div class="author-bio-box">
+            <div class="avatar">👨‍💻</div>
+            <div>
+                <h4>Rudi Ribeiro Jr.</h4>
+                <div class="role">Early OpenClaw Adopter · HubSpot AE · Author of The Personal Agent Revolution</div>
+                <p>Rudi runs a personal AI agent daily and wrote <a href="/books/agent-revolution/buy.html">The Personal Agent Revolution</a> based on hundreds of hours of real-world experience. He is not the creator of OpenClaw — he's a power user who documented everything he learned.</p>
+            </div>
+        </div>
+
+        <div class="mid-cta">
+            <h3>📖 Master OpenClaw with the Book</h3>
+            <p>37 chapters, 187 pages, 3 bonus resources. Complete channel setup for every platform.</p>
+            <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 0.95rem; padding: 12px 28px;">Get the Book — $29.95 →</a>
+        </div>
+
+        <div class="related-articles">
+            <h3>Related Articles</h3>
+            <div class="related-grid">
+                <a href="openclaw-telegram.html" class="blog-card"><div class="blog-card-body"><h3>OpenClaw Telegram Setup: Complete Guide</h3></div></a>
+                <a href="build-first-agent.html" class="blog-card"><div class="blog-card-body"><h3>Building Your First AI Agent</h3></div></a>
+                <a href="openclaw-security.html" class="blog-card"><div class="blog-card-body"><h3>OpenClaw Security Guide</h3></div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a><p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p></div><div class="footer-col"><h4>Learn</h4><ul><li><a href="/agent-revolution/guide/">Complete Guide</a></li><li><a href="/agent-revolution/getting-started/">Getting Started</a></li><li><a href="/agent-revolution/blog/">Blog</a></li><li><a href="/agent-revolution/resources/">Resources</a></li></ul></div><div class="footer-col"><h4>Stay Updated</h4><ul><li><a href="/agent-revolution/news/">News</a></li><li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li></ul></div><div class="footer-col"><h4>Get the Book</h4><ul><li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li><li><a href="https://reclaimmedia.co">Reclaim Media</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span><span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span></div></div></footer>
+
+</body>
+</html>

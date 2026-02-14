@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Personal Agent Revolution | Build Your AI Agent</title>
+    <meta name="description" content="The definitive guide to building your own AI agent with OpenClaw. Learn to deploy, configure, and master personal AI agents.">
+    <link rel="canonical" href="https://reclaimmedia.co/agent-revolution/">
+    <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="The Personal Agent Revolution">
+    <meta property="og:description" content="The definitive guide to building your own AI agent with OpenClaw.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reclaimmedia.co/agent-revolution/">
+    <meta property="og:image" content="https://reclaimmedia.co/books/agent-revolution/book-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Personal Agent Revolution">
+    <meta name="twitter:description" content="The definitive guide to building your own AI agent with OpenClaw.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Agent Revolution",
+        "url": "https://reclaimmedia.co/agent-revolution/",
+        "description": "The definitive guide to building your own AI agent with OpenClaw",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Reclaim Media",
+            "url": "https://reclaimmedia.co"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "The Personal Agent Revolution",
+        "author": { "@type": "Person", "name": "Rudi Ribeiro Jr." },
+        "description": "The definitive guide to building, configuring, and running your own personal AI agent with OpenClaw.",
+        "isbn": "",
+        "numberOfPages": 187,
+        "publisher": { "@type": "Organization", "name": "Reclaim Media" },
+        "offers": {
+            "@type": "Offer",
+            "price": "29.95",
+            "priceCurrency": "USD",
+            "url": "https://reclaimmedia.co/books/agent-revolution/buy.html",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is OpenClaw?",
+                "acceptedAnswer": { "@type": "Answer", "text": "OpenClaw is an open-source, MIT-licensed platform for building personal AI agents that run on your own hardware. It connects to your messaging apps (WhatsApp, Telegram, Discord, Slack, Signal, iMessage) and gives you full control over your AI agent's personality, memory, and tools." }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need coding experience to build an AI agent?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Not professional coding experience. If you can use a terminal, edit text files, and follow step-by-step instructions, you have enough skill. The book walks you through every step from installation to advanced automation." }
+            },
+            {
+                "@type": "Question",
+                "name": "What's included with the book?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The complete 37-chapter, 187-page book plus three free bonuses: The Agent Prompt Vault (50+ prompts), Quick-Start Config Templates, and The Agent Automation Playbook (30 automations). All for $29.95." }
+            },
+            {
+                "@type": "Question",
+                "name": "Who is the author?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Rudi Ribeiro Jr. is an early OpenClaw adopter and technology executive at HubSpot. He runs a personal AI agent daily and wrote this book based on hundreds of hours of real-world experience building and configuring agents. He is not the creator of OpenClaw — he's a power user who documented everything he learned." }
+            },
+            {
+                "@type": "Question",
+                "name": "What hardware do I need?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A Mac Mini, Linux server, or even a $5/month VPS. OpenClaw's gateway is a lightweight Node.js application. No GPU or expensive hardware required." }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+    <div class="container">
+        <a href="/agent-revolution/" class="nav-logo">🤖 <span>Agent</span> Revolution</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/agent-revolution/">Home</a></li>
+            <li><a href="/agent-revolution/guide/">Guide</a></li>
+            <li><a href="/agent-revolution/blog/">Blog</a></li>
+            <li><a href="/agent-revolution/getting-started/">Get Started</a></li>
+            <li><a href="/agent-revolution/resources/">Resources</a></li>
+            <li><a href="/agent-revolution/news/">News</a></li>
+            <li><a href="/books/agent-revolution/buy.html" class="nav-cta">Get the Book →</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+        <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.3); padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; color: var(--accent-light); margin-bottom: 24px;">⚡ New Release: 2026 Edition</div>
+            <h1 style="font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em;">The Personal<br><span class="gradient-text">Agent Revolution</span></h1>
+            <p style="font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 24px;">The definitive guide to building your own AI agent with OpenClaw</p>
+            <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 36px; max-width: 520px;">Build, configure, and run a personal AI agent on your hardware. One that lives in your messaging apps, knows your preferences, and works for <em>you</em>.</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="/books/agent-revolution/buy.html" class="btn-primary">Get the Book — $29.95 →</a>
+                <a href="/agent-revolution/getting-started/" class="btn-secondary">📖 Free Getting Started Guide</a>
+            </div>
+            <div style="display: flex; gap: 32px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
+                <div><div style="font-size: 1.5rem; font-weight: 800;">37</div><div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Chapters</div></div>
+                <div><div style="font-size: 1.5rem; font-weight: 800;">187</div><div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Pages</div></div>
+                <div><div style="font-size: 1.5rem; font-weight: 800;">6</div><div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Platforms</div></div>
+                <div><div style="font-size: 1.5rem; font-weight: 800;">100%</div><div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Open Source</div></div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <img src="/books/agent-revolution/book-cover.png" alt="The Personal Agent Revolution Book Cover" style="max-width: 420px; width: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); animation: float 6s ease-in-out infinite;">
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+</style>
+
+<!-- SOCIAL PROOF BAR -->
+<section style="padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-secondary);">
+    <div class="container" style="display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 0.9rem;">📰 <span>Featured in <strong style="color: var(--text-secondary);">WIRED</strong></span></div>
+        <div style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 0.9rem;">🏢 <span>Covered by <strong style="color: var(--text-secondary);">IBM</strong></span></div>
+        <div style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 0.9rem;">📺 <span>Deep dive on <strong style="color: var(--text-secondary);">CNBC</strong></span></div>
+        <div style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 0.9rem;">🔓 <span><strong style="color: var(--text-secondary);">MIT Licensed</strong> · Open Source</span></div>
+    </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section style="padding: 100px 0;">
+    <div class="container">
+        <span class="section-label">What You'll Learn</span>
+        <h2 class="section-title">From zero to a fully autonomous AI agent</h2>
+        <p class="section-subtitle">Every chapter is packed with practical guidance, real configurations, and working examples.</p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div class="card">
+                <span style="font-size: 2rem; display: block; margin-bottom: 16px;">🧠</span>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">SOUL.md — Agent Personality</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Define your agent's personality, communication style, values, and decision-making framework. Make it truly yours.</p>
+            </div>
+            <div class="card">
+                <span style="font-size: 2rem; display: block; margin-bottom: 16px;">💬</span>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Multi-Channel Integration</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp, Telegram, Discord, Slack, Signal, iMessage. One agent across every platform you use.</p>
+            </div>
+            <div class="card">
+                <span style="font-size: 2rem; display: block; margin-bottom: 16px;">🔧</span>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Tools & Automation</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Browser automation, shell commands, cron jobs, file operations, API calls. Your agent doesn't just chat — it works.</p>
+            </div>
+            <div class="card">
+                <span style="font-size: 2rem; display: block; margin-bottom: 16px;">🧩</span>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Memory Systems</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Daily logs, curated long-term memory, and context recovery. Your agent gets smarter every single day.</p>
+            </div>
+            <div class="card">
+                <span style="font-size: 2rem; display: block; margin-bottom: 16px;">📱</span>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Mobile Nodes</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Connect your phone as a node — camera, GPS, notifications, screen capture all accessible to your agent.</p>
+            </div>
+            <div class="card">
+                <span style="font-size: 2rem; display: block; margin-bottom: 16px;">🛡️</span>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Security & Privacy</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Self-hosted means your data stays yours. Prompt injection defense, access controls, and real security.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section style="padding: 100px 0; background: var(--bg-secondary);">
+    <div class="container">
+        <span class="section-label">Who This Is For</span>
+        <h2 class="section-title">Is this book for you?</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px;">
+            <div class="card">
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">👨‍💻 Developers & Engineers</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">You want to build a personal AI agent but don't know where to start. This book gives you the complete architecture and working configs.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">🏢 Tech-Savvy Professionals</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">You use AI daily but want more control. You're comfortable with a terminal and ready to level up from ChatGPT to owning your agent.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">🚀 Startup Founders</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">You want an AI assistant that handles communication, automates workflows, and gives you back hours every day. This shows you how.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">🔐 Privacy Advocates</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">You want AI power without sending your data to the cloud. Self-hosted, open-source, and fully under your control.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TABLE OF CONTENTS PREVIEW -->
+<section style="padding: 100px 0;">
+    <div class="container">
+        <span class="section-label">What's Inside</span>
+        <h2 class="section-title">37 chapters of practical guidance</h2>
+        <p class="section-subtitle">From zero to a fully configured personal AI agent — every step documented.</p>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+            <div class="card">
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 8px; font-weight: 600;">Part I</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">The Vision</h3>
+                <ul style="list-style: none;">
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ The Promise of Personal Agents</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ The AI Agent Landscape</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ Core Concepts & The OpenClaw Story</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 8px; font-weight: 600;">Part II</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Getting Started</h3>
+                <ul style="list-style: none;">
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ Installation (Zero to Gateway in 15 min)</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ Configuration & Model Providers</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ Connecting Channels</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 8px; font-weight: 600;">Part III</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">The Agent</h3>
+                <ul style="list-style: none;">
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ SOUL.md, USER.md, AGENTS.md</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ The Memory System</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ TOOLS.md & Workspace Mastery</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 8px; font-weight: 600;">Parts IV–VII</div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Power Features & Beyond</h3>
+                <ul style="list-style: none;">
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ Skills, Browser Automation, Cron</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ All 6 Channel Deep Dives</li>
+                    <li style="color: var(--text-muted); font-size: 0.9rem; padding: 4px 0;">→ Security, Scaling & The Future</li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/agent-revolution/guide/" class="btn-secondary">📋 View Full Guide →</a>
+        </div>
+    </div>
+</section>
+
+<!-- LATEST NEWS -->
+<section style="padding: 80px 0; background: var(--bg-secondary);">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <div>
+                <span class="section-label">Latest News</span>
+                <h2 style="font-size: 1.8rem; font-weight: 800;">OpenClaw in the News</h2>
+            </div>
+            <a href="/agent-revolution/news/" class="btn-secondary" style="padding: 10px 20px; font-size: 0.85rem;">All News →</a>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div class="card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">Feb 13, 2026</div>
+                <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">OpenClaw Wikipedia Page Created</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">OpenClaw now has its own Wikipedia page, marking its recognition as a notable open-source project.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">Feb 11, 2026</div>
+                <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">WIRED: "I Loved My OpenClaw AI Agent..."</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">WIRED's deep feature on living with a personal AI agent — the promises and the surprises.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">Feb 2, 2026</div>
+                <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">CNBC: The OpenClaw Deep Dive</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">From Clawdbot to Moltbot to OpenClaw — CNBC traces the evolution of personal AI agents.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED ARTICLES -->
+<section style="padding: 100px 0;">
+    <div class="container">
+        <span class="section-label">Featured Articles</span>
+        <h2 class="section-title">Learn OpenClaw</h2>
+        <p class="section-subtitle">Free guides and tutorials to get you started.</p>
+        <div class="blog-grid">
+            <a href="/agent-revolution/blog/what-is-openclaw.html" class="blog-card">
+                <div class="blog-card-body">
+                    <span class="category">Guide</span>
+                    <h3>What Is OpenClaw? The Complete Guide for 2026</h3>
+                    <p>Everything you need to know about the open-source platform for building personal AI agents.</p>
+                    <div class="blog-card-meta"><span>Feb 14, 2026</span><span>12 min read</span></div>
+                </div>
+            </a>
+            <a href="/agent-revolution/blog/soul-md-guide.html" class="blog-card">
+                <div class="blog-card-body">
+                    <span class="category">Tutorial</span>
+                    <h3>SOUL.md Guide: Giving Your AI Agent a Personality</h3>
+                    <p>The complete guide to crafting your agent's personality, values, and communication style.</p>
+                    <div class="blog-card-meta"><span>Feb 14, 2026</span><span>10 min read</span></div>
+                </div>
+            </a>
+            <a href="/agent-revolution/blog/install-openclaw.html" class="blog-card">
+                <div class="blog-card-body">
+                    <span class="category">Tutorial</span>
+                    <h3>How to Install OpenClaw: Step-by-Step</h3>
+                    <p>From zero to a running gateway in 15 minutes. Every platform, every method covered.</p>
+                    <div class="blog-card-meta"><span>Feb 14, 2026</span><span>8 min read</span></div>
+                </div>
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/agent-revolution/blog/" class="btn-secondary">All Articles →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT THE AUTHOR -->
+<section style="padding: 100px 0; background: var(--bg-secondary);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start;">
+            <div style="width: 200px; height: 200px; border-radius: 20px; background: linear-gradient(135deg, var(--accent) 0%, var(--orange) 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; box-shadow: 0 8px 40px var(--accent-glow);">👨‍💻</div>
+            <div>
+                <span class="section-label">About the Author</span>
+                <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 4px;">Rudi Ribeiro Jr.</h3>
+                <p style="color: var(--accent-light); font-size: 1rem; margin-bottom: 20px; font-weight: 500;">Early OpenClaw Adopter · HubSpot AE · AI Agent Builder</p>
+                <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 16px;">Rudi isn't writing about AI agents from the sidelines — he runs one daily. As an early adopter of OpenClaw and an Account Executive at HubSpot, he operates at the intersection of enterprise software and cutting-edge AI.</p>
+                <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 16px;">His personal agent runs 24/7, connected to every messaging platform he uses — managing communication, automating workflows, and getting smarter every day. This book is the distillation of hundreds of hours of real-world agent development.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">Note: Rudi is not the creator of OpenClaw. He's a power user who documented everything he learned building and running multiple AI agents.</p>
+                <div style="display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap;">
+                    <span style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem;">🏢 HubSpot AE</span>
+                    <span style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem;">🔧 OpenClaw Early Adopter</span>
+                    <span style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem;">🤖 Multiple AI Agents Built</span>
+                    <span style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem;">📖 Practitioner First</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" style="padding: 100px 0;">
+    <div class="container">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Common questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What is OpenClaw?</span>
+                    <span class="toggle">+</span>
+                </button>
+                <div class="faq-answer">OpenClaw is an open-source, MIT-licensed platform for building personal AI agents. It runs on your own hardware and connects to your messaging apps — WhatsApp, Telegram, Discord, Slack, Signal, and iMessage. You control the personality, memory, tools, and every aspect of your agent.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Do I need coding experience?</span>
+                    <span class="toggle">+</span>
+                </button>
+                <div class="faq-answer">Not professional coding experience. If you can use a terminal, edit text files, and follow step-by-step instructions, you have enough skill. The book walks you through everything from installation to advanced automation.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What hardware do I need?</span>
+                    <span class="toggle">+</span>
+                </button>
+                <div class="faq-answer">A Mac Mini, Linux server, or even a $5/month VPS. OpenClaw's gateway is a lightweight Node.js application. No GPU or expensive hardware required.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>Is the author the creator of OpenClaw?</span>
+                    <span class="toggle">+</span>
+                </button>
+                <div class="faq-answer">No. Rudi Ribeiro Jr. is an early adopter and power user of OpenClaw, not its creator. He wrote this book based on hundreds of hours of real-world experience building and running personal AI agents with the platform.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>What's included with the $29.95 purchase?</span>
+                    <span class="toggle">+</span>
+                </button>
+                <div class="faq-answer">The complete 37-chapter, 187-page book in PDF and EPUB, plus three free bonuses: The Agent Prompt Vault (50+ prompts), Quick-Start Config Templates, and The Agent Automation Playbook (30 automations). Instant digital delivery with lifetime updates.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section style="padding: 0 0 100px;">
+    <div class="container">
+        <div class="newsletter">
+            <h3>Stay in the Loop</h3>
+            <p>Get weekly OpenClaw tips, agent-building tutorials, and AI news straight to your inbox.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 80px 0; text-align: center;">
+    <div class="container">
+        <h2 class="section-title">Ready to build your AI agent?</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; margin: 0 auto 40px; max-width: 600px;">Get the complete book with all 3 bonuses. Start building today.</p>
+        <a href="/books/agent-revolution/buy.html" class="btn-primary" style="font-size: 1.2rem; padding: 20px 48px;">Get The Book — $29.95 →</a>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 16px;">🔒 30-day money-back guarantee · Instant delivery</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/agent-revolution/" class="nav-logo" style="margin-bottom: 8px;">🤖 <span>Agent</span> Revolution</a>
+                <p>The definitive guide to building personal AI agents with OpenClaw. By Rudi Ribeiro Jr.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Learn</h4>
+                <ul>
+                    <li><a href="/agent-revolution/guide/">Complete Guide</a></li>
+                    <li><a href="/agent-revolution/getting-started/">Getting Started</a></li>
+                    <li><a href="/agent-revolution/blog/">Blog</a></li>
+                    <li><a href="/agent-revolution/resources/">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Stay Updated</h4>
+                <ul>
+                    <li><a href="/agent-revolution/news/">News</a></li>
+                    <li><a href="https://docs.openclaw.ai" target="_blank">OpenClaw Docs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get the Book</h4>
+                <ul>
+                    <li><a href="/books/agent-revolution/buy.html">Buy Now — $29.95</a></li>
+                    <li><a href="https://reclaimmedia.co">Reclaim Media</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 <a href="https://reclaimmedia.co">Reclaim Media</a>. All rights reserved.</span>
+            <span>Part of <a href="https://reclaimmedia.co">Reclaim Media</a></span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
