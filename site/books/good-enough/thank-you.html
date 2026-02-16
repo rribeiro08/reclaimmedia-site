@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! | Good Enough</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #14141f;
+            --text: #f0f0f5;
+            --text-2: #b0b0c8;
+            --text-3: #6a6a82;
+            --accent: #e17055;
+            --accent-light: #fab1a0;
+            --green: #00b894;
+            --green-glow: rgba(0,184,148,0.2);
+            --warm: #fdcb6e;
+            --border: #2a2a3d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; padding: 40px 24px; }
+        .container { max-width: 640px; margin: 0 auto; text-align: center; }
+
+        .success-icon { width: 80px; height: 80px; background: var(--green-glow); border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 24px; }
+        h1 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+        h1 span { color: var(--accent); }
+        .subtitle { color: var(--text-2); font-size: 1rem; margin-bottom: 40px; }
+
+        .book-hero { display: flex; align-items: center; gap: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 32px; text-align: left; }
+        .book-hero img { width: 100px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        .book-hero-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+        .book-hero-info p { color: var(--text-2); font-size: 0.85rem; }
+
+        .section-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-light); margin: 32px 0 16px; text-align: left; }
+
+        .download-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; text-align: left; transition: border 0.2s; }
+        .download-card:hover { border-color: var(--accent); }
+        .download-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+        .download-icon.book { background: rgba(225,112,85,0.15); }
+        .download-icon.audio { background: rgba(108,92,231,0.15); }
+        .download-icon.bonus { background: rgba(253,203,110,0.15); }
+        .download-info { flex: 1; }
+        .download-name { font-weight: 600; font-size: 0.95rem; }
+        .download-desc { color: var(--text-3); font-size: 0.8rem; margin-top: 2px; }
+        .download-size { color: var(--text-3); font-size: 0.7rem; }
+        .download-btn { padding: 8px 18px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 8px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; transition: all 0.2s; }
+        .download-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(225,112,85,0.3); }
+
+        .bonus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+        .bonus-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: center; transition: border 0.2s; }
+        .bonus-card:hover { border-color: var(--warm); }
+        .bonus-card img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; margin-bottom: 12px; }
+        .bonus-card .bonus-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
+        .bonus-card .bonus-desc { color: var(--text-3); font-size: 0.75rem; margin-bottom: 12px; line-height: 1.4; }
+        .bonus-card .download-btn { display: inline-block; font-size: 0.75rem; padding: 6px 14px; }
+
+        .message-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-top: 32px; text-align: left; }
+        .message-box img { width: 48px; height: 48px; border-radius: 50%; margin-bottom: 12px; }
+        .message-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .message-box p { color: var(--text-2); font-size: 0.9rem; line-height: 1.7; }
+        .message-box .signature { margin-top: 16px; font-weight: 600; color: var(--accent-light); }
+
+        .footer { margin-top: 40px; color: var(--text-3); font-size: 0.8rem; }
+        .footer a { color: var(--accent-light); text-decoration: none; }
+
+        @media (max-width: 500px) {
+            .book-hero { flex-direction: column; text-align: center; }
+            .bonus-grid { grid-template-columns: 1fr; }
+            .download-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        <h1>You're in, <span>thank you!</span></h1>
+        <p class="subtitle">Your copy of Good Enough is ready. Download everything below.</p>
+
+        <div class="book-hero">
+            <img src="book-cover.jpg" alt="Good Enough book cover">
+            <div class="book-hero-info">
+                <h3>Good Enough: The Secret to Breaking Perfectionism's Grip</h3>
+                <p>By Rudi Ribeiro Jr.</p>
+            </div>
+        </div>
+
+        <!-- BOOK DOWNLOADS -->
+        <div class="section-title">📖 Your Book</div>
+
+        <div class="download-card">
+            <div class="download-icon book">📄</div>
+            <div class="download-info">
+                <div class="download-name">Good Enough (PDF)</div>
+                <div class="download-desc">Best for reading on any device</div>
+                <div class="download-size">757 KB</div>
+            </div>
+            <a href="book.pdf" download class="download-btn">↓ PDF</a>
+        </div>
+
+        <div class="download-card">
+            <div class="download-icon book">📱</div>
+            <div class="download-info">
+                <div class="download-name">Good Enough (EPUB)</div>
+                <div class="download-desc">For Kindle, Apple Books, and e-readers</div>
+                <div class="download-size">460 KB</div>
+            </div>
+            <a href="book.epub" download class="download-btn">↓ EPUB</a>
+        </div>
+
+        <div class="download-card">
+            <div class="download-icon audio">🎧</div>
+            <div class="download-info">
+                <div class="download-name">Audiobook (Full)</div>
+                <div class="download-desc">Listen on the go. Narrated by the author.</div>
+                <div class="download-size">98 MB · MP3</div>
+            </div>
+            <a href="audiobook.mp3" download class="download-btn">↓ MP3</a>
+        </div>
+
+        <!-- BONUSES -->
+        <div class="section-title">🎁 Your Bonuses</div>
+
+        <div class="bonus-grid">
+            <div class="bonus-card">
+                <img src="thumb-checklist.png" alt="Perfectionism Checklist">
+                <div class="bonus-name">Perfectionism Detox Checklist</div>
+                <div class="bonus-desc">Break free from perfectionist patterns, one step at a time.</div>
+                <a href="perfectionism-checklist.pdf" download class="download-btn">↓ Download</a>
+            </div>
+            <div class="bonus-card">
+                <img src="thumb-workbook.png" alt="14-Day Workbook">
+                <div class="bonus-name">14-Day Workbook Journal</div>
+                <div class="bonus-desc">Daily exercises to rewire your relationship with "enough."</div>
+                <a href="workbook-journal.pdf" download class="download-btn">↓ Download</a>
+            </div>
+            <div class="bonus-card">
+                <img src="thumb-goals.png" alt="Goal Setting Framework">
+                <div class="bonus-name">Goal Setting Framework</div>
+                <div class="bonus-desc">Set goals that motivate instead of paralyze.</div>
+                <a href="goal-setting-framework.pdf" download class="download-btn">↓ Download</a>
+            </div>
+            <div class="bonus-card">
+                <img src="thumb-affirmations.png" alt="Daily Affirmations">
+                <div class="bonus-name">Daily Affirmations</div>
+                <div class="bonus-desc">Rewire your inner dialogue with powerful daily reminders.</div>
+                <a href="daily-affirmations.pdf" download class="download-btn">↓ Download</a>
+            </div>
+        </div>
+
+        <!-- PERSONAL MESSAGE -->
+        <div class="message-box">
+            <img src="headshot.jpg" alt="Rudi Ribeiro Jr.">
+            <h3>A note from Rudi</h3>
+            <p>I wrote this book because I lived it. For years, perfectionism ran my life. It looked like ambition from the outside, but inside it was exhaustion, anxiety, and never feeling like I was doing enough.</p>
+            <p style="margin-top: 12px;">This book is the conversation I wish someone had with me years ago. I hope it helps you breathe a little easier and finally give yourself permission to be good enough.</p>
+            <div class="signature">Rudi Ribeiro Jr.</div>
+        </div>
+
+        <div class="footer">
+            <p>Questions? <a href="mailto:rudi@reclaimmedia.co">rudi@reclaimmedia.co</a></p>
+            <p style="margin-top: 8px;">&copy; 2026 Reclaim Media. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
