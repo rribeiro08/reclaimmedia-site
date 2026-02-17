@@ -4,3 +4,6 @@ config/client_secret.json
 config/token.pickle
 config/
 config/
+config/client_secret.json
+config/facebook_credentials.json
+config/token.pickle
