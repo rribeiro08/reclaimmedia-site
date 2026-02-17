@@ -610,6 +610,7 @@ footer {
     .nav-links {
         gap: 1rem;
         justify-content: center;
+        flex-wrap: wrap;
     }
     
     .featured-card {
@@ -617,15 +618,59 @@ footer {
     }
     
     .featured-image {
-        min-height: 300px;
+        min-height: 250px;
+        max-height: 350px;
     }
     
     .featured-info {
-        padding: 2rem;
+        padding: 1.5rem;
+    }
+
+    .featured-name {
+        font-size: 1.8rem;
+    }
+
+    .featured-desc {
+        font-size: 0.9rem;
     }
     
     .featured-stats {
         justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .featured-links {
+        justify-content: center;
+    }
+
+    .featured-links .btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1.25rem;
+    }
+
+    .hero {
+        padding: 3rem 1rem 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .artists-grid {
+        grid-template-columns: 1fr;
     }
     
     .footer-inner {
@@ -645,5 +690,35 @@ footer {
     .press-artist-image {
         max-width: 200px;
         margin: 0 auto 1rem;
+    }
+
+    .cta-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .cta-card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .featured-card {
+        margin-bottom: 2rem;
+    }
+
+    .featured-image {
+        min-height: 200px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
     }
 }

@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": true,
   "rewrites": [
     { "source": "/books/agent-revolution/member", "destination": "/books/agent-revolution/member/index.html" },
     { "source": "/books/agent-revolution/member/dashboard", "destination": "/books/agent-revolution/member/dashboard.html" }
