@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vesper | Dark Cinematic Covers of Iconic Movie Songs</title>
+    <meta name="description" content="Vesper — Iconic movie songs reimagined as dark, haunting cinematic covers. Piano-driven, atmospheric rearrangements that will make you cry.">
+    <link rel="canonical" href="https://reclaimmedia.co/vesper/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #1a3a3a;
+            --teal-light: #2d5a5a;
+            --amber: #d4a855;
+            --amber-dim: #b8923e;
+            --dark: #0a0e0e;
+            --darker: #060909;
+            --text: #c8c8c8;
+            --text-dim: #8a8a8a;
+            --coral: #e07860;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            min-height: 100vh;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(6, 9, 9, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(212, 168, 85, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--amber);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--amber);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--darker) 0%, rgba(6,9,9,0.6) 40%, rgba(6,9,9,0.2) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem 3rem;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--amber);
+            font-style: italic;
+            letter-spacing: 0.03em;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section styling */
+        section {
+            padding: 3rem 0;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--amber);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Bio */
+        .bio {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .bio-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--teal-light);
+            box-shadow: 0 0 40px rgba(26, 58, 58, 0.5);
+            flex-shrink: 0;
+        }
+
+        .bio-text p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .bio-text .ai-note {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(212, 168, 85, 0.15);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Streaming Links */
+        .streaming-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .streaming-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid var(--amber-dim);
+            border-radius: 30px;
+            color: var(--amber);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            transition: all 0.3s;
+        }
+
+        .streaming-links a:hover {
+            background: var(--amber);
+            color: var(--darker);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(212, 168, 85, 0.3);
+        }
+
+        .streaming-links a.youtube {
+            border-color: #ff4444;
+            color: #ff6666;
+        }
+
+        .streaming-links a.youtube:hover {
+            background: #ff4444;
+            color: #fff;
+        }
+
+        /* Video Embed */
+        .video-section {
+            border-top: 1px solid rgba(212, 168, 85, 0.1);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--dark);
+            border: 1px solid rgba(212, 168, 85, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        /* Song List */
+        .songs-section {
+            border-top: 1px solid rgba(212, 168, 85, 0.1);
+        }
+
+        .song-list {
+            list-style: none;
+        }
+
+        .song-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .song-item:hover {
+            background: rgba(26, 58, 58, 0.3);
+        }
+
+        .song-number {
+            width: 35px;
+            color: var(--amber-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .song-title {
+            flex: 1;
+            font-weight: 400;
+        }
+
+        .song-movie {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            border-top: 1px solid rgba(212, 168, 85, 0.1);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .newsletter p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            background: var(--dark);
+            border: 1px solid rgba(212, 168, 85, 0.2);
+            border-radius: 30px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.8rem;
+            background: var(--amber);
+            color: var(--darker);
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(212, 168, 85, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(212, 168, 85, 0.05);
+        }
+
+        footer a {
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--amber);
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .bio { flex-direction: column; align-items: center; text-align: center; }
+            .bio-image { width: 160px; height: 160px; }
+            .newsletter-form { flex-direction: column; }
+            .streaming-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="./" class="nav-brand">Vesper</a>
+            <div class="nav-links">
+                <a href="./">Home</a>
+                <a href="../artists/">Artists</a>
+                <a href="../">Reclaim Media</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero with scene image -->
+    <section class="hero">
+        <img src="images/titanic-scene.png" alt="Vesper performing - dark cinematic scene" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Vesper</h1>
+            <p class="hero-tagline">"Iconic movie songs reimagined. This version will make you cry."</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Bio Section -->
+        <section>
+            <h2>The Artist</h2>
+            <div class="bio">
+                <img src="images/headshot.png" alt="Vesper" class="bio-image">
+                <div class="bio-text">
+                    <p>
+                        Vesper takes the most iconic songs from cinema history and strips them down to their emotional core — then rebuilds them as dark, haunting cinematic experiences. Driven by sparse piano, atmospheric reverb, and a voice that carries the weight of every story these films ever told.
+                    </p>
+                    <p>
+                        Each cover is a rearrangement, not a replica. Minor keys replace major ones. Silence replaces spectacle. What remains is the raw feeling the original songwriters always intended — amplified, distilled, and delivered in a way that hits differently.
+                    </p>
+                    <p class="ai-note">
+                        Vesper is an AI music project by Reclaim Media, exploring the intersection of cinematic storytelling and technology-driven artistry.
+                    </p>
+                </div>
+            </div>
+
+            <div class="streaming-links">
+                <a href="#" class="youtube">▶️ YouTube — Coming Soon</a>
+                <a href="#">🎵 Spotify — Coming Soon</a>
+                <a href="#">🍎 Apple Music — Coming Soon</a>
+            </div>
+        </section>
+
+        <!-- Video Embed Placeholder -->
+        <section class="video-section">
+            <h2>Latest Release</h2>
+            <div class="video-placeholder">
+                🎬 Music video coming soon — My Heart Will Go On (Vesper Version)
+            </div>
+        </section>
+
+        <!-- Song List -->
+        <section class="songs-section">
+            <h2>Cinematic Covers — Batch 1</h2>
+            <ul class="song-list">
+                <li class="song-item">
+                    <span class="song-number">01</span>
+                    <span class="song-title">My Heart Will Go On</span>
+                    <span class="song-movie">Titanic</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">02</span>
+                    <span class="song-title">I Will Always Love You</span>
+                    <span class="song-movie">The Bodyguard</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">03</span>
+                    <span class="song-title">I Don't Want to Miss a Thing</span>
+                    <span class="song-movie">Armageddon</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">04</span>
+                    <span class="song-title">I've Had the Time of My Life</span>
+                    <span class="song-movie">Dirty Dancing</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">05</span>
+                    <span class="song-title">Unchained Melody</span>
+                    <span class="song-movie">Ghost</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">06</span>
+                    <span class="song-title">Take My Breath Away</span>
+                    <span class="song-movie">Top Gun</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">07</span>
+                    <span class="song-title">Somewhere Over the Rainbow</span>
+                    <span class="song-movie">The Wizard of Oz</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">08</span>
+                    <span class="song-title">Shallow</span>
+                    <span class="song-movie">A Star Is Born</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">09</span>
+                    <span class="song-title">Let It Go</span>
+                    <span class="song-movie">Frozen</span>
+                </li>
+                <li class="song-item">
+                    <span class="song-number">10</span>
+                    <span class="song-title">Eye of the Tiger</span>
+                    <span class="song-movie">Rocky</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h2>Stay in the Dark 🕯️</h2>
+            <p>Be the first to hear new releases and cinematic rearrangements.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to the shadows. 🕯️');">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vesper &middot; A <a href="../">Reclaim Media</a> Artist</p>
+    </footer>
+</body>
+</html>
