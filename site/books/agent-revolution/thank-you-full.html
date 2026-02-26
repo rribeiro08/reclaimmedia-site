@@ -415,6 +415,32 @@
             .download-info { justify-content: center; }
         }
     </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RVLGER6CZQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RVLGER6CZQ');
+</script>
+<script>
+  // Fire purchase conversion — full package (book + course)
+  window.addEventListener('DOMContentLoaded', function() {
+    var txKey = 'ar_full_tx_fired';
+    if (!sessionStorage.getItem(txKey)) {
+      sessionStorage.setItem(txKey, '1');
+      gtag('event', 'purchase', {
+        transaction_id: 'AR-FULL-' + Date.now(),
+        value: 126.95,
+        currency: 'USD',
+        items: [
+          { item_id: 'agent-revolution-book', item_name: 'The Personal Agent Revolution (Book)', price: 29.95, quantity: 1 },
+          { item_id: 'agent-mastery-course', item_name: 'Agent Mastery Course', price: 97.00, quantity: 1 }
+        ]
+      });
+    }
+  });
+</script>
 </head>
 <body>
 
@@ -544,7 +570,7 @@
     </div>
 
     <p class="support">
-        Questions? Email <a href="mailto:support@reclaimmedia.com">support@reclaimmedia.com</a><br>
+        Questions? Email <a href="mailto:contact@reclaimmedia.co">contact@reclaimmedia.co</a><br>
         We typically respond within 24 hours.
     </p>
 </div>

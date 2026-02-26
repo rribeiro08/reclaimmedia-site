@@ -349,6 +349,30 @@
             .download-info { justify-content: center; }
         }
     </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RVLGER6CZQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RVLGER6CZQ');
+</script>
+<script>
+  // Fire purchase conversion on thank-you page load
+  window.addEventListener('DOMContentLoaded', function() {
+    // Generate a session-unique transaction ID to prevent duplicate events on refresh
+    var txKey = 'ar_tx_fired';
+    if (!sessionStorage.getItem(txKey)) {
+      sessionStorage.setItem(txKey, '1');
+      gtag('event', 'purchase', {
+        transaction_id: 'AR-' + Date.now(),
+        value: 29.95,
+        currency: 'USD',
+        items: [{ item_id: 'agent-revolution-book', item_name: 'The Personal Agent Revolution', price: 29.95, quantity: 1 }]
+      });
+    }
+  });
+</script>
 </head>
 <body>
 

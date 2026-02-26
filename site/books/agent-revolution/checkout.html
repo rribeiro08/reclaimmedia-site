@@ -527,6 +527,24 @@
             }
         }
     </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RVLGER6CZQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RVLGER6CZQ');
+</script>
+<script>
+  // Fire begin_checkout on page load (user reached checkout)
+  window.addEventListener('DOMContentLoaded', function() {
+    gtag('event', 'begin_checkout', {
+      currency: 'USD',
+      value: 29.95,
+      items: [{ item_id: 'agent-revolution-book', item_name: 'The Personal Agent Revolution', price: 29.95, quantity: 1 }]
+    });
+  });
+</script>
 </head>
 <body>
 
